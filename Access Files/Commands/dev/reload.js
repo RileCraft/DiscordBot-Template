@@ -1,30 +1,13 @@
-const { MessageEmbed } = require('discord.js')
-const { exec } = require("child_process")
 module.exports = {
     name : 'reload',
-    usage: "nom reload",
     ownerOnly: true,
-description: "Pulls github repo and loads or updates changes in commands.",
-    run : async(client, message, args) => {
+    run : async(client, message, args, MessageEmbed) => {
     	 const glob = require('glob')
-    	const prefix = process.env.prefix
-            exec(`git pull $url`, (error, stdout) => {
-                let response = (error || stdout)
-                if (error) {
-                    const erro = new MessageEmbed()
-                        .setColor('RANDOM')
-                        .setTitle('🎄╎ Terminal')
-                        .setDescription(`\`\`\`kt${error.message}\`\`\``)
-                        .setTimestamp();
-                    message.channel.send(erro)
-                } else {
-                    let Handler = function (src, callback) {
-  glob(src + '/**/*', callback);
-}
-let { requiredPath } = require("../../bot")
+    	const prefix = client.config.prefix
+       let { FileManager } = require("../../Functions/FileManager")
                     
                     client.commands.sweep(() => true)
-        Handler(requiredPath + '/commands', function (err, res) {
+        FileManager(rootPATH + '/Access Files/commands', function (err, res) {
             if (err) return message.reply(
                 new MessageEmbed()
                     .setTitle("❌╎ Reload Error")
