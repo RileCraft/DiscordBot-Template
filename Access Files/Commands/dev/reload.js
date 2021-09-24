@@ -34,8 +34,7 @@ module.exports = {
 ${response}\`\`\``)
                 .setFooter(client.user.username, client.user.displayAvatarURL({ dynamic: true }))
         )
-                }
-            })
+                
         
     }
 }

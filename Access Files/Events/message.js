@@ -19,7 +19,7 @@ if (command) {
     // Timeout Handler
     if (command.timeout) {
         if (Timeout.has(`${command.name}${message.author.id}`)) return message.channel.send(`You are on a \`${ms(Timeout.get(`${command.name}${message.author.id}`) - Date.now(), {long : true})}\` cooldown.`)
-        command.run(client, message, args, db, MessageEmbed)
+        command.run(client, message, args, MessageEmbed)
         Timeout.set(`${command.name}${message.author.id}`, Date.now() + command.timeout)
         setTimeout(() => {
             Timeout.delete(`${command.name}${message.author.id}`)
@@ -28,7 +28,7 @@ if (command) {
 
     // OwnerOnly Handler
     else if (command.ownerOnly) {
-        if (message.author.id === process.env.dev) command.run(client, message, args, db, MessageEmbed)
+        if (message.author.id === client.config.dev) command.run(client, message, args, MessageEmbed)
         else {
             const ownerOnlyHandler = new MessageEmbed()
                 .setColor('RANDOM')
@@ -47,7 +47,7 @@ if (command) {
             if (user.permissions.has(i)) check++
             else missingPerm.push(`\n• ${i}`)
         })
-        if (check === perms.length) command.run(client, message, args, db, MessageEmbed)
+        if (check === perms.length) command.run(client, message, args, MessageEmbed)
         else {
             const permHandler = new MessageEmbed()
                 .setColor('RANDOM')
@@ -67,7 +67,7 @@ if (command) {
             if (user.permissions.has(i)) check++
             else missingPerm.push(`\n• ${i}`)
         })
-        if (check === perms.length) command.run(client, message, args, db, MessageEmbed)
+        if (check === perms.length) command.run(client, message, args, MessageEmbed)
         else {
         	if (user.permissions.has("SEND_MESSAGES")) {
             const permHandler = new MessageEmbed()
@@ -81,18 +81,18 @@ if (command) {
 
     // GuildOnly Handler
     else if (command.guildOnly === false) {
-        command.run(client, message, args, db, MessageEmbed)
+        command.run(client, message, args, MessageEmbed)
     } 
       
       // allowBots Handler
     else if (command.allowBots) {
-        command.run(client, message, args, db, MessageEmbed)
+        command.run(client, message, args, MessageEmbed)
     } else {
         // If none of the handlers are there.
         if (message.author.bot) return;
         if (!message.guild) return;
         if (!message.member) message.member = await message.guild.fetchMember(message);
-        command.run(client, message, args, db, MessageEmbed)
+        command.run(client, message, args, MessageEmbed)
     }
 }
 })()

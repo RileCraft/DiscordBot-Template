@@ -8,8 +8,8 @@ module.exports = {
             });
             const info = require("../Classes/Handler")
     console.log(chalk.bold.yellowBright("[Bot] ") + chalk.bold.blueBright(`Connected to ${client.user.tag}`))
-    console.log(chalk.bold.blueBright("[Handler]") + chalk.bold.greenBright(` Loaded ${info.loadedCmds} commands.`))
-    console.log(chalk.bold.cyanBright("[Handler]") + chalk.bold.magentaBright(` Loaded ${info.loadedAliases} aliases.`))
-    console.log(chalk.bold.greenBright("[Handler]") + chalk.bold.greyBright(` Loaded ${info.loadedEvents} events.`))
+    console.log(chalk.bold.redBright("[Handler]") + chalk.bold.greenBright(` Loaded ${info.loadedCmds[info.loadedCmds.length - 1] ?? 0} commands.`))
+    console.log(chalk.bold.whiteBright("[Handler]") + chalk.bold.magentaBright(` Loaded ${info.loadedAliases[info.loadedAliases.length - 1] ?? 0} aliases.`))
+    console.log(chalk.bold.greenBright("[Handler]") + chalk.bold.cyanBright(` Loaded ${info.loadedEvents[info.loadedEvents.length - 1] ?? 0} events.`))
 	},
 };
