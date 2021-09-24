@@ -5,7 +5,7 @@ module.exports = {
 	.setColor('RANDOM')
 	.setTimestamp()
         .setTitle('🏓╎Pong!')
-	.setDescription('🏠╎Websocket Latency:' + " " + client.ws.ping + "ms" + '\n🤖╎Bot Latency:' + " " + `${Date.now() - message.createdTimestamp}` + "ms" + "\n" + "🎲╎Database Ping: " + a + "ms");
+	.setDescription('🏠╎Websocket Latency:' + " " + client.ws.ping + "ms" + '\n🤖╎Bot Latency:' + " " + `${Date.now() - message.createdTimestamp}` + "ms");
 	message.channel.send(ping)
     }
 }
