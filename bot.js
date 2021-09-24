@@ -3,6 +3,7 @@ const { Handler } = require(`${__dirname}/Access Files/Classes/Handler`)
 const client = new Client({
     disableEveryone: true
 })
+require('discord-buttons')(client)
 global.rootPATH = __dirname
 client.config = require(`${rootPATH}/config.js`)[0]
 exports.client = client
