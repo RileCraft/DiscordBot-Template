@@ -5,7 +5,7 @@ module.exports = {
 			const { Collection, MessageEmbed } = require('discord.js')
 			const Timeout = new Collection()
 			const { client } = require("../../bot")
-			const prefix = process.env.prefix
+			const prefix = client.config.prefix
 if (!message.content.toString().toLowerCase().startsWith(prefix)) return;
 const cmd = message.content.toString().toLowerCase().slice(prefix.length).trim().split(" ")[0]
 if (!cmd) return;
