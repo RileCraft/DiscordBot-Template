@@ -1,13 +1,6 @@
-const { MessageEmbed } = require('discord.js')
 module.exports = {
     name : 'ping',
-    usage: "nom ping",
-description: "Shows the latency of the Bot and the Websocket.",
-    run : async(client, message, args) => {
-    	let b = Date.now()
-        db.get(message.author.id + "_key")
-        let c = Date.now()
-        const a = Math.floor(c - b)
+    run : async(client, message, args, MessageEmbed) => {
         const ping = new MessageEmbed()
 	.setColor('RANDOM')
 	.setTimestamp()
