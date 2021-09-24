@@ -7,7 +7,6 @@ module.exports = {
     .setLabel("Delete Output")
     .setID("evalbtn")
             const { exec } = require("child_process")
-            const prefix = client.config.prefix
             let lola = args.join(" ")
             if (!lola) return message.channel.send("Please provide what to execute in the terminal!")
             exec(`${lola}`, (error, stdout) => {
