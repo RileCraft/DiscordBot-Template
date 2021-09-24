@@ -1,17 +1,13 @@
-const { MessageEmbed } =require('discord.js')
 const { MessageButton } =require('discord-buttons')
 module.exports = {
     name : 'exec',
-    usage: "nom exec [command]",
-description: "Executes a command in the terminal.",
-    run : async(client, message, args) => {
+    run : async(client, message, args, MessageEmbed) => {
     	let btn = new MessageButton()
     .setStyle("red")
     .setLabel("Delete Output")
     .setID("evalbtn")
-                const { MessageEmbed } = require('discord.js')
             const { exec } = require("child_process")
-            const prefix = process.env.prefix
+            const prefix = client.config.prefix
             let lola = args.join(" ")
             if (!lola) return message.channel.send("Please provide what to execute in the terminal!")
             exec(`${lola}`, (error, stdout) => {
