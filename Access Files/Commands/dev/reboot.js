@@ -1,10 +1,7 @@
-const { MessageEmbed } =require('discord.js')
 module.exports = {
     name : 'reboot',
-    usage: "nom reboot",
     ownerOnly: true,
-description: "Restarts the bot.",
-    run : async(client, message, args) => {
+    run : async(client, message, args, MessageEmbed) => {
         
         	message.channel.send("Restarting . . .").then(() => { 
 process.on("exit", () => {
