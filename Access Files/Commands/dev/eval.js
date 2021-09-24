@@ -1,11 +1,8 @@
-const { MessageEmbed } = require('discord.js')
 const { MessageButton } = require('discord-buttons')
 module.exports = {
     name : 'eval',
-    usage: "nom eval [code]",
     ownerOnly: true,
-description: "Evals a JS code.",
-    run : async(client, message, args) => {
+    run : async(client, message, args, MessageEmbed) => {
     	let btn = new MessageButton()
     .setStyle("red")
     .setLabel("Delete Output")
