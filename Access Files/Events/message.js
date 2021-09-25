@@ -1,5 +1,5 @@
 module.exports = {
-	name: 'message',
+	name: 'messageCreate',
 	execute(message) {
 		(async () => {
 			const { Collection, MessageEmbed } = require('discord.js')

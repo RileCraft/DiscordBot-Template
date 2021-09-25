@@ -7,6 +7,12 @@ let Count_Events = 1
 let loadedEvents = []
 let loadedCmds = []
 let loadedAliases = []
+
+const Discord = require('discord.js')
+Discord.TextChannel.prototype.sendEmbed = function (embed) {
+	this.send({ embeds: [embed] })
+	}
+
  class Handler {
 	   // COMMAND HANDLER
 	static loadCommands() {

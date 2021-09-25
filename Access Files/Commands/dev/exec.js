@@ -1,11 +1,6 @@
-const { MessageButton } =require('discord-buttons')
 module.exports = {
     name : 'exec',
     run : async(client, message, args, MessageEmbed) => {
-    	let btn = new MessageButton()
-    .setStyle("red")
-    .setLabel("Delete Output")
-    .setID("evalbtn")
             const { exec } = require("child_process")
             let lola = args.join(" ")
             if (!lola) return message.channel.send("Please provide what to execute in the terminal!")
@@ -18,7 +13,7 @@ module.exports = {
                         .setDescription(`\`\`\`kt
 ${error.message}\`\`\``)
                         .setTimestamp();
-                    message.channel.send(erro, btn)
+                    message.channel.send({ embeds:[erro] })
                 } else {
                     const result = new MessageEmbed()
                         .setColor('RANDOM')
@@ -26,7 +21,7 @@ ${error.message}\`\`\``)
                         .setDescription(`\`\`\`kt
 ${response}\`\`\``)
                         .setTimestamp();
-                    message.channel.send(result, btn)
+                    message.channel.send({ embeds:[result] })
                 }
             })
         
