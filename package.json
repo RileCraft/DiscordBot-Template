@@ -1,22 +1,20 @@
 {
-  "name": "discordbot-template",
+  "name": "template",
   "version": "1.0.0",
-  "description": "Template",
+  "description": "",
   "main": "bot.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node bot.js"
   },
-  "author": "RileCraft",
+  "author": "",
   "license": "ISC",
   "dependencies": {
     "@discordjs/voice": "^0.6.0",
     "chalk": "^4.1.2",
-    "child_process": "^1.0.2",
     "discord.js": "^13.1.0",
     "fs": "^0.0.1-security",
     "glob": "^7.2.0",
-    "ms": "^3.0.0-canary.1",
-    "utils": "^0.3.1"
+    "ms": "^3.0.0-canary.1"
   }
 }

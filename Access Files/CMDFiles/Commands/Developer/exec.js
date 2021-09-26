@@ -1,6 +1,13 @@
 module.exports = {
     name : 'exec',
-    run : async(client, message, args, MessageEmbed) => {
+    run : async(client, message, args, MessageEmbed, MessageActionRow, MessageButton) => {
+    	const row = new MessageActionRow()
+			.addComponents(
+				new MessageButton()
+					.setCustomId('evalbtn')
+					.setLabel('Delete Output')
+					.setStyle('DANGER'),
+			);
             const { exec } = require("child_process")
             let lola = args.join(" ")
             if (!lola) return message.channel.send("Please provide what to execute in the terminal!")
@@ -13,7 +20,7 @@ module.exports = {
                         .setDescription(`\`\`\`kt
 ${error.message}\`\`\``)
                         .setTimestamp();
-                    message.channel.send({ embeds:[erro] })
+                    message.channel.send({ embeds:[erro], components: [row] })
                 } else {
                     const result = new MessageEmbed()
                         .setColor('RANDOM')
@@ -21,7 +28,7 @@ ${error.message}\`\`\``)
                         .setDescription(`\`\`\`kt
 ${response}\`\`\``)
                         .setTimestamp();
-                    message.channel.send({ embeds:[result] })
+                    message.channel.send({ embeds:[result], components: [row] })
                 }
             })
         

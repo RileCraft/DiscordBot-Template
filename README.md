@@ -3,7 +3,7 @@
 
 # Features
 * Custom command handler with `guildOnly` , `allowBots` , `onlyOwner` , `User Permissions`, `Client Permissions` handlers included!
-* Custom event handler
+* Custom event handler , button handler and selectmenu handler too!
 * Given reload commands with other main dev commands.
 * Organized layout.
 * Easily customizable.

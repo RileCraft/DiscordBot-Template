@@ -18,7 +18,9 @@ exports.client = client
 client.commands = new Collection()
 client.aliases = new Collection()
 
-Handler.loadCommands()     // LOAD COMMAND HANDLER
-Handler.loadEvents()     // LOAD EVENT HANDLER
+Handler.loadCommands()     // COMMAND HANDLER
+Handler.loadEvents()     // EVENT HANDLER
+Handler.loadButtons()     // BUTTON HANDLER
+Handler.loadSelectMenus()     // SELECTMENUS HANDLER
 
 client.login(client.config.token)
