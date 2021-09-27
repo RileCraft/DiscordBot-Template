@@ -92,6 +92,15 @@ cmd.run(client, menu)
 						}) //Function End
 			} // SelectMenus End
 			
+			static loadErrorManager() {
+			const chalk = require('chalk')
+			process.on('unhandledRejection', error => {
+const err = error.stack.split("\n")
+console.log(chalk.bold.red("[Error Message] ") + chalk.bold.blue(err[0].trim()))
+console.log(chalk.bold.red("[Error Location] ") + chalk.bold.blue(err[1].trim()))
+		}) // Process End
+			} // LoadErrorManager End
+			
 	} // Class End
 	
 module.exports = {
