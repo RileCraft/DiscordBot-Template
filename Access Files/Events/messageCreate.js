@@ -2,6 +2,12 @@ module.exports = {
 	name: 'messageCreate',
 	execute(message) {
 		(async () => {
+			const CooldownDB = require('simple-json-db');
+const cooldb = new CooldownDB(rootPATH + "/Access Files/Storage/Database/cooldown.json", {
+asyncWrite: true,
+syncOnWrite: true,
+jsonSpace: 2
+    })
 			const { Collection, MessageEmbed, MessageSelectMenu, MessageActionRow, MessageButton } = require('discord.js')
 			const { client } = require(rootPATH + "/bot")
 			const prefix = client.config.prefix
