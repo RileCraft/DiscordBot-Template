@@ -3,7 +3,6 @@ module.exports = {
 	execute(message) {
 		(async () => {
 			const { Collection, MessageEmbed, MessageSelectMenu, MessageActionRow, MessageButton } = require('discord.js')
-			const Timeout = new Collection()
 			const { client } = require(rootPATH + "/bot")
 			const prefix = client.config.prefix
 if (!message.content.toString().startsWith(prefix)) return;
@@ -16,14 +15,24 @@ if (command) {
     if (args.startsWith(command.name)) args = args.slice(command.name.toString().length).trim().split(" ")
     else args = args.slice(command.aliases.toString().length).trim().split(" ")
 
-    // Timeout Handler
-    if (command.timeout) {
-        if (Timeout.has(`${command.name}${message.author.id}`)) return message.channel.send(`You are on a \`${ms(Timeout.get(`${command.name}${message.author.id}`) - Date.now(), {long : true})}\` cooldown.`)
-        command.run(client, message, args, MessageEmbed, MessageActionRow, MessageSelectMenu, MessageButton)
-        Timeout.set(`${command.name}${message.author.id}`, Date.now() + command.timeout)
-        setTimeout(() => {
-            Timeout.delete(`${command.name}${message.author.id}`)
-        }, command.timeout)
+    // Cooldown Handler
+    if (command.cooldown) {
+        let time = command.cooldown
+        let id = message.author.id
+        let date = Date.now()
+        let data = cooldb.get(`${id}.${command.name}.cooldown`)
+        if (isNaN(time)) throw new Error ("Invalid number in cooldown provided at " + command.name)
+        if(Math.floor(date - data) >= time || !data) {
+cooldb.set(`${id}.${command.name}.cooldown`, date)
+command.run(client, message, args, MessageEmbed, MessageActionRow, MessageSelectMenu, MessageButton)
+} else {
+	const embed = new MessageEmbed()
+.setAuthor(message.author.tag, message.author.displayAvatarURL({dynamic: true }))
+.setTimestamp()
+.setColor("RANDOM")
+.setDescription(`You are currently at cooldown for this command until <t:${Math.floor(Math.floor(data + time) / 1000)}:F>`)
+	message.channel.sendEmbed(embed)
+	}
     }
 
     // OwnerOnly Handler
