@@ -22,5 +22,6 @@ Handler.loadCommands()     // COMMAND HANDLER
 Handler.loadEvents()     // EVENT HANDLER
 Handler.loadButtons()     // BUTTON HANDLER
 Handler.loadSelectMenus()     // SELECTMENUS HANDLER
+Handler.loadErrorManager()     // ERRORHANDLER HANDLER
 
 client.login(client.config.token)
