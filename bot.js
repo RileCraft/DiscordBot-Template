@@ -1,6 +1,6 @@
 const { Collection, Client, Discord, MessageEmbed, Intents} = require('discord.js')
 const { Handler } = require(`${__dirname}/Access Files/Classes/Handler`)
-const client = new Client({
+const client = new Client({e
     intents: [
     Intents.FLAGS.GUILDS,
     Intents.FLAGS.GUILD_MESSAGES,
