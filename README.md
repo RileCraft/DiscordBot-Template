@@ -26,3 +26,10 @@ info.loadedAliases[info.loadedAliases.length - 1]
 * Install the required modules in the `package.json` file using the command `npm i`.
 * Fill / Edit the config.json enteries.
 * Make sure you have read the `Important Notes` sector.
+
+# Contribution
+If you want to contribute towards this repository then follow these steps.
+* Fork this Repository.
+* Edit your fork and save the changes you want to make.
+* Open the pull request to the Development Branch.
+* We will check out the code and if it is fine then your PR will be merged.
