@@ -1,9 +1,9 @@
 module.exports = {
     name : 'selectMenu',
-    run : async(client, message, args, MessageEmbed, MessageActionRow, MessageSelectMenu, MessageButton) => {
-    	const menus = new MessageActionRow()
+    run : async(client, message, args, Discord) => {
+    	const menus = new Discord.MessageActionRow()
 			.addComponents(
-				new MessageSelectMenu()
+				new Discord.MessageSelectMenu()
 					.setCustomId('select')
 					.setPlaceholder('Nothing selected')
 					.addOptions([

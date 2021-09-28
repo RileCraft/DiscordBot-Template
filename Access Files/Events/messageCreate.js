@@ -8,7 +8,8 @@ asyncWrite: true,
 syncOnWrite: true,
 jsonSpace: 2
     })
-			const { Collection, MessageEmbed, MessageSelectMenu, MessageActionRow, MessageButton } = require('discord.js')
+			const { Collection } = require('discord.js')
+			const Discord = require('discord.js')
 			const { client } = require(rootPATH + "/bot")
 			const prefix = client.config.prefix
 if (!message.content.toString().startsWith(prefix)) return;
@@ -30,7 +31,7 @@ if (command) {
         if (isNaN(time)) throw new Error ("Invalid number in cooldown provided at " + command.name)
         if(Math.floor(date - data) >= time || !data) {
 cooldb.set(`${id}.${command.name}.cooldown`, date)
-command.run(client, message, args, MessageEmbed, MessageActionRow, MessageSelectMenu, MessageButton)
+command.run(client, message, args, Discord)
 } else {
 	const embed = new MessageEmbed()
 .setAuthor(message.author.tag, message.author.displayAvatarURL({dynamic: true }))
@@ -43,7 +44,7 @@ command.run(client, message, args, MessageEmbed, MessageActionRow, MessageSelect
 
     // OwnerOnly Handler
     else if (command.ownerOnly) {
-        if (message.author.id === client.config.dev) command.run(client, message, args, MessageEmbed, MessageActionRow, MessageSelectMenu, MessageButton)
+        if (message.author.id === client.config.dev) command.run(client, message, args, Discord)
         else {
             const ownerOnlyHandler = new MessageEmbed()
                 .setColor('RANDOM')
@@ -62,7 +63,7 @@ command.run(client, message, args, MessageEmbed, MessageActionRow, MessageSelect
             if (user.permissions.has(i)) check++
             else missingPerm.push(`\n• ${i}`)
         })
-        if (check === perms.length) command.run(client, message, args, MessageEmbed, MessageActionRow, MessageSelectMenu, MessageButton)
+        if (check === perms.length) command.run(client, message, args, Discord)
         else {
             const permHandler = new MessageEmbed()
                 .setColor('RANDOM')
@@ -82,7 +83,7 @@ command.run(client, message, args, MessageEmbed, MessageActionRow, MessageSelect
             if (user.permissions.has(i)) check++
             else missingPerm.push(`\n• ${i}`)
         })
-        if (check === perms.length) command.run(client, message, args, MessageEmbed, MessageActionRow, MessageSelectMenu, MessageButton)
+        if (check === perms.length) command.run(client, message, args, Discord)
         else {
         	if (user.permissions.has("SEND_MESSAGES")) {
             const permHandler = new MessageEmbed()
@@ -96,18 +97,18 @@ command.run(client, message, args, MessageEmbed, MessageActionRow, MessageSelect
 
     // GuildOnly Handler
     else if (command.guildOnly === false) {
-        command.run(client, message, args, MessageEmbed, MessageActionRow, MessageSelectMenu, MessageButton)
+        command.run(client, message, args, Discord)
     } 
       
       // allowBots Handler
     else if (command.allowBots) {
-        command.run(client, message, args, MessageEmbed, MessageActionRow, MessageSelectMenu, MessageButton)
+        command.run(client, message, args, Discord)
     } else {
         // If none of the handlers are there.
         if (message.author.bot) return;
         if (!message.guild) return;
         if (!message.member) message.member = await message.guild.fetchMember(message);
-        command.run(client, message, args, MessageEmbed, MessageActionRow, MessageSelectMenu, MessageButton)
+        command.run(client, message, args, Discord)
     }
 }
 })()

@@ -1,9 +1,9 @@
 module.exports = {
     name : 'exec',
-    run : async(client, message, args, MessageEmbed, MessageActionRow, MessageButton) => {
-    	const row = new MessageActionRow()
+    run : async(client, message, args, Discord) => {
+    	const row = new Discord.MessageActionRow()
 			.addComponents(
-				new MessageButton()
+				new Discord.MessageButton()
 					.setCustomId('evalbtn')
 					.setLabel('Delete Output')
 					.setStyle('DANGER'),
@@ -14,7 +14,7 @@ module.exports = {
             exec(`${lola}`, (error, stdout) => {
                 let response = (error || stdout)
                 if (error) {
-                    const erro = new MessageEmbed()
+                    const erro = new Discord.MessageEmbed()
                         .setColor('RANDOM')
                         .setTitle('🎄╎Terminal')
                         .setDescription(`\`\`\`kt
@@ -22,7 +22,7 @@ ${error.message}\`\`\``)
                         .setTimestamp();
                     message.channel.send({ embeds:[erro], components: [row] })
                 } else {
-                    const result = new MessageEmbed()
+                    const result = new Discord.MessageEmbed()
                         .setColor('RANDOM')
                         .setTitle('🎄╎Terminal')
                         .setDescription(`\`\`\`kt

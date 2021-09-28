@@ -1,14 +1,14 @@
 module.exports = {
     name : 'reload',
     ownerOnly: true,
-    run : async(client, message, args, MessageEmbed) => {
+    run : async(client, message, args, Discord) => {
     	 const glob = require('glob')
     	const prefix = client.config.prefix
        let { FileManager } = require(rootPATH + "/Access Files/Functions/FileManager")
                     client.commands.sweep(() => true)
         FileManager(rootPATH + '/Access Files/Commands', function (err, res) {
             if (err) {
-            	const TheOno = new MessageEmbed()
+            	const TheOno = new Discord.MessageEmbed()
                     .setTitle("❌╎ Reload Error")
                     .setDescription(`\`\`\`${err.stack}\`\`\``)
                     .setColor("ff0000")
@@ -26,7 +26,7 @@ module.exports = {
             }
         })
            
-const TheEnd = new MessageEmbed()
+const TheEnd = new Discord.MessageEmbed()
                 .setTitle('Reload Success!')
                 .setColor('GREEN')
                 .setTimestamp()
