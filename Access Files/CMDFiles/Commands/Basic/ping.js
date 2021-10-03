@@ -1,7 +1,7 @@
 module.exports = {
     name : 'ping',
-    run : async(client, message, args, MessageEmbed) => {
-        const ping = new MessageEmbed()
+    run : async(client, message, args, Discord) => {
+        const ping = new Discord.MessageEmbed()
 	.setColor('RANDOM')
 	.setTimestamp()
         .setTitle('🏓╎Pong!')
