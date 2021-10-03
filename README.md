@@ -31,5 +31,5 @@ info.loadedAliases[info.loadedAliases.length - 1]
 If you want to contribute towards this repository then follow these steps.
 * Fork this Repository.
 * Edit your fork and save the changes you want to make.
-* Open the pull request to the Development Branch.
+* Open the pull request.
 * We will check out the code and if it is fine then your PR will be merged.
