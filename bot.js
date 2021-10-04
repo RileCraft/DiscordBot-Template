@@ -1,5 +1,6 @@
 const { Collection, Client, Discord, MessageEmbed, Intents} = require('discord.js')
 const { Handler } = require(`${__dirname}/Access Files/Classes/Handler`)
+require("dotenv").config()
 const client = new Client({
     intents: [
     Intents.FLAGS.GUILDS,
@@ -12,8 +13,8 @@ const client = new Client({
     Intents.FLAGS.GUILD_BANS,
 ],
 })
-global.rootPATH = __dirname
-client.config = require(`${rootPATH}/config.json`)
+global.HOME = __dirname
+client.config = require(`${HOME}/config.json`)
 exports.client = client
 client.commands = new Collection()
 client.aliases = new Collection()
@@ -24,4 +25,4 @@ Handler.loadButtons()     // BUTTON HANDLER
 Handler.loadSelectMenus()     // SELECTMENUS HANDLER
 Handler.loadErrorManager()     // ERRORHANDLER HANDLER
 
-client.login(client.config.token)
+client.login(process.env.token || client.config.token)

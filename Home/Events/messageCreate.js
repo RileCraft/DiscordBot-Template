@@ -3,15 +3,15 @@ module.exports = {
 	execute(message) {
 		(async () => {
 			const CooldownDB = require('simple-json-db');
-const cooldb = new CooldownDB(rootPATH + "/Access Files/Storage/Database/cooldown.json", {
+const cooldb = new CooldownDB(HOME + "/Home/Storage/Database/cooldown.json", {
 asyncWrite: true,
 syncOnWrite: true,
 jsonSpace: 2
     })
 			const { Collection } = require('discord.js')
 			const Discord = require('discord.js')
-			const { client } = require(rootPATH + "/bot")
-			const prefix = client.config.prefix
+			const { client } = require(HOME + "/bot")
+			const prefix = process.env.prefix || client.config.prefix
 if (!message.content.toString().startsWith(prefix)) return;
 const cmd = message.content.toString().slice(prefix.length).trim().split(" ")[0]
 if (!cmd) return;
@@ -40,11 +40,11 @@ command.run(client, message, args, Discord)
 .setDescription(`You are currently at cooldown for this command until <t:${Math.floor(Math.floor(data + time) / 1000)}:F>`)
 	message.channel.sendEmbed(embed)
 	}
-    }
+  }
 
     // OwnerOnly Handler
     else if (command.ownerOnly) {
-        if (message.author.id === client.config.dev) command.run(client, message, args, Discord)
+        if (message.author.id === client.config.dev || message.author.id === process.env.dev) command.run(client, message, args, Discord)
         else {
             const ownerOnlyHandler = new MessageEmbed()
                 .setColor('RANDOM')

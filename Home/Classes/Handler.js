@@ -21,8 +21,8 @@ Discord.TextChannel.prototype.sendEmbed = function (embed) {
  class Handler {
 	   // COMMAND HANDLER
 	static loadCommands() {
-		const { client } = require(rootPATH + "/bot")
-		   FileManager(rootPATH + '/Access Files/CMDFiles/Commands', function (err, res) {
+		const { client } = require(HOME + "/bot")
+		   FileManager(HOME + '/Home/CMDFiles/Commands', function (err, res) {
   res.forEach(file => {
      if (fs.statSync(file).isDirectory()) return;
  const cmd = require(file)
@@ -38,21 +38,28 @@ loadedAliases.push(Count_Aliases++)
 		
 		// EVENT HANDLER
            static loadEvents() {
-            	 const { client } = require(rootPATH + "/bot")
-	 FileManager(rootPATH + '/Access Files/Events', function (err, res) {
+            	 const { client } = require(HOME + "/bot")
+	 FileManager(HOME + '/Home/Events', function (err, res) {
             res.forEach(file => {
   if (fs.statSync(file).isDirectory()) return;
        let event = require(file)
     loadedEvents.push(Count_Events++)
+   if (event.eventOf) { 
+   	const init = event.eventOf
+    	if (event.once) init.once(event.name, (...args) => event.execute(...args, client))
+    else init.on(event.name, (...args) => event.execute(...args, client))
+    } // If End
+    else {
 if (event.once) client.once(event.name, (...args) => event.execute(...args, client))
     else client.on(event.name, (...args) => event.execute(...args, client))
+    } // Else End
   	}) // res.ForEach() End
 }) // FileManager Function End
 			} // Event Handler End.
 			
 			  static loadButtons() {
-				const { client } = require(rootPATH + "/bot")
-				FileManager(rootPATH + '/Access Files/CMDFiles/Buttons', function (err, res) {
+				const { client } = require(HOME + "/bot")
+				FileManager(HOME + '/Home/CMDFiles/Buttons', function (err, res) {
 					res.forEach(file => {
 						if (fs.statSync(file).isDirectory()) return;
 						loadedButtons.push(Count_Buttons++)
@@ -61,7 +68,7 @@ if (event.once) client.once(event.name, (...args) => event.execute(...args, clie
 							if (!button.isButton()) return;
 						if (cmd.name !== button.customId) return;
 						if (cmd.ownerOnly) {
-                     if (button.user.id === client.config.dev) {
+                     if (button.user.id === client.config.dev || button.user.id === process.env.dev) {
 cmd.run(client, button)
    } else return ;
                       } // if OwnerOnly
@@ -72,8 +79,8 @@ cmd.run(client, button)
 				} // Button Handler End
 			
 			static loadSelectMenus() {
-			const { client } = require(rootPATH + "/bot")
-				FileManager(rootPATH + '/Access Files/CMDFiles/SelectMenus', function (err, res) {
+			const { client } = require(HOME + "/bot")
+				FileManager(HOME + '/Home/CMDFiles/SelectMenus', function (err, res) {
 					res.forEach(file => {
 						if (fs.statSync(file).isDirectory()) return;
 						const cmd = require(file)
@@ -82,7 +89,7 @@ cmd.run(client, button)
 							if (!menu.isSelectMenu()) return;
 						if (cmd.name === menu.customId || cmd.name === menu.values[0]) {
 						if (cmd.ownerOnly) {
-                     if (menu.user.id === client.config.dev) {
+                     if (menu.user.id === client.config.dev || menu.user.id === process.env.dev) {
 cmd.run(client, menu)
    } else return;
                       } else cmd.run(client, menu)
