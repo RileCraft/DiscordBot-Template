@@ -6,7 +6,7 @@ module.exports = {
     	const prefix = client.config.prefix
        let { FileManager } = require(rootPATH + "/Access Files/Functions/FileManager")
                     client.commands.sweep(() => true)
-        FileManager(rootPATH + '/Access Files/Commands', function (err, res) {
+        FileManager(HOMR + '/Home/Commands', function (err, res) {
             if (err) {
             	const TheOno = new Discord.MessageEmbed()
                     .setTitle("❌╎ Reload Error")
