@@ -28,6 +28,7 @@ if (command) {
 cooldb.set(`${id}.${command.name}.cooldown`, date)
 command.run(client, message, args, Discord)
 } else {
+	if (command.returnError === false) return;
 	const embed = new MessageEmbed()
 .setAuthor(message.author.tag, message.author.displayAvatarURL({dynamic: true }))
 .setTimestamp()
@@ -41,6 +42,7 @@ command.run(client, message, args, Discord)
     else if (command.ownerOnly) {
         if (message.author.id === client.config.dev || message.author.id === process.env.dev) command.run(client, message, args, Discord)
         else {
+        	if (command.returnError === false) return;
             const ownerOnlyHandler = new MessageEmbed()
                 .setColor('RANDOM')
                 .setTitle("❌╎ This command is to be used by the developers / owners of the bot only!");
@@ -60,6 +62,7 @@ command.run(client, message, args, Discord)
         })
         if (check === perms.length) command.run(client, message, args, Discord)
         else {
+        	if (command.returnError === false) return;
             const permHandler = new MessageEmbed()
                 .setColor('RANDOM')
                 .setTitle("❌╎ You are currently missing these permissions which are required for this command.")
@@ -81,6 +84,7 @@ command.run(client, message, args, Discord)
         if (check === perms.length) command.run(client, message, args, Discord)
         else {
         	if (user.permissions.has("SEND_MESSAGES")) {
+        	if (command.returnError === false) return;
             const permHandler = new MessageEmbed()
                 .setColor('RANDOM')
                 .setTitle("❌╎ I am currently missing these permissions which are required for this command.")
@@ -98,7 +102,94 @@ command.run(client, message, args, Discord)
       // allowBots Handler
     else if (command.allowBots) {
         command.run(client, message, args, Discord)
-    } else {
+    } 
+
+// onlyUsers Handler
+else if (command.onlyUsers && Array.isArray(command.onlyUsers)) {
+let author = message.author.id
+const missingUsers = []
+let users = command.onlyUsers
+if (users.some(id => id === author)) command.run(client, message, args, Discord)
+else {
+	users.forEach(i => missingUsers.push(`\n• <@${i}>`))
+	if (command.returnError === false) return;
+const embed = new Discord.MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle(":x: This command is reserved for these users")
+                .setDescription(`${missingUsers}`)
+            message.channel.sendEmbed(embed)
+}
+    }
+    
+    // onlyRoles Handler
+else if (command.onlyRoles && Array.isArray(command.onlyRoles)) {
+	(async () => {
+let authid = message.author.id
+let roles = command.onlyRoles
+let auth = message.member
+const missingRoles = []
+if (!message.guild) return;
+if (!auth) await message.guild.members.fetch(authid)
+if (roles.some(id => auth.roles.cache.has(id))) command.run(client, message, args, Discord)
+else {
+	roles.forEach(i => missingRoles.push(`\n• <@&${i}>`))
+	if (command.returnError === false) return;
+const embed = new Discord.MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle(":x: This command is reserved for these roles")
+                .setDescription(`${missingRoles}`)
+            message.channel.sendEmbed(embed)
+}
+})()
+    }
+    
+    // onlyChannels Handler
+else if (command.onlyChannels && Array.isArray(command.onlyChannels)) {
+	(async () => {
+let msg = message.channel.id
+let channels = command.onlyChannels
+const missingChannels = []
+if (!message.guild) return;
+if (!msg) await message.guild.channels.fetch(msg)
+if (channels.some(id => id === msg)) command.run(client, message, args, Discord)
+else {
+	channels.forEach(i => missingChannels.push(`\n• <#${i}>`))
+	if (command.returnError === false) return;
+const embed = new Discord.MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle(":x: This command is reserved for these channels")
+                .setDescription(`${missingChannels}`)
+            message.channel.sendEmbed(embed)
+}
+})()
+    }
+    
+    // onlyGuilds Handler
+else if (command.onlyGuilds && Array.isArray(command.onlyGuilds)) {
+	(async () => {
+let server = message.guild.id
+let guilds = command.onlyGuilds
+const missingGuilds = []
+if (!message.guild) return;
+if (guilds.some(id => id === server)) command.run(client, message, args, Discord)
+else {
+	guilds.forEach(i => {
+		(async () => {
+		if (!client.guilds.cache.get(i)) await client.guilds.fetch(i)
+missingGuilds.push(`\n• ${client.guilds.cache.get(i).name}`)
+    })()
+})
+	if (command.returnError === false) return;
+const embed = new Discord.MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle(":x: This command is reserved for these guilds.")
+                .setDescription(`${missingGuilds}`)
+            message.channel.sendEmbed(embed)
+}
+})()
+    }
+
+else {
         // If none of the handlers are there.
         if (message.author.bot) return;
         if (!message.guild) return;
