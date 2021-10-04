@@ -71,19 +71,19 @@ module.exports = {
 * Default: `false`.
 * When true, Bots will also be able to run the command.
 
-* `onlyUsers: ["User ID", "User ID" . . .]`
+`onlyUsers: ["User ID", "User ID" . . .]`
 * Default: `None`
 * Only the provided user IDs will be able to run the command.
 
-* `onlyRoles: ["Role ID", "Role ID" . . .]`
+`onlyRoles: ["Role ID", "Role ID" . . .]`
 * Default: `None`
 * Only the users with one of the provided roles will be able to run the command.
 
-* `onlyChannels: ["Channel ID", "Channel ID" . . .]`
+`onlyChannels: ["Channel ID", "Channel ID" . . .]`
 * Default: `None`
 * The command will only be able to be run in the provided channels.
 
-* `onlyGuilds: ["Server ID", "Server ID" . . .]`
+`onlyGuilds: ["Server ID", "Server ID" . . .]`
 * Default: `None`
 * The command will only be able to be run in the provided guilds.
 
