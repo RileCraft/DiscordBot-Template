@@ -4,9 +4,9 @@ module.exports = {
     run : async(client, message, args, Discord) => {
     	 const glob = require('glob')
     	const prefix = client.config.prefix
-       let { FileManager } = require(rootPATH + "/Access Files/Functions/FileManager")
+       let { FileManager } = require(HOME + "/Home/Functions/FileManager")
                     client.commands.sweep(() => true)
-        FileManager(HOMR + '/Home/Commands', function (err, res) {
+        FileManager(HOME + '/Home/Commands', function (err, res) {
             if (err) {
             	const TheOno = new Discord.MessageEmbed()
                     .setTitle("❌╎ Reload Error")
