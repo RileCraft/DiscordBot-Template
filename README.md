@@ -1,6 +1,6 @@
 # DiscordBot-Template
 <a href="https://discord.gg/zqySsESftt"><img src="https://img.shields.io/badge/Discord-7289DA?style=for-the-badge&logo=discord&logoColor=black"/></a>
-![Version](https://img.shields.io/badge/version-1.1.3-05122A?style=for-the-badge)
+![Version](https://img.shields.io/badge/version-1.1.4-05122A?style=for-the-badge)
 <img src="https://media.discordapp.net/attachments/774290264764055582/890955909566722048/0001-8574372447_20210924_191019_0000.png" height=200 width=400>
 
 # 『 Changelog 』
@@ -8,6 +8,7 @@
 * Added support for non discord client events.
 * Fixed bugs that could crash the server.
 * Revamped FilePaths.
+* Changed events style.
 
 # 『 Features 』
 * Custom command handler with `guildOnly` , `allowBots` , `onlyOwner` , `User Permissions`, `Client Permissions` handlers included!
@@ -50,7 +51,7 @@ module.exports = {
 	name: 'songAdd', // Name of event that is executed.
 	once: true, // Execute event only once. Default: False.
 	eventOf: "distube", // Default: client,
-	execute(client, message, song // Your event args.) {
+	run(client, message, song // Your event args.) {
 		// Event Code
 	},
 };
@@ -71,6 +72,7 @@ module.exports = {
 ```js
 module.exports = {
     name : 'fun', // Should be same as Menu Custom Id or The menu options set values.
+    ownerOnly: true, // Only bot owner can execute. Default: False.
     run : async(client, menu) => {
     	// Your menu code.
     }
