@@ -40,17 +40,14 @@ info.loadedAliases[info.loadedAliases.length - 1]
 ```js
 module.exports = {
     name : 'ping', // Name of command
-    ownerOnly: true, // Default: False.
-    cooldown: ms, // Default: None.
-    clientPermissions: ["SEND_MESSAGES" . . . ], // Permissions needed by the bot to run this command. Default: None.
-    userPermissions: ["SEND_MESSAGES" . . . ], // Permissions needed by the user to run this command. Default: None.
-    guildOnly: false, // Make bot to respond in DMs as well. Default: True.
-    allowBots: true, // Allow bots to be able to run this command. Default: False.
+    // Check below for avaliable optional options that can be used here.
     run : async(client, message, args, Discord) => {
     	// Your code here.
     }
 }      
 ```
+### Avaliable Options for Normal Commands
+`ownerOnly: true / false`
 
 ## Events
 ### Client Event
