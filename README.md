@@ -47,14 +47,26 @@ module.exports = {
 ```
 
 ## Events
+### Client Event
 ```js
 module.exports = {
 	name: 'songAdd', // Name of event that is executed.
 	once: true, // Execute event only once. Default: False.
-	eventOf: "distube", // Default: client,
 	run(client, message, song // Your event args.) {
 		// Event Code
 	},
+};
+```
+
+### Non Client Event
+```js
+module.exports = {
+	custom: true,
+	run: (client) => {
+		client.distube.on("error", (message, error) => {
+		console.error(error)
+            })
+		},
 };
 ```
 
