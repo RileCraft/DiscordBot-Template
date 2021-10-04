@@ -7,6 +7,7 @@
 * Added `.env` support.
 * Added support for non discord client events.
 * Fixed bugs that could crash the server.
+* Revamped FilePaths.
 
 # 『 Features 』
 * Custom command handler with `guildOnly` , `allowBots` , `onlyOwner` , `User Permissions`, `Client Permissions` handlers included!
