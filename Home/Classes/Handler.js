@@ -44,15 +44,9 @@ loadedAliases.push(Count_Aliases++)
   if (fs.statSync(file).isDirectory()) return;
        let event = require(file)
     loadedEvents.push(Count_Events++)
-   if (event.eventOf) { 
-   	const init = event.eventOf
-    	if (event.once) init.once(event.name, (...args) => event.run(...args, client))
-    else init.on(event.name, (...args) => event.run(...args, client))
-    } // If End
-    else {
+   if (event.custom) event.run(client)
 if (event.once) client.once(event.name, (...args) => event.run(...args, client))
     else client.on(event.name, (...args) => event.run(...args, client))
-    } // Else End
   	}) // res.ForEach() End
 }) // FileManager Function End
 			} // Event Handler End.
