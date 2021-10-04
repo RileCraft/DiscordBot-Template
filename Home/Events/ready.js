@@ -1,7 +1,7 @@
 module.exports = {
 	name: 'ready',
 	once: true,
-	run(client) {
+	run: async(client) => {
 		const chalk = require('chalk')
 		client.user.setActivity('Termux.', {
                 type: `WATCHING`,
