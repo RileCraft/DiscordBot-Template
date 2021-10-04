@@ -9,6 +9,7 @@
 * Fixed bugs that could crash the server.
 * Revamped FilePaths.
 * Changed events style.
+* Replaced `simple-json-db` with `quick.db`.
 
 # 『 Features 』
 * Custom command handler with `guildOnly` , `allowBots` , `onlyOwner` , `User Permissions`, `Client Permissions` handlers included!
