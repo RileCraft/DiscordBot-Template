@@ -1,6 +1,6 @@
 module.exports = {
 	name: 'messageCreate',
-	execute(message) {
+	run: async(message) => {
 		(async () => {
 			const CooldownDB = require('simple-json-db');
 const cooldb = new CooldownDB(HOME + "/Home/Storage/Database/cooldown.json", {
