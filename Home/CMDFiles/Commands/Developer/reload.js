@@ -3,7 +3,7 @@ module.exports = {
     ownerOnly: true,
     run : async(client, message, args, Discord) => {
     	 const glob = require('glob')
-    	const prefix = client.config.prefix
+    	const prefix = process.env.prefix || client.config.prefix
        let { FileManager } = require(HOME + "/Home/Functions/FileManager")
                     client.commands.sweep(() => true)
         FileManager(HOME + '/Home/Commands', function (err, res) {
