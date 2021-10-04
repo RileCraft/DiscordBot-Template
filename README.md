@@ -48,6 +48,20 @@ module.exports = {
 ```
 ### Avaliable Options for Normal Commands
 `ownerOnly: true / false`
+* Default: `false`. 
+* When true, The command will only be runnable by the bot owner.
+
+`cooldown: Time in ms`
+* Default: `0`.
+* Sets up a global user cooldown for the command for the provided time limit.
+
+`userPermissions: ["SEND_MESSAGES" . . .]`
+* Default: `None`,
+* The user of the command must have all of the provided permissions to be able to run the command. **Permission(s) names must be in full capital**.
+
+`clientPermissions: ["SEND_MESSAGES" . . .]`
+* Default: `None`,
+* The client must have all of the provided permissions to be able to run the command. **Permission(s) names must be in full capital**.
 
 ## Events
 ### Client Event
