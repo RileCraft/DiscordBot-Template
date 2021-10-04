@@ -1,15 +1,11 @@
 # DiscordBot-Template
 <a href="https://discord.gg/zqySsESftt"><img src="https://img.shields.io/badge/Discord-7289DA?style=for-the-badge&logo=discord&logoColor=black"/></a>
-![Version](https://img.shields.io/badge/version-1.1.4-05122A?style=for-the-badge)
+![Version](https://img.shields.io/badge/version-1.1.5-05122A?style=for-the-badge)
 <center><img src="https://media.discordapp.net/attachments/774290264764055582/890955909566722048/0001-8574372447_20210924_191019_0000.png" height=200 width=400></center>
 
 # 『 Changelog 』
-* Added `.env` support.
-* Added support for non discord client events.
-* Fixed bugs that could crash the server.
-* Revamped FilePaths.
-* Changed events style.
-* Replaced `simple-json-db` with `quick.db`.
+* Fixed crash on `reload.js`.
+* Added more options to `Normal Commands`.
 
 # 『 Features 』
 * Custom command handler with `guildOnly` , `allowBots` , `onlyOwner` , `User Permissions`, `Client Permissions` handlers included!
@@ -55,6 +51,10 @@ module.exports = {
 * Default: `0`.
 * Sets up a global user cooldown for the command for the provided time limit.
 
+`returnError: true / false`
+* Default: `true`
+* When false, The error message which is normally sent when the conditions in the handlee aren't met will not be sent.
+
 `userPermissions: ["SEND_MESSAGES" . . .]`
 * Default: `None`.
 * The user of the command must have all of the provided permissions to be able to run the command. **Permission(s) names must be in full capital**.
@@ -70,6 +70,22 @@ module.exports = {
 `allowBots: true / false`
 * Default: `false`.
 * When true, Bots will also be able to run the command.
+
+* `onlyUsers: ["User ID", "User ID" . . .]
+* Default: `None`
+* Only the provided user IDs will be able to run the command.
+
+* `onlyRoles: ["Role ID", "Role ID" . . .]
+* Default: `None`
+* Only the users with one of the provided roles will be able to run the command.
+
+* `onlyChannels: ["Channel ID", "Channel ID" . . .]
+* Default: `None`
+* The command will only be able to be run in the provided channels.
+
+* `onlyGuilds: ["Server ID", "Server ID" . . .]
+* Default: `None`
+* The command will only be able to be run in the provided guilds.
 
 ## Events
 ### Client Event
