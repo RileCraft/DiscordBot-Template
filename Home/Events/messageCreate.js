@@ -2,12 +2,7 @@ module.exports = {
 	name: 'messageCreate',
 	run: async(message) => {
 		(async () => {
-			const CooldownDB = require('simple-json-db');
-const cooldb = new CooldownDB(HOME + "/Home/Storage/Database/cooldown.json", {
-asyncWrite: true,
-syncOnWrite: true,
-jsonSpace: 2
-    })
+			const cooldb = require('quick.db')
 			const { Collection } = require('discord.js')
 			const Discord = require('discord.js')
 			const { client } = require(HOME + "/bot")
