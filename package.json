@@ -17,7 +17,6 @@
     "fs": "^0.0.1-security",
     "dotenv": "^10.0.0",
     "glob": "^7.2.0",
-    "simple-json-db": "^1.2.3",
     "ms": "^3.0.0-canary.1"
   }
 }
