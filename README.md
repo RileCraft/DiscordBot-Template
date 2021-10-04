@@ -56,12 +56,20 @@ module.exports = {
 * Sets up a global user cooldown for the command for the provided time limit.
 
 `userPermissions: ["SEND_MESSAGES" . . .]`
-* Default: `None`,
+* Default: `None`.
 * The user of the command must have all of the provided permissions to be able to run the command. **Permission(s) names must be in full capital**.
 
 `clientPermissions: ["SEND_MESSAGES" . . .]`
-* Default: `None`,
+* Default: `None`.
 * The client must have all of the provided permissions to be able to run the command. **Permission(s) names must be in full capital**.
+
+`guildOnly: true / false`
+* Default: `true`.
+* When false, The command will be able to be run in DMs as well.
+
+`allowBots: true / false`
+* Default: `false`.
+* When true, Bots will also be able to run the command.
 
 ## Events
 ### Client Event
