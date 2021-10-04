@@ -49,7 +49,7 @@ command.run(client, message, args, Discord)
     }
 
     // User Permission Handler
-    else if (command.permissions && Array.isArray(command.permissions)) {
+    else if (command.userPermissions && Array.isArray(command.permissions)) {
         let user = message.member
         let perms = command.permissions
         let check = 0
