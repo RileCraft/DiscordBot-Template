@@ -30,7 +30,7 @@ info.loadedAliases[info.loadedAliases.length - 1]
 
 # 『 Setup / Configuration 』
 * Install the required modules in the `package.json` file using the command `npm i`.
-* Fill / Edit the config.json enteries.
+* Fill / Edit the contents of either `config.json` or `.env`.
 * Make sure you have read the `Important Notes` sector.
 
 # 『 Examples 』
