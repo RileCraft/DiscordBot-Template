@@ -1,14 +1,13 @@
 # DiscordBot-Template
 <a href="https://discord.gg/zqySsESftt"><img src="https://img.shields.io/badge/Discord-7289DA?style=for-the-badge&logo=discord&logoColor=black"/></a>
-![Version](https://img.shields.io/badge/version-1.1.5-05122A?style=for-the-badge)
+![Version](https://img.shields.io/badge/version-2.0.0-05122A?style=for-the-badge)
 <center><img src="https://media.discordapp.net/attachments/774290264764055582/890955909566722048/0001-8574372447_20210924_191019_0000.png" height=200 width=400></center>
 
 # 『 Changelog 』
-* Fixed crash on `reload.js`.
 * Added more options to `Normal Commands`.
 
 # 『 Features 』
-* Custom command handler with `guildOnly` , `allowBots` , `onlyOwner` , `User Permissions`, `Client Permissions` handlers included!
+* Custom command handler with ton of handlers included to make ur life easier!
 * Custom event handler , button handler and selectmenu handler too!
 * Given reload commands with other main dev commands.
 * Organized layout.
@@ -62,6 +61,14 @@ module.exports = {
 `clientPermissions: ["SEND_MESSAGES" . . .]`
 * Default: `None`.
 * The client must have all of the provided permissions to be able to run the command. **Permission(s) names must be in full capital**.
+
+`anyUserPermissions: ["SEND_MESSAGES" . . .]`
+* Default: `None`.
+* The user of the command must any one of the provided permissions to be able to run the command. **Permission(s) names must be in full capital**.
+
+`anyClientPermissions: ["SEND_MESSAGES" . . .]`
+* Default: `None`.
+* The client must any one of the provided permissions to be able to run the command. **Permission(s) names must be in full capital**.
 
 `guildOnly: true / false`
 * Default: `true`.
