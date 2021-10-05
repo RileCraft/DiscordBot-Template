@@ -285,7 +285,11 @@ else if (!onlyGuilds_ok) {
             message.channel.sendEmbed(guildsEmbed)
 	}
 
-else command.run(client, message, args, Discord)
+else {
+	if (command.allowBots) command.run(client, message, args, Discord)
+	if (message.author.bot) return;
+	command.run(client, message, args, Discord)
+}
 
 }
 })()
