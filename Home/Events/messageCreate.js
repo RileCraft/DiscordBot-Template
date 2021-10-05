@@ -94,6 +94,48 @@ command.run(client, message, args, Discord)
         }
     }
 
+// anyUserPermissions
+ else if (command.anyUserPermissions && Array.isArray(command.anyUserPermissions)) {
+ 	(async () => {
+let perms = command.anyUserPermissions
+let user = message.member.permissions.toArray()
+if (!message.member) await message.guild.members.fetch(message.author.id)
+const missingUserPerms = []
+if (perms.some(x => user.some(y => y === x))) command.run(client, message, args, Discord)
+else {
+	if (command.returnError === false) return;
+	perms.forEach(i => missingUserPerms.push(`\n• ${i}`))
+	const embed = new Discord.MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle(":x: You are required to have one of these permissions to run the command.")
+                .setDescription(`${missingUserPerms}`)
+            message.channel.sendEmbed(embed)
+  }
+       })()
+    }
+
+// anyClientPermissions
+ else if (command.anyClientPermissions && Array.isArray(command.anyClientPermissions)) {
+ 	(async () => {
+let perms = command.anyClientPermissions
+let user = message.guild.me.permissions.toArray()
+if (!message.guild.me) await message.guild.members.fetch(client.user.id)
+const missingClientPerms = []
+if (perms.some(x => user.some(y => y === x))) command.run(client, message, args, Discord)
+else {
+	if (command.returnError === false) return;
+	perms.forEach(i => missingClientPerms.push(`\n• ${i}`))
+	if (user.some(x => x === "SEND_MESSAGES")) {
+	const embed = new Discord.MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle(":x: I need one of these permissions to be able to run the command.")
+                .setDescription(`${missingClientPerms}`)
+            message.channel.sendEmbed(embed)
+            } else console.log("I need one of these permissions to be able to run the command." + missingClientPerms)
+	}
+})()
+    }
+
     // GuildOnly Handler
     else if (command.guildOnly === false) {
         command.run(client, message, args, Discord)
