@@ -18,6 +18,7 @@ const client = new Client({
 partials: ["CHANNEL"]
 })
 global.HOME = __dirname
+require('figlet')("PogBot", (err, data) => console.log(data)) // Replace PogBot with ur bot name.
 client.config = require(`${HOME}/config.json`)
 exports.client = client
 client.commands = new Collection()
