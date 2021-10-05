@@ -290,7 +290,7 @@ else {
 	if (message.author.bot) return;
 	command.run(client, message, args, Discord)
 }
-
+// End
 }
 })()
    }
