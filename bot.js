@@ -2,9 +2,12 @@ const { Collection, Client, Discord, MessageEmbed, Intents} = require('discord.j
 const { Handler } = require(`${__dirname}/Home/Classes/Handler`)
 require("dotenv").config()
 const client = new Client({
+	makeCache: Options.cacheEverything(),
     intents: [
     Intents.FLAGS.GUILDS,
     Intents.FLAGS.GUILD_MESSAGES,
+    Intents.FLAGS.DIRECT_MESSAGES,
+    Intents.FLAGS.DIRECT_MESSAGE_REACTIONS,
     Intents.FLAGS.GUILD_MEMBERS,
     Intents.FLAGS.GUILD_MESSAGE_REACTIONS,
     Intents.FLAGS.GUILD_WEBHOOKS,
@@ -12,6 +15,7 @@ const client = new Client({
     Intents.FLAGS.GUILD_INVITES,
     Intents.FLAGS.GUILD_BANS,
 ],
+partials: ["CHANNEL"]
 })
 global.HOME = __dirname
 client.config = require(`${HOME}/config.json`)
