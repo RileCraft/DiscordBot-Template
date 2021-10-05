@@ -1,10 +1,12 @@
 # DiscordBot-Template
 <a href="https://discord.gg/zqySsESftt"><img src="https://img.shields.io/badge/Discord-7289DA?style=for-the-badge&logo=discord&logoColor=black"/></a>
-![Version](https://img.shields.io/badge/version-2.0.0-05122A?style=for-the-badge)
+![Version](https://img.shields.io/badge/version-2.0.1-05122A?style=for-the-badge)
 <center><img src="https://media.discordapp.net/attachments/774290264764055582/890955909566722048/0001-8574372447_20210924_191019_0000.png" height=200 width=400></center>
 
 # 『 Changelog 』
-* Added more options to `Normal Commands`.
+* You can now use multiple options of `Normal Commands` in a single command at once.
+* Fix some undefined errors.
+* Added more flexibility in returning errors.
 
 # 『 Features 』
 * Custom command handler with ton of handlers included to make ur life easier!
@@ -50,10 +52,6 @@ module.exports = {
 * Default: `0`.
 * Sets up a global user cooldown for the command for the provided time limit.
 
-`returnError: true / false`
-* Default: `true`
-* When false, The error message which is normally sent when the conditions in the handlee aren't met will not be sent.
-
 `userPermissions: ["SEND_MESSAGES" . . .]`
 * Default: `None`.
 * The user of the command must have all of the provided permissions to be able to run the command. **Permission(s) names must be in full capital**.
@@ -93,6 +91,49 @@ module.exports = {
 `onlyGuilds: ["Server ID", "Server ID" . . .]`
 * Default: `None`
 * The command will only be able to be run in the provided guilds.
+
+### Return Errors Options
+These are a part of the above options. You can choose which option should give the error and which option shouldn't.
+
+`returnCooldownError: true / false`
+* Default: `true`
+* When false, The error message sent by the `cooldown handler` will not be sent.
+
+`returnOwnerOnlyError: true / false`
+* Default: `true`
+* When false, The error message sent by the `ownerOnly handler` will not be sent.
+
+`returnUserPermissionsError: true / false`
+* Default: `true`
+* When false, The error message sent by the `userPermissions handler` will not be sent.
+
+`returnClientPermissionsError: true / false`
+* Default: `true`
+* When false, The error message sent by the `clientPermissions handler` will not be sent.
+
+`returnAnyUserPermissionsError: true / false`
+* Default: `true`
+* When false, The error message sent by the `anyUserPermissions handler` will not be sent.
+
+`returnAnyClientPermissionsError: true / false`
+* Default: `true`
+* When false, The error message sent by the `anyClientPermissions handler` will not be sent.
+
+`returnOnlyUsersError: true / false`
+* Default: `true`
+* When false, The error message sent by the `onlyUsers handler` will not be sent.
+
+`returnOnlyRolesError: true / false`
+* Default: `true`
+* When false, The error message sent by the `onlyRoles handler` will not be sent.
+
+`returnOnlyChannelsError: true / false`
+* Default: `true`
+* When false, The error message sent by the `onlyChannels handler` will not be sent.
+
+`returnOnlyGuildsError: true / false`
+* Default: `true`
+* When false, The error message sent by the `onlyGuilds handler` will not be sent.
 
 ## Events
 ### Client Event
