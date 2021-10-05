@@ -1,12 +1,13 @@
 # DiscordBot-Template
 <a href="https://discord.gg/zqySsESftt"><img src="https://img.shields.io/badge/Discord-7289DA?style=for-the-badge&logo=discord&logoColor=black"/></a>
-![Version](https://img.shields.io/badge/version-2.0.1-05122A?style=for-the-badge)
+![Version](https://img.shields.io/badge/version-2.0.2-05122A?style=for-the-badge)
 <center><img src="https://media.discordapp.net/attachments/774290264764055582/890955909566722048/0001-8574372447_20210924_191019_0000.png" height=200 width=400></center>
 
 # 『 Changelog 』
 * You can now use multiple options of `Normal Commands` in a single command at once.
 * Fix some undefined errors.
 * Added more flexibility in returning errors.
+* Added Ascii-Art logging.
 
 # 『 Features 』
 * Custom command handler with ton of handlers included to make ur life easier!
