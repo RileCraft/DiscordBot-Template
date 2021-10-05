@@ -53,7 +53,7 @@ command.run(client, message, args, Discord)
     // User Permission Handler
     else if (command.userPermissions && Array.isArray(command.permissions)) {
         let user = message.member
-        let perms = command.permissions
+        let perms = command.userPermissions
         let check = 0
         let missingPerm = []
         perms.forEach(i => {
