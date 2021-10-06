@@ -20,8 +20,8 @@ module.exports = {
             	if (fs.statSync(file).isDirectory()) return;
                 delete require.cache[require.resolve(file)];
                 let pull = require(file);
-                client.commands.set(pull.name, pull)
-  if(pull.aliases && Array.isArray(pull.aliases)) pull.aliases.forEach(alias => client.aliases.set(alias, pull.name))
+                client.commands.set(pull.name.toString().toLowerCase(), pull)
+  if(pull.aliases && Array.isArray(pull.aliases)) pull.aliases.forEach(alias => client.aliases.set(alias.toString().toLowerCase(), pull.name))
                })
             }
         })
