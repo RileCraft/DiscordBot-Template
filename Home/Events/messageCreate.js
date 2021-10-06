@@ -15,7 +15,7 @@ let command = client.commands.get(cmd)
 if (!command) command = client.commands.get(client.aliases.get(cmd));
 if (command) {
     let args = message.content.slice(prefix.length).trim()
-    if (args.startsWith(command.name)) args = args.slice(command.name.toString().length).trim().split(" ")
+    if (args.toLowerCase().startsWith(command.name.toString().toLowerCase())) args = args.slice(command.name.toString().length).trim().split(" ")
     else args = args.slice(command.aliases.toString().length).trim().split(" ")
     
 let cooldown_ok = true
