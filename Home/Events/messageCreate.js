@@ -17,7 +17,8 @@ if (command) {
     let args = message.content.slice(prefix.length).trim()
 if (args.toLowerCase().startsWith(command.name)) args = args.slice(command.name.length).trim().split(" ")
 else {
-if (command.aliases && Array.isArray(command.aliases)) {command.aliases.some(alias => {
+if (command.aliases && Array.isArray(command.aliases)) {
+command.aliases.some(alias => {
 if (args.toLowerCase().startsWith(alias)) args = args.slice(alias.length).trim().split(" ")
     })
     }
