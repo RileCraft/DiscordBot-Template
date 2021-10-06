@@ -26,6 +26,8 @@ const info = require(Path to class file)
 info.loadedCmds[info.loadedCmds.length - 1]
 info.loadedEvents[info.loadedEvents.length - 1]
 info.loadedAliases[info.loadedAliases.length - 1]
+info.loadedButtons[info.loadedButtons.length - 1]
+info.loadedSelectMenus[info.loadedSelectMenus.length - 1]
 ```
 
 # 『 Setup / Configuration 』
