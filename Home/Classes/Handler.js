@@ -26,10 +26,10 @@ Discord.TextChannel.prototype.sendEmbed = function (embed) {
   res.forEach(file => {
      if (fs.statSync(file).isDirectory()) return;
  const cmd = require(file)
-      client.commands.set(cmd.name, cmd)
+      client.commands.set(cmd.name.toString().toLowerCase(), cmd)
       loadedCmds.push(Count_Cmds++)
 if(cmd.aliases && Array.isArray(cmd.aliases)) cmd.aliases.forEach(alias => {
-client.aliases.set(alias, cmd.name) 
+client.aliases.set(alias.toString().toLowerCase(), cmd.name) 
 loadedAliases.push(Count_Aliases++)
 }) // res.ForEach() End
   	}) // forEach(aliases =>) End
