@@ -52,7 +52,7 @@ cooldb.set(`${id}.${command.name}.cooldown`, date)
 
     // OwnerOnly Handler
     if (command.ownerOnly) {
-        if (message.author.id === process.env.dev) ownerOnly_ok = true
+        if (message.author.id === process.env.dev || message.author.id === client.config.dev) ownerOnly_ok = true
         else ownerOnly_ok = false
     } 
 
