@@ -3,7 +3,7 @@ module.exports = {
 	once: true,
 	run: async(client) => {
 		const chalk = require('chalk')
-		client.user.setActivity('Termux.', {
+		client.user.setActivity('Your search history.', {
                 type: `WATCHING`,
             });
             const info = require(HOME + "/Home/Classes/Handler")
