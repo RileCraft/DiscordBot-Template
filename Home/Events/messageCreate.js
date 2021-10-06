@@ -293,9 +293,9 @@ else if (!onlyGuilds_ok) {
 
 else {
 	if (command.guildOnly === false) command.run(client, message, args, Discord)
-	else if (!message.guild) return;
+	if (!message.guild) return;
 	if (command.allowBots) command.run(client, message, args, Discord)
-	else if (message.author.bot) return;
+	if (message.author.bot) return;
 	command.run(client, message, args, Discord)
 }
 // End
