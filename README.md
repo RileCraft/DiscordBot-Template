@@ -144,7 +144,7 @@ These are a part of the above options. You can choose which option should give t
 module.exports = {
 	name: 'messageDelete', // Name of event that is executed.
 	once: true, // Execute event only once. Default: False.
-	run: async(client, message) // Your event args.) {
+	run: async(client, message) => { // Your event args.) {
 		// Event Code
 	},
 };
