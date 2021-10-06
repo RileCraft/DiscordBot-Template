@@ -7,7 +7,7 @@ module.exports = {
 			const Discord = require('discord.js')
 			const { client } = require(HOME + "/bot")
 			client.cooldb = cooldb
-			const prefix = process.env.prefix
+			const prefix = process.env.prefix || client.config.prefix
 if (!message.content.toString().toLowerCase().startsWith(prefix)) return;
 const cmd = message.content.toString().toLowerCase().slice(prefix.length).trim().split(" ")[0]
 if (!cmd) return;
