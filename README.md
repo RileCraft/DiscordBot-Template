@@ -5,6 +5,7 @@
 
 # 『 Changelog 』
 * Fixed `messageCreate` event.
+* Made trigger not case-sensitive.
 
 # 『 Features 』
 * Custom command handler with ton of handlers included to make ur life easier!
