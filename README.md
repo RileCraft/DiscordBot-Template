@@ -9,6 +9,9 @@
 * Fixed bot.js
 * Fixed ready.js
 
+# 『 Currently Known Bugs 』
+* Making the command name in `Normal Commands` in capital makes the command not execute.
+
 # 『 Features 』
 * Custom command handler with ton of handlers included to make ur life easier!
 * Custom event handler , button handler and selectmenu handler too!
