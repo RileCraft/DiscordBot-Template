@@ -23,6 +23,7 @@
 # 『 Important Notes 』
 * This is made in **Discord.JS V13** and if you want to use this in V12 then you would have to do changes.
 * Recommended NodeJS V16+.
+* `message.channel.sendEmbed()` is just a additional function to make it easier to send embeds quickly. You can still use the default `message.channel.send()` like normally you do.
 * If you want to change the `ready` event then remember that the `class Handler` exports arrays of the loaded events , commands and aliases count. To get the correct value then do like this.
 ```js
 const info = require(Path to class file)
