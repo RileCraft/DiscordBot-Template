@@ -142,9 +142,9 @@ These are a part of the above options. You can choose which option should give t
 ### Client Event
 ```js
 module.exports = {
-	name: 'songAdd', // Name of event that is executed.
+	name: 'messageDelete', // Name of event that is executed.
 	once: true, // Execute event only once. Default: False.
-	run(client, message, song // Your event args.) {
+	run: async(client, message) // Your event args.) {
 		// Event Code
 	},
 };
@@ -154,7 +154,7 @@ module.exports = {
 ```js
 module.exports = {
 	custom: true,
-	run: (client) => {
+	run: async(client) => {
 		client.distube.on("error", (message, error) => {
 		console.error(error)
             })
