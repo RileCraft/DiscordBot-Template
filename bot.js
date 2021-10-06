@@ -1,4 +1,4 @@
-const { Collection, Client, Discord, MessageEmbed, Intents} = require('discord.js')
+const { Collection, Client, Discord, MessageEmbed, Intents, Options} = require('discord.js')
 const { Handler } = require(`${__dirname}/Home/Classes/Handler`)
 require("dotenv").config()
 const client = new Client({
