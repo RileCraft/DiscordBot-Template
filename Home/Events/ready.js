@@ -6,7 +6,7 @@ module.exports = {
 		client.user.setActivity('Termux.', {
                 type: `WATCHING`,
             });
-            const info = require(rootPATH + "/Access Files/Classes/Handler")
+            const info = require(HOME + "/Home/Classes/Handler")
     console.log(chalk.bold.yellowBright("[Bot] ") + chalk.bold.blueBright(`Connected to ${client.user.tag}`))
     if (info.loadedCmds.length > 0) console.log(chalk.bold.redBright("[Handler]") + chalk.bold.greenBright(` Loaded ${info.loadedCmds[info.loadedCmds.length - 1] } commands.`))
     if (info.loadedAliases.length > 0) console.log(chalk.bold.whiteBright("[Handler]") + chalk.bold.magentaBright(` Loaded ${info.loadedAliases[info.loadedAliases.length - 1] } aliases.`))
