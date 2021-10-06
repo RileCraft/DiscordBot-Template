@@ -196,7 +196,7 @@ missingGuilds.push(`\n• ${client.guilds.cache.get(i).name}`)
     
 // Validation Area
 if (!cooldown_ok) {
-	if (command.returnCooldownError === false) return;
+	if (command.returnCooldownError === false || command.returnNoErrors) return;
 	let time = command.cooldown
         let id = message.author.id
         let date = Date.now()
@@ -210,7 +210,7 @@ message.channel.sendEmbed(coolEmbed)
     }
     
 else if (!ownerOnly_ok) {
-	if (command.returnOwnerOnlyError === false) return;
+	if (command.returnOwnerOnlyError === false || command.returnNoErrors) return;
 	const ownEmbed = new Discord.MessageEmbed()
                 .setColor('RANDOM')
                 .setTitle("❌╎ This command is to be used by the developers / owners of the bot only!");
@@ -218,7 +218,7 @@ else if (!ownerOnly_ok) {
 	}
 
 else if (!userPermissions_ok) {
-	if (command.returnUserPermissionsError === false) return;
+	if (command.returnUserPermissionsError === false || command.returnNoErrors) return;
 	const userPPEmbed = new Discord.MessageEmbed()
                 .setColor('RANDOM')
                 .setTitle("❌╎ You are currently missing these permissions which are required for this command.")
@@ -227,79 +227,4 @@ else if (!userPermissions_ok) {
 	}
 
 else if (!clientPermissions_ok) {
-	if (command.returnClientPermissionsError === false) return;
-	if (!message.guild.me.permissions.has("SEND_MESSAGES")) console.log("I'm Missing Send Messages permission.")
-	const clientPPEmbed = new Discord.MessageEmbed()
-                .setColor('RANDOM')
-                .setTitle("❌╎ I am currently missing these permissions which are required for this command.")
-                .setDescription(`${missingClientPermissions}`)
-                message.channel.sendEmbed(clientPPEmbed)
-	}
-
-else if (!anyUserPermissions_ok) {
-	if (command.returnAnyUserPermissionsError === false) return;
-	const anyUserPermEmbed = new Discord.MessageEmbed()
-                .setColor('RANDOM')
-                .setTitle(":x: You are required to have one of these permissions to run the command.")
-                .setDescription(`${missingAnyUserPermissions}`)
-            message.channel.sendEmbed(anyUserPermEmbed)
-	}
-
-else if (!anyClientPermissions_ok) {
-	if (command.returnAnyClientPermissionsError === false) return;
-	if (!message.guild.me.permissions.has("SEND_MESSAGES")) console.log("I'm Missing Send Messages permission.")
-	const anyClientPermEmbed = new Discord.MessageEmbed()
-                .setColor('RANDOM')
-                .setTitle(":x: I need one of these permissions to be able to run the command.")
-                .setDescription(`${missingAnyClientPermissions}`)
-            message.channel.sendEmbed(anyClientPermEmbed)
-	}
-
-else if (!onlyUsers_ok) {
-	if (command.returnOnlyUsersError === false) return;
-	const userEmbed = new Discord.MessageEmbed()
-                .setColor('RANDOM')
-                .setTitle(":x: This command is reserved for these users")
-                .setDescription(`${missingUsers}`)
-            message.channel.sendEmbed(userEmbed)
-	}
-	
-else if (!onlyRoles_ok) {
-	if (command.returnOnlyRolesError === false) return;
-	const rolesEmbed = new Discord.MessageEmbed()
-                .setColor('RANDOM')
-                .setTitle(":x: This command is reserved for these roles")
-                .setDescription(`${missingRoles}`)
-            message.channel.sendEmbed(rolesEmbed)
-	}
-
-else if (!onlyChannels_ok) {
-	if (command.returnOnlyChannelsError === false) return;
-	const channelsEmbed = new Discord.MessageEmbed()
-                .setColor('RANDOM')
-                .setTitle(":x: This command is reserved for these channels")
-                .setDescription(`${missingChannels}`)
-            message.channel.sendEmbed(channelsEmbed)
-	}
-
-else if (!onlyGuilds_ok) {
-	if (command.returnOnlyGuildsError === false) return;
-	const guildsEmbed = new Discord.MessageEmbed()
-                .setColor('RANDOM')
-                .setTitle(":x: This command is reserved for these guilds.")
-                .setDescription(`${missingGuilds}`)
-            message.channel.sendEmbed(guildsEmbed)
-	}
-
-else {
-	if (command.guildOnly === false) command.run(client, message, args, Discord)
-	if (!message.guild) return;
-	if (command.allowBots) command.run(client, message, args, Discord)
-	if (message.author.bot) return;
-	command.run(client, message, args, Discord)
-}
-// End
-}
-})()
-   }
-}
+	if (command.returnClientPermissionsError === false || command.returnNoErrors) 
