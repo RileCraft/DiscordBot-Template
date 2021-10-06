@@ -227,4 +227,79 @@ else if (!userPermissions_ok) {
 	}
 
 else if (!clientPermissions_ok) {
-	if (command.returnClientPermissionsError === false || command.returnNoErrors) 
+	if (command.returnClientPermissionsError === false || command.returnNoErrors) return;
+	if (!message.guild.me.permissions.has("SEND_MESSAGES")) console.log("I'm Missing Send Messages permission.")
+	const clientPPEmbed = new Discord.MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle("❌╎ I am currently missing these permissions which are required for this command.")
+                .setDescription(`${missingClientPermissions}`)
+                message.channel.sendEmbed(clientPPEmbed)
+	}
+
+else if (!anyUserPermissions_ok) {
+	if (command.returnAnyUserPermissionsError === false || command.returnNoErrors) return;
+	const anyUserPermEmbed = new Discord.MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle(":x: You are required to have one of these permissions to run the command.")
+                .setDescription(`${missingAnyUserPermissions}`)
+            message.channel.sendEmbed(anyUserPermEmbed)
+	}
+
+else if (!anyClientPermissions_ok) {
+	if (command.returnAnyClientPermissionsError === false || command.returnNoErrors) return;
+	if (!message.guild.me.permissions.has("SEND_MESSAGES")) console.log("I'm Missing Send Messages permission.")
+	const anyClientPermEmbed = new Discord.MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle(":x: I need one of these permissions to be able to run the command.")
+                .setDescription(`${missingAnyClientPermissions}`)
+            message.channel.sendEmbed(anyClientPermEmbed)
+	}
+
+else if (!onlyUsers_ok) {
+	if (command.returnOnlyUsersError === false || command.returnNoErrors) return;
+	const userEmbed = new Discord.MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle(":x: This command is reserved for these users")
+                .setDescription(`${missingUsers}`)
+            message.channel.sendEmbed(userEmbed)
+	}
+	
+else if (!onlyRoles_ok) {
+	if (command.returnOnlyRolesError === false || command.returnNoErrors) return;
+	const rolesEmbed = new Discord.MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle(":x: This command is reserved for these roles")
+                .setDescription(`${missingRoles}`)
+            message.channel.sendEmbed(rolesEmbed)
+	}
+
+else if (!onlyChannels_ok) {
+	if (command.returnOnlyChannelsError === false || command.returnNoErrors) return;
+	const channelsEmbed = new Discord.MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle(":x: This command is reserved for these channels")
+                .setDescription(`${missingChannels}`)
+            message.channel.sendEmbed(channelsEmbed)
+	}
+
+else if (!onlyGuilds_ok) {
+	if (command.returnOnlyGuildsError === false ||  command.returnNoErrors) return;
+	const guildsEmbed = new Discord.MessageEmbed()
+                .setColor('RANDOM')
+                .setTitle(":x: This command is reserved for these guilds.")
+                .setDescription(`${missingGuilds}`)
+            message.channel.sendEmbed(guildsEmbed)
+	}
+
+else {
+	if (command.guildOnly === false) command.run(client, message, args, Discord)
+	if (!message.guild) return;
+	if (command.allowBots) command.run(client, message, args, Discord)
+	if (message.author.bot) return;
+	command.run(client, message, args, Discord)
+}
+// End
+}
+})()
+   }
+}
