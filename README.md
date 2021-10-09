@@ -8,7 +8,7 @@
 * Fixed slashCommand example.
 
 # 『 Currently Known Bugs 』
-* None
+* Global commands can sometimes show `interaction failed`.
 
 # 『 Features 』
 * Custom command handler with ton of handlers included to make ur life easier!
