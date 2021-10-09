@@ -1,5 +1,4 @@
 const { Collection, Client, Discord, MessageEmbed, Intents, Options} = require('discord.js')
-const { Handler } = require(`${__dirname}/Home/Classes/Handler`)
 const chalk = require('chalk')
 require("dotenv").config()
 const client = new Client({
@@ -25,7 +24,7 @@ exports.client = client
 global.HOME = __dirname
 client.commands = new Collection()
 client.aliases = new Collection()
-
+const { Handler } = require(`${HOME}/Home/Classes/Handler`)
 Handler.loadCommands(client)    // COMMAND HANDLER
 Handler.loadEvents(client)     // EVENT HANDLER
 Handler.loadButtons(client)     // BUTTON HANDLER
