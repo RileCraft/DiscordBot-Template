@@ -32,6 +32,7 @@
 * If you want to change the `ready` event then remember that the `class Handler` exports arrays of the loaded events , commands and aliases count. To get the correct value then do like this.
 ```js
 const info = require(Path to handler class file)
+info.Handler.loadSlashCommands(client) // Required to be in ready event.
 info.commandFiles.length
 info.eventFiles.length
 info.aliasesCount.length
