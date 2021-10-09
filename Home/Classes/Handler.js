@@ -1,6 +1,6 @@
 const fs = require('fs')
 const glob = require("glob")
-let { FileManager } = require(HOME + "/Home/Functions/FileManager")
+let { FileManager } = require("../Functions/FileManager")
 
 let commandFiles = []
 let aliasesCount = []
