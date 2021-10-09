@@ -17,11 +17,11 @@ const client = new Client({
 ],
 partials: ["CHANNEL"]
 })
+global.HOME = __dirname
 client.config = require(`${HOME}/config.json`)
 require('figlet')("DjS", (err, data) => console.log(data))
 client.login(process.env.token || client.config.token)
 exports.client = client
-global.HOME = __dirname
 client.commands = new Collection()
 client.aliases = new Collection()
 const { Handler } = require(`${HOME}/Home/Classes/Handler`)
