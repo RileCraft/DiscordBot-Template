@@ -1,17 +1,14 @@
 const fs = require('fs')
 const glob = require("glob")
-let { FileManager } = require("../Functions/FileManager")
-let Count_Cmds = 1
-let Count_Aliases = 1
-let Count_Events = 1
-let Count_Buttons = 1
-let Count_SelectMenus = 1
+let { FileManager } = require(HOME + "/Home/Functions/FileManager")
 
-let loadedEvents = []
-let loadedCmds = []
-let loadedAliases = []
-let loadedButtons = []
-let loadedSelectMenus= []
+let commandFiles = []
+let aliasesCount = []
+let eventFiles = []
+let buttonFiles = []
+let selectMenuFiles = []
+let slashFiles = []
+let slashCount = []
 
 const Discord = require('discord.js')
 Discord.TextChannel.prototype.sendEmbed = function (embed) {
@@ -20,30 +17,28 @@ Discord.TextChannel.prototype.sendEmbed = function (embed) {
 	
  class Handler {
 	   // COMMAND HANDLER
-	static loadCommands() {
-		const { client } = require(HOME + "/bot")
+	static loadCommands(client) {
 		   FileManager(HOME + '/Home/CMDFiles/Commands', function (err, res) {
   res.forEach(file => {
      if (fs.statSync(file).isDirectory()) return;
  const cmd = require(file)
       client.commands.set(cmd.name.toString().toLowerCase(), cmd)
-      loadedCmds.push(Count_Cmds++)
+      commandFiles.push(file)
 if(cmd.aliases && Array.isArray(cmd.aliases)) cmd.aliases.forEach(alias => {
 client.aliases.set(alias.toString().toLowerCase(), cmd.name) 
-loadedAliases.push(Count_Aliases++)
+aliasesCount.push(1)
 }) // res.ForEach() End
   	}) // forEach(aliases =>) End
 }) // FileManager Function End
 		} // Command Handler End.
 		
 		// EVENT HANDLER
-           static loadEvents() {
-            	 const { client } = require(HOME + "/bot")
+           static loadEvents(client) {
 	 FileManager(HOME + '/Home/Events', function (err, res) {
             res.forEach(file => {
   if (fs.statSync(file).isDirectory()) return;
        let event = require(file)
-    loadedEvents.push(Count_Events++)
+    eventFiles.push(file)
    if (event.custom) event.run(client)
 if (event.once) client.once(event.name, (...args) => event.run(...args, client))
     else client.on(event.name, (...args) => event.run(...args, client))
@@ -51,64 +46,99 @@ if (event.once) client.once(event.name, (...args) => event.run(...args, client))
 }) // FileManager Function End
 			} // Event Handler End.
 			
-			  static loadButtons() {
-				const { client } = require(HOME + "/bot")
+			  static loadButtons(client) {
 				FileManager(HOME + '/Home/CMDFiles/Buttons', function (err, res) {
 					res.forEach(file => {
 						if (fs.statSync(file).isDirectory()) return;
-						loadedButtons.push(Count_Buttons++)
-						const cmd = require(file)
-						 client.on("interactionCreate", button => {
-							if (!button.isButton()) return;
-						if (cmd.name !== button.customId) return;
-						if (cmd.ownerOnly) {
-                     if (button.user.id === client.config.dev || button.user.id === process.env.dev) {
-cmd.run(client, button)
-   } else return ;
-                      } // if OwnerOnly
-                      
-						    }) // Interaction Event End
+  buttonFiles.push(file)
 					    }) // forEach File 
 					}) // FileManager Function
 				} // Button Handler End
 			
-			static loadSelectMenus() {
-			const { client } = require(HOME + "/bot")
+			static loadSelectMenus(client) {
 				FileManager(HOME + '/Home/CMDFiles/SelectMenus', function (err, res) {
 					res.forEach(file => {
 						if (fs.statSync(file).isDirectory()) return;
-						const cmd = require(file)
-						loadedSelectMenus.push(Count_SelectMenus++)
-						 client.on("interactionCreate", menu => {
-							if (!menu.isSelectMenu()) return;
-						if (cmd.name === menu.customId || cmd.name === menu.values[0]) {
-						if (cmd.ownerOnly) {
-                     if (menu.user.id === client.config.dev || menu.user.id === process.env.dev) {
-cmd.run(client, menu)
-   } else return;
-                      } else cmd.run(client, menu)
-                      } else return;
-						    }) // Interaction Event End
-						}) //res.forEach
+						selectMenuFiles.push(file)
+			}) //res.forEach
 						}) //Function End
 			} // SelectMenus End
+			
+			static loadSlashCommands(client) {
+				FileManager(HOME + '/Home/CMDFiles/SlashCmds', function (err, res) {
+					res.forEach(file => {
+						if (fs.statSync(file).isDirectory()) return;
+						const cmd = require(file)
+						const server = client.guilds.cache.get(cmd.guild)
+if (server) {
+	if (server.commands.cache.find(x => x.name === cmd.name)) {
+		server.commands.edit(server.commands.cache.find(x => x.name === cmd.name).id, {
+	name: cmd.name,
+	description: cmd.description ?? "Slash command :D",
+	options: cmd.options ?? [],
+	type: cmd.type ?? "CHAT_INPUT"
+	})
+	} else {
+server.commands.create({
+	name: cmd.name,
+	description: cmd.description ?? "Slash command :D",
+	options: cmd.options ?? [],
+	type: cmd.type ?? "CHAT_INPUT"
+	})
+}
+} else {
+	if (client.application.commands.cache.find(x => x.name === cmd.name)) {
+		server.commands.edit(client.application.commands.cache.find(x => x.name === cmd.name).id, {
+	name: cmd.name,
+	description: cmd.description ?? "Slash command :D",
+	options: cmd.options ?? [],
+	type: cmd.type ?? "CHAT_INPUT"
+	})
+	} else {
+client.application.commands.create({
+	name: cmd.name,
+	description: cmd.description ?? "Slash command :D",
+	options: cmd.options ?? [],
+	type: cmd.type ?? "CHAT_INPUT"
+	})
+   }
+}
+slashFiles.push(file)
+				}) // res.foreach() end
+	}) // filemanager end
+				} // SlashCmds end
+			
+			static getSlashCount() {
+				FileManager(HOME + '/Home/CMDFiles/SlashCmds', function (err, res) {
+					res.forEach(file => {
+						if (fs.statSync(file).isDirectory()) return
+						slashCount.push(1)
+					})
+			})
+				}
 			
 			static loadErrorManager() {
 			const chalk = require('chalk')
 			process.on('unhandledRejection', error => {
 const err = error.stack.split("\n")
-console.log(chalk.bold.red("[Error Message] ") + chalk.bold.blue(err[0].trim()))
-console.log(chalk.bold.red("[Error Location] ") + chalk.bold.blue(err[1].trim()))
+console.log(chalk.bold.red("[Error Message] ") + chalk.blue(err[0].trim()))
+console.log(chalk.bold.red("[Error Location] ") + chalk.blue(err[1].trim()))
+		}) // Process End
+		process.on('uncaughtException', error => {
+const err = error.stack.split("\n")
+console.log(chalk.bold.red("[Error Message] ") + chalk.blue(err[0].trim()))
+console.log(chalk.bold.red("[Error Location] ") + chalk.blue(err[1].trim()))
 		}) // Process End
 			} // LoadErrorManager End
-			
 	} // Class End
 	
 module.exports = {
     Handler,
-    loadedAliases,
-    loadedCmds,
-    loadedEvents,
-    loadedButtons,
-    loadedSelectMenus
+    commandFiles,
+    eventFiles,
+    aliasesCount,
+    buttonFiles,
+    selectMenuFiles,
+    slashFiles,
+    slashCount
 }

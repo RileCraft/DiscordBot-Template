@@ -1,5 +1,6 @@
 const { Collection, Client, Discord, MessageEmbed, Intents, Options} = require('discord.js')
 const { Handler } = require(`${__dirname}/Home/Classes/Handler`)
+const chalk = require('chalk')
 require("dotenv").config()
 const client = new Client({
 	makeCache: Options.cacheEverything(),
@@ -17,17 +18,17 @@ const client = new Client({
 ],
 partials: ["CHANNEL"]
 })
-global.HOME = __dirname
-require('figlet')("PogBot", (err, data) => console.log(data)) // Replace PogBot with ur bot name.
 client.config = require(`${HOME}/config.json`)
+require('figlet')("DjS", (err, data) => console.log(data))
+client.login(process.env.token || client.config.token)
 exports.client = client
+global.HOME = __dirname
 client.commands = new Collection()
 client.aliases = new Collection()
 
-Handler.loadCommands()     // COMMAND HANDLER
-Handler.loadEvents()     // EVENT HANDLER
-Handler.loadButtons()     // BUTTON HANDLER
-Handler.loadSelectMenus()     // SELECTMENUS HANDLER
-Handler.loadErrorManager()     // ERRORHANDLER HANDLER
-
-client.login(process.env.token || client.config.token)
+Handler.loadCommands(client)    // COMMAND HANDLER
+Handler.loadEvents(client)     // EVENT HANDLER
+Handler.loadButtons(client)     // BUTTON HANDLER
+Handler.loadSelectMenus(client)     // SELECTMENUS HANDLER
+Handler.getSlashCount() // TO GET SLASH COUNT.
+Handler.loadErrorManager(client)     // ERRORHANDLER HANDLER

@@ -1,17 +1,21 @@
 # DiscordBot-Template
 <a href="https://discord.gg/zqySsESftt"><img src="https://img.shields.io/badge/Discord-7289DA?style=for-the-badge&logo=discord&logoColor=black"/></a>
-![Version](https://img.shields.io/badge/version-2.0.5-05122A?style=for-the-badge)
+![Version](https://img.shields.io/badge/version-3.0.0-05122A?style=for-the-badge)
 <center><img src="https://media.discordapp.net/attachments/774290264764055582/890955909566722048/0001-8574372447_20210924_191019_0000.png" height=200 width=400></center>
 
 # 『 Changelog 』
-* Added `returnNoErrors` option.
+* Added *Finally* SlashCommands Handler wooo.
+* Added new class `validator` for easier management of command(s) options.
+* Added `Normal Commands` options to all.
+* Improved `Handler` class.
+* Made interaction event more efficient.
 
 # 『 Currently Known Bugs 』
 * None
 
 # 『 Features 』
 * Custom command handler with ton of handlers included to make ur life easier!
-* Custom event handler , button handler and selectmenu handler too!
+* Custom event handler , button handler , selectmenu handler and slashcmds handler too!
 * Given reload commands with other main dev commands.
 * Organized layout.
 * Easily customizable.
@@ -19,16 +23,22 @@
 
 # 『 Important Notes 』
 * This is made in **Discord.JS V13** and if you want to use this in V12 then you would have to do changes.
+
 * Recommended NodeJS V16+.
+
 * `message.channel.sendEmbed()` is just a additional function to make it easier to send embeds quickly. You can still use the default `message.channel.send()` like normally you do.
+
 * If you want to change the `ready` event then remember that the `class Handler` exports arrays of the loaded events , commands and aliases count. To get the correct value then do like this.
+
+* Global SlashCommands only update per hour. It is recommended to first make a guild command for testing as guild commands are updated immediately and then make them a global command.
 ```js
-const info = require(Path to class file)
-info.loadedCmds[info.loadedCmds.length - 1]
-info.loadedEvents[info.loadedEvents.length - 1]
-info.loadedAliases[info.loadedAliases.length - 1]
-info.loadedButtons[info.loadedButtons.length - 1]
-info.loadedSelectMenus[info.loadedSelectMenus.length - 1]
+const info = require(Path to handler class file)
+info.commandFiles.length
+info.eventFiles.length
+info.aliasesCount.length
+info.buttonFiles.length
+info.selectMenuFiles.length
+info.slashCount.length
 ```
 
 # 『 Setup / Configuration 』
@@ -41,13 +51,80 @@ info.loadedSelectMenus[info.loadedSelectMenus.length - 1]
 ```js
 module.exports = {
     name : 'ping', // Name of command
+    aliases: ["pp", "e"], // Aliases. Optional
     // Check below for avaliable optional options that can be used here.
     run : async(client, message, args, Discord) => {
     	// Your code here.
     }
 }      
 ```
-### Avaliable Options for Normal Commands
+
+## Events
+### Client Event
+```js
+module.exports = {
+	name: 'messageDelete', // Name of event that is executed.
+	once: true, // Execute event only once. Default: False.
+	run: async(client, message) => { // Your event args.) {
+		// Event Code
+	},
+};
+```
+
+### Non Client Event
+```js
+module.exports = {
+	custom: true,
+	run: async(client) => {
+		client.distube.on("error", (message, error) => {
+		console.error(error)
+            })
+		},
+};
+```
+
+## Button Commands
+```js
+module.exports = {
+    name : 'evalbtn', // Must be same as button's Custom Id
+    // Check below for avaliable optional options that can be used he
+    run : async(client, interaction, Discord) => {
+interaction.reply("yo")
+    }
+}     
+```
+
+## SelectMenu Commands
+```js
+module.exports = {
+    name : 'fun', // Should be same as Menu Custom Id or The menu options set values.
+    // Check below for avaliable optional options that can be used he
+    run : async(client, interaction, Discord) => {
+    	interaction.reply("e")
+    }
+}     
+```
+
+## SlashCommands
+```js
+module.exports = {
+    name : 'fun', // Name of the slash command.
+    description: "A fun command :)" // Description of slash command. Optional
+    type: "CHAT_INPUT", // Type of / command. Optional
+    options: [{
+      name: 'Are you having fun?',
+      description: 'Choose true / false.',
+      required: true,
+      type: "BOOLEAN",
+    }], // Options for / command. Optional
+    // Check below for avaliable optional options that can be used he
+    run : async(client, interaction, Discord) => {
+    	interaction.reply("pog")
+    }
+}     
+```
+
+# 『 Avaliable Options for all commands and interactions. 』
 `ownerOnly: true / false`
 * Default: `false`. 
 * When true, The command will only be runnable by the bot owner.
@@ -96,7 +173,7 @@ module.exports = {
 * Default: `None`
 * The command will only be able to be run in the provided guilds.
 
-### Return Errors Options
+# Return Errors Options
 These are a part of the above options. You can choose which option should give the error and which option shouldn't.
 
 `returnNoErrors: true / false`
@@ -142,52 +219,6 @@ These are a part of the above options. You can choose which option should give t
 `returnOnlyGuildsError: true / false`
 * Default: `true`
 * When false, The error message sent by the `onlyGuilds handler` will not be sent.
-
-## Events
-### Client Event
-```js
-module.exports = {
-	name: 'messageDelete', // Name of event that is executed.
-	once: true, // Execute event only once. Default: False.
-	run: async(client, message) => { // Your event args.) {
-		// Event Code
-	},
-};
-```
-
-### Non Client Event
-```js
-module.exports = {
-	custom: true,
-	run: async(client) => {
-		client.distube.on("error", (message, error) => {
-		console.error(error)
-            })
-		},
-};
-```
-
-## Button Commands
-```js
-module.exports = {
-    name : 'evalbtn', // Must be same as button's Custom Id
-    ownerOnly: true, // Only bot owner can execute. Default: False.
-    run : async(client, button) => {
-// Your button code.
-    }
-}     
-```
-
-## SelectMenu Commands
-```js
-module.exports = {
-    name : 'fun', // Should be same as Menu Custom Id or The menu options set values.
-    ownerOnly: true, // Only bot owner can execute. Default: False.
-    run : async(client, menu) => {
-    	// Your menu code.
-    }
-}     
-```
 
 # 『 Contribution 』
 If you want to contribute towards this repository then follow these steps.
