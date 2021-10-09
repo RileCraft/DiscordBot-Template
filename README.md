@@ -29,6 +29,8 @@
 
 * `message.channel.sendEmbed()` is just a additional function to make it easier to send embeds quickly. You can still use the default `message.channel.send()` like normally you do.
 
+* SlashCommands are auto deployed and you don't have to run any code to create them manually. But you have to run the delete code from discord.js docs manually to delete them.
+
 * Global SlashCommands only update per hour. It is recommended to first make a guild command for testing as guild commands are updated immediately and then make them a global command.
 
 * If you want to change the `ready` event then remember that the `class Handler` exports arrays of the loaded events , commands and aliases count. To get the correct value then do like this.
