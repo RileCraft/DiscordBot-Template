@@ -109,7 +109,7 @@ module.exports = {
 ```js
 module.exports = {
     name : 'fun', // Name of the slash command.
-    description: "A fun command :)" // Description of slash command. Optional
+    description: "A fun command :)", // Description of slash command. Optional
     type: "CHAT_INPUT", // Type of / command. Optional
     options: [{
       name: 'Are you having fun?',
