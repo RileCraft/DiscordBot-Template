@@ -57,10 +57,10 @@ class validator {
     static ownerOnly(command, message, isInt) {
         if (command.ownerOnly) {
             if (isInt) {
-                if (message.user.id === process.env.dev || client.config.dev) return true
+                if (message.user.id === process.env.dev || message.user.id === client.config.dev) return true
                 else return false
             } else {
-                if (message.author.id === process.env.dev || client.config.dev) return true
+                if (message.author.id === process.env.dev || message.author.id === client.config.dev) return true
                 else return false
             }
         } else return true
