@@ -1,11 +1,10 @@
 # DiscordBot-Template
 <a href="https://discord.gg/zqySsESftt"><img src="https://img.shields.io/badge/Discord-7289DA?style=for-the-badge&logo=discord&logoColor=black"/></a>
-![Version](https://img.shields.io/badge/version-3.0.3-05122A?style=for-the-badge)
+![Version](https://img.shields.io/badge/version-3.0.4-05122A?style=for-the-badge)
 <center><img src="https://media.discordapp.net/attachments/774290264764055582/890955909566722048/0001-8574372447_20210924_191019_0000.png" height=200 width=400></center>
 
 # 『 Changelog 』
-* Fixed `HOME` undefined in `Handler.js` && `bot.js`
-* Fixed slashCommand example.
+* Fixed `ownerOnly`. **IMPORTANT UPDATE**
 
 # 『 Currently Known Bugs 』
 * None
