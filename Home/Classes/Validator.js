@@ -32,7 +32,6 @@ class validator {
                 let id = message.user.id
                 let date = Date.now()
                 let data = cooldb.get(`${id}.${command.name}.${whInt}.cooldown`)
-                if (!data) return true;
                 coolTime.push(Math.floor(Math.floor(data + time) / 1000))
                 if (isNaN(time)) throw new Error("Invalid number in cooldown provided at " + command.name)
                 if (Math.floor(date - data) >= time || !data) {
@@ -44,7 +43,6 @@ class validator {
                 let id = message.author.id
                 let date = Date.now()
                 let data = cooldb.get(`${id}.${command.name}.cooldown`)
-                if (!data) return true;
                 coolTime.push(Math.floor(Math.floor(data + time) / 1000))
                 if (isNaN(time)) throw new Error("Invalid number in cooldown provided at " + command.name)
                 if (Math.floor(date - data) >= time || !data) {
