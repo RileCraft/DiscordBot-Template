@@ -1,14 +1,19 @@
 const { MessageEmbed } = require("discord.js")
-
+const { client } = require(HOME + "/bot")
 // cooldown Embed Error
-function cooldown(author, data) {
+function cooldown(author, command, isInt, whInt) {
+    const time = command.cooldown
+    let date = ""
+    if (isInt) date = client.cooldb.get(`${author.id}.${command.name}.${whInt}.cooldown`)
+    else date = client.cooldb.get(`${author.id}.${command.name}.cooldown`)
+    const cdfm = Math.floor(Math.floor(date + time) / 1000)
     const embed = new MessageEmbed()
         .setColor("RANDOM")
         .setAuthor(author.tag, author.displayAvatarURL({
             dynamic: true
         }))
         .setTimestamp()
-        .setDescription(`Command avaliable again at <t:${data}:F>`)
+        .setDescription(`Command avaliable again at <t:${cdfm}:F>`)
     return embed;
 }
 
