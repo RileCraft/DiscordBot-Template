@@ -7,7 +7,7 @@
 * Fixed cooldown handler once and for all (hopefully)
 
 # 『 Currently Known Bugs 』
-* None
+* Not responding
 
 # 『 Features 』
 * Custom command handler with ton of handlers included to make ur life easier!
