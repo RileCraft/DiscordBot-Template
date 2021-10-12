@@ -13,12 +13,11 @@ module.exports = {
             if (interaction.isButton()) {
                 buttonFiles.forEach(x => {
                     let btn = require(x)
-
                     if (btn.name !== interaction.customId) return;
                     if (!validator.cooldown(btn, interaction, true, "button")) {
                         if (btn.returnCooldownError === false || btn.returnNoErrors) return;
                         else interaction.reply({
-                            embeds: [embedLoader.cooldown(author, data.coolTime[0])]
+                            embeds: [embedLoader.cooldown(author, btn, true, "button")]
                         })
                     } else if (!validator.ownerOnly(btn, interaction, true)) {
                         if (btn.returnOwnerOnlyError === false || btn.returnNoErrors) return;
@@ -82,7 +81,7 @@ module.exports = {
                         if (!validator.cooldown(sm, interaction, true, "selectmenu")) {
                             if (sm.returnCooldownError === false || sm.returnNoErrors) return;
                             else interaction.reply({
-                                embeds: [embedLoader.cooldown(author, data.coolTime[0])]
+                                embeds: [embedLoader.cooldown(author, interaction, true, "selectmenu")]
                             })
                         } else if (!validator.ownerOnly(sm, interaction, true)) {
                             if (sm.returnOwnerOnlyError === false || sm.returnNoErrors) return;
@@ -148,7 +147,7 @@ module.exports = {
                     if (!validator.cooldown(slush, interaction, true, "slashcmd")) {
                         if (slush.returnCooldownError === false || slush.returnNoErrors) return;
                         else interaction.reply({
-                            embeds: [embedLoader.cooldown(author, data.coolTime[0])]
+                            embeds: [embedLoader.cooldown(author, interaction, true, "slashcmd")]
                         })
                     } else if (!validator.ownerOnly(slush, interaction, true)) {
                         if (slush.returnOwnerOnlyError === false || slush.returnNoErrors) return;
