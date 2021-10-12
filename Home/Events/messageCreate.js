@@ -7,7 +7,7 @@ module.exports = {
             const embedLoader = require(HOME + "/Home/Storage/Data/ErrorEmbeds")
             const { validator } = require(HOME + "/Home/Classes/Validator")
             const data = require(HOME + "/Home/Classes/Validator")
-            const prefix = process.env.prefix
+            const prefix = process.env.prefix || client.config.prefix
             if (!message.content.toString().toLowerCase().startsWith(prefix)) return;
             const cmd = message.content.toString().toLowerCase().slice(prefix.length).trim().split(" ")[0]
             if (!cmd) return;
