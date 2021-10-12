@@ -22,6 +22,7 @@ client.config = require(`${HOME}/config.json`)
 require('figlet')("DjS", (err, data) => console.log(data))
 client.login(process.env.token || client.config.token)
 exports.client = client
+client.cooldb = require("quick.db")
 client.commands = new Collection()
 client.aliases = new Collection()
 const { Handler } = require(`${HOME}/Home/Classes/Handler`)
