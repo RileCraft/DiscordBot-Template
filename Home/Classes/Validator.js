@@ -1,4 +1,3 @@
-const cooldb = require("quick.db")
 const { client } = require(HOME + "/bot")
 let missingUserPermissions = []
 let missingClientPermissions = []
@@ -8,7 +7,6 @@ let missingUsers = []
 let missingRoles = []
 let missingChannels = []
 let missingGuilds = []
-let coolTime = []
 
 /*
 You have to pass these values in the function:-
@@ -242,7 +240,6 @@ class validator {
 
 module.exports = {
     validator,
-    coolTime,
     missingUserPermissions,
     missingClientPermissions,
     missingAnyUserPermissions,
