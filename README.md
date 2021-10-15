@@ -1,7 +1,9 @@
-# DiscordBot-Template
-<a href="https://discord.gg/zqySsESftt"><img src="https://img.shields.io/badge/Discord-7289DA?style=for-the-badge&logo=discord&logoColor=black"/></a>
-![Version](https://img.shields.io/badge/version-3.0.7-05122A?style=for-the-badge)
-<center><img src="https://media.discordapp.net/attachments/774290264764055582/890955909566722048/0001-8574372447_20210924_191019_0000.png" height=200 width=400></center>
+<p align="center"><img src="https://media.discordapp.net/attachments/774290264764055582/890955909566722048/0001-8574372447_20210924_191019_0000.png" height=200 width=400>
+
+<a href="https://discord.gg/zqySsESftt"><img src="https://img.shields.io/badge/discord-invite-5865f2?style=for-the-badge&logo=discord&logoColor=white"></a>
+<img src="https://img.shields.io/badge/version-3.0.7-05122A?style=for-the-badge">
+<img src="https://img.shields.io/github/issues/RileCraft/DiscordBot-Template.svg?style=for-the-badge">
+<img src="https://img.shields.io/github/forks/RileCraft/DiscordBot-Template.svg?style=for-the-badge"></p>
 
 # 『 Changelog 』
 * Fixed bot not responding to config.json users.
