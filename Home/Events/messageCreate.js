@@ -19,7 +19,7 @@ module.exports = {
                 else {
                     if (command.aliases && Array.isArray(command.aliases)) {
                         command.aliases.some(alias => {
-                            if (args.toLowerCase().startsWith(alias)) args = args.slice(alias.length).trim().split(" ")
+                            if (args.toString().toLowerCase().startsWith(alias)) args = args.slice(alias.length).trim().split(" ")
                         })
                     }
                 }
