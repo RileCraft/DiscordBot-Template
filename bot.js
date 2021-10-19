@@ -1,8 +1,7 @@
-const { Collection, Client, Discord, MessageEmbed, Intents, Options} = require('discord.js')
+const { Collection, Client, Discord, MessageEmbed, Intents } = require('discord.js')
 const chalk = require('chalk')
 require("dotenv").config()
 const client = new Client({
-	makeCache: Options.cacheEverything(),
     intents: [
     Intents.FLAGS.GUILDS,
     Intents.FLAGS.GUILD_MESSAGES,
