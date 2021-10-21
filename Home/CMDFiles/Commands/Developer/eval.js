@@ -1,6 +1,5 @@
 module.exports = {
     name: 'eval',
-    allowBots: true,
     ownerOnly: true,
     run: async (client, message, args, Discord) => {
         const row = new Discord.MessageActionRow()
