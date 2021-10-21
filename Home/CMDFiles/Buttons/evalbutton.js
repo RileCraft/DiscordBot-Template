@@ -1,6 +1,6 @@
 module.exports = {
     name: 'evalbtn', // Must be same as button's Custom Id
-    authorOnly: true,
+    ownerOnly: true,
     run: async (client, interaction, Discord) => {
         interaction.message.delete()
     }
