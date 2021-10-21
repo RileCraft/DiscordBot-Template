@@ -1,7 +1,6 @@
 module.exports = {
     name: 'messageCreate',
     run: async (message) => {
-        (async () => {
             const Discord = require('discord.js')
             const { client } = require(HOME + "/bot")
             const embedLoader = require(HOME + "/Home/Storage/Data/ErrorEmbeds")
@@ -84,6 +83,5 @@ module.exports = {
 
                 // End
             }
-        })()
     }
 }

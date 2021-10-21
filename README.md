@@ -1,12 +1,14 @@
 <p align="center"><img src="https://media.discordapp.net/attachments/774290264764055582/890955909566722048/0001-8574372447_20210924_191019_0000.png" height=200 width=400><br>
 <a href="https://discord.gg/zqySsESftt"><img src="https://img.shields.io/badge/discord-invite-5865f2?style=for-the-badge&logo=discord&logoColor=white"></a>
-<img src="https://img.shields.io/badge/version-3.0.8-05122A?style=for-the-badge">
+<img src="https://img.shields.io/badge/version-3.1.0-05122A?style=for-the-badge">
 <img src="https://img.shields.io/github/issues/RileCraft/DiscordBot-Template.svg?style=for-the-badge">
 <img src="https://img.shields.io/github/forks/RileCraft/DiscordBot-Template.svg?style=for-the-badge">
 <img src="https://img.shields.io/github/stars/RileCraft/DiscordBot-Template.svg?style=for-the-badge"></p>
 
 # 『 Changelog 』
-<img src="https://emoji.gg/assets/emoji/3821-arroworange.png" width="18px" height="18px" alt="arroworange"> Fixed aliases throwing error.
+<img src="https://emoji.gg/assets/emoji/3821-arroworange.png" width="18px" height="18px" alt="arroworange"> Added `expireAfter: (ms)` handler for buttons and selectmenus.<br>
+<img src="https://emoji.gg/assets/emoji/3821-arroworange.png" width="18px" height="18px" alt="arroworange"> Added `authorOnly: true` for buttons only currently.<br>
+<img src="https://emoji.gg/assets/emoji/3821-arroworange.png" width="18px" height="18px" alt="arroworange"> Error Embeds have moved from `storage` to a seperate class of its own for more efficient use.<br>
 
 # 『 Currently Known Bugs 』
 * None
@@ -129,6 +131,17 @@ module.exports = {
 `ownerOnly: true / false`
 * Default: `false`. 
 * When true, The command will only be runnable by the bot owner.
+
+`authorOnly: true / false` 
+* **Only for button commands**
+* Default: `false`
+* When true, Only the person who ran the command which had the buttons will be able to interact with them.
+
+`expireAfter: Time in ms`
+* **Only for button and selectmenu commands**
+* Default: `None`
+* The buttons / selectmenu will be disabled after this time has passed.
+For SelectMenu use, Refer to `Home/CMDFiles/SelectMenus/select.js`
 
 `cooldown: Time in ms`
 * Default: `0`.

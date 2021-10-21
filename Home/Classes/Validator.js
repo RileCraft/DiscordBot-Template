@@ -29,42 +29,61 @@ class validator {
                 let time = command.cooldown
                 let id = message.user.id
                 let date = Date.now()
-                let data = cooldb.get(`${id}.${command.name}.${whInt}.cooldown`)
-                coolTime.push(Math.floor(Math.floor(data + time) / 1000))
+                let data = client.cooldb.get(`${id}.${command.name}.${whInt}.cooldown`)
                 if (isNaN(time)) throw new Error("Invalid number in cooldown provided at " + command.name)
                 if (Math.floor(date - data) >= time || !data) {
-                    cooldb.set(`${id}.${command.name}.${whInt}.cooldown`, date)
+                    client.cooldb.set(`${id}.${command.name}.${whInt}.cooldown`, date)
                     return true
                 } else return false
             } else {
                 let time = command.cooldown
                 let id = message.author.id
                 let date = Date.now()
-                let data = cooldb.get(`${id}.${command.name}.cooldown`)
-                coolTime.push(Math.floor(Math.floor(data + time) / 1000))
+                let data = client.cooldb.get(`${id}.${command.name}.cooldown`)
                 if (isNaN(time)) throw new Error("Invalid number in cooldown provided at " + command.name)
                 if (Math.floor(date - data) >= time || !data) {
-                    cooldb.set(`${id}.${command.name}.cooldown`, date)
+                    client.cooldb.set(`${id}.${command.name}.cooldown`, date)
                     return true
                 } else return false
             }
         }
         return true
-        coolTime = []
+    } //Cooldown end
+    
+    static expireAfter(command, message, whInt) {
+    if (!command.expireAfter) return true;
+    if (!whInt) throw new Error("Please provide what type of interaction is this.")
+    const time = command.expireAfter
+    const date = Date.now()
+    const setValue = client.cooldb.get(`${command.name}.${whInt}.expire`)
+    if (!setValue) {
+        client.cooldb.set(`${command.name}.${whInt}.expire`, date)
+        return true;
     }
+    if (Math.floor(date - setValue) >= time) return false;
+    else return true;
+} // Expire After end
 
-    static ownerOnly(command, message, isInt) {
-        if (command.ownerOnly) {
-            if (isInt) {
-                if (message.user.id === process.env.dev || message.user.id === client.config.dev) return true
-                else return false
-            } else {
-                if (message.author.id === process.env.dev || message.author.id === client.config.dev) return true
-                else return false
-            }
-        } else return true
-    } // ownerOnly End
+static ownerOnly(command, message, isInt) {
+    if (command.ownerOnly) {
+        if (isInt) {
+            if (message.user.id === process.env.dev || client.config.dev) return true
+            else return false
+        } else {
+            if (message.author.id === process.env.dev || client.config.dev) return true
+            else return false
+        }
+    } else return true
+} // ownerOnly End
 
+static async authorOnly(command, message) {
+	if (!command.authorOnly) return true;
+	await message.message.fetch()
+	const channel = await message.guild.channels.fetch(message.message.reference.channelId)
+	const msg = await channel.messages.fetch(message.message.reference.messageId)
+	if (message.user.id == msg.author.id) return true;
+	else return false;
+	} //authorOnly End
 
     static userPermissions(command, message, isInt) {
         if (command.userPermissions && Array.isArray(command.userPermissions)) {
