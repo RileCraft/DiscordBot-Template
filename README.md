@@ -43,9 +43,9 @@ info.slashCount.length
 ```
 
 # 『 Setup / Configuration 』
-* Install the required modules in the `package.json` file using the command `npm i`.
-* Fill / Edit the contents of either `config.json` or `.env`.
-* Make sure you have read the `Important Notes` sector.
+<img src="https://emoji.gg/assets/emoji/9266_arrow_rainbow.gif" width="18px" height="18px" alt="arrow_rainbow"> Install the required modules in the `package.json` file using the command `npm i`.<br>
+<img src="https://emoji.gg/assets/emoji/9266_arrow_rainbow.gif" width="18px" height="18px" alt="arrow_rainbow"> Fill / Edit the contents of either `config.json` or `.env`.<br>
+<img src="https://emoji.gg/assets/emoji/9266_arrow_rainbow.gif" width="18px" height="18px" alt="arrow_rainbow"> Make sure you have read the `Important Notes` sector.<br>
 
 # 『 Examples 』
 ## Normal Command
