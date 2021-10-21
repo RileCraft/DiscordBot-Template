@@ -6,18 +6,18 @@
 <img src="https://img.shields.io/github/stars/RileCraft/DiscordBot-Template.svg?style=for-the-badge"></p>
 
 # 『 Changelog 』
-* Fixed aliases throwing error.
+* <img src="https://emoji.gg/assets/emoji/3821-arroworange.png" width="18px" height="18px" alt="arroworange"> Fixed aliases throwing error.
 
 # 『 Currently Known Bugs 』
 * None
 
 # 『 Features 』
-* Custom command handler with ton of handlers included to make ur life easier!
-* Custom event handler , button handler , selectmenu handler and slashcmds handler too!
-* Given reload commands with other main dev commands.
-* Organized layout.
-* Easily customizable.
-* Chalk logging.
+<img src="https://emoji.gg/assets/emoji/2522-arrow.png" width="18px" height="18px" alt="arrow"> Custom command handler with ton of handlers included to make ur life easier!<br>
+<img src="https://emoji.gg/assets/emoji/2522-arrow.png" width="18px" height="18px" alt="arrow"> Custom event handler , button handler , selectmenu handler and slashcmds handler too!<br>
+<img src="https://emoji.gg/assets/emoji/2522-arrow.png" width="18px" height="18px" alt="arrow"> Given reload commands with other main dev commands.<br>
+<img src="https://emoji.gg/assets/emoji/2522-arrow.png" width="18px" height="18px" alt="arrow"> Organized layout.<br>
+<img src="https://emoji.gg/assets/emoji/2522-arrow.png" width="18px" height="18px" alt="arrow"> Easily customizable.<br>
+<img src="https://emoji.gg/assets/emoji/2522-arrow.png" width="18px" height="18px" alt="arrow"> Chalk logging.<br>
 
 # 『 Important Notes 』
 * This is made in **Discord.JS V13** and if you want to use this in V12 then you would have to do changes.
