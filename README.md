@@ -11,7 +11,7 @@
 <img src="https://emoji.gg/assets/emoji/3821-arroworange.png" width="18px" height="18px" alt="arroworange"> Error Embeds have moved from `storage` to a seperate class of its own for more efficient use.<br>
 
 # 『 Currently Known Bugs 』
-* None
+* It says "Unknown Interaction" in console for some reason sometimes.
 
 # 『 Features 』
 <img src="https://emoji.gg/assets/emoji/2522-arrow.png" width="18px" height="18px" alt="arrow"> Custom command handler with ton of handlers included to make ur life easier!<br>
