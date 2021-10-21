@@ -79,6 +79,7 @@ static ownerOnly(command, message, isInt) {
 static async authorOnly(command, message) {
 	if (!command.authorOnly) return true;
 	await message.message.fetch()
+	 console.log(message.message.reference)
 	const channel = await message.guild.channels.fetch(message.message.reference.channelId)
 	const msg = await channel.messages.fetch(message.message.reference.messageId)
 	if (message.user.id == msg.author.id) return true;
