@@ -7,7 +7,7 @@
 
 # 『 Changelog 』
 <img src="https://emoji.gg/assets/emoji/3821-arroworange.png" width="18px" height="18px" alt="arroworange"> Added `expireAfter: (ms)` handler for buttons and selectmenus.<br>
-<img src="https://emoji.gg/assets/emoji/3821-arroworange.png" width="18px" height="18px" alt="arroworange"> Added `authorOnly: true` for buttons only currently.<br>
+<img src="https://emoji.gg/assets/emoji/3821-arroworange.png" width="18px" height="18px" alt="arroworange"> Added `authorOnly: true` for buttons only currently. **You must use `message.reply` to send the message with contains the button /selectmenus because otherwise it will not work.<br>
 <img src="https://emoji.gg/assets/emoji/3821-arroworange.png" width="18px" height="18px" alt="arroworange"> Error Embeds have moved from `storage` to a seperate class of its own for more efficient use.<br>
 
 # 『 Currently Known Bugs 』
