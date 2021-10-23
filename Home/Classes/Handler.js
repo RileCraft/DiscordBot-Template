@@ -1,15 +1,7 @@
 const fs = require('fs')
 const glob = require("glob")
 let { FileManager } = require(HOME + "/Home/Functions/FileManager")
-
-let commandFiles = []
-let aliasesCount = []
-let eventFiles = []
-let buttonFiles = []
-let selectMenuFiles = []
-let slashFiles = []
 let slashCount = []
-
 const Discord = require('discord.js')
 Discord.TextChannel.prototype.sendEmbed = function(embed) {
     this.send({
@@ -25,10 +17,8 @@ class Handler {
                 if (fs.statSync(file).isDirectory()) return;
                 const cmd = require(file)
                 client.commands.set(cmd.name.toString().toLowerCase(), cmd)
-                commandFiles.push(file)
                 if (cmd.aliases && Array.isArray(cmd.aliases)) cmd.aliases.forEach(alias => {
                     client.aliases.set(alias.toString().toLowerCase(), cmd.name)
-                    aliasesCount.push(1)
                 }) // res.ForEach() End
             }) // forEach(aliases =>) End
         }) // FileManager Function End
@@ -40,7 +30,7 @@ class Handler {
             res.forEach(file => {
                 if (fs.statSync(file).isDirectory()) return;
                 let event = require(file)
-                eventFiles.push(file)
+                client.events.set(event.name, event)
                 if (event.custom) event.run(client)
                 if (event.once) client.once(event.name, (...args) => event.run(...args, client))
                 else client.on(event.name, (...args) => event.run(...args, client))
@@ -52,7 +42,8 @@ class Handler {
         FileManager(HOME + '/Home/CMDFiles/Buttons', function(err, res) {
             res.forEach(file => {
                 if (fs.statSync(file).isDirectory()) return;
-                buttonFiles.push(file)
+                const mm = require(file)
+                client.buttonCommands.set(mm.name, mm)
             }) // forEach File 
         }) // FileManager Function
     } // Button Handler End
@@ -61,63 +52,47 @@ class Handler {
         FileManager(HOME + '/Home/CMDFiles/SelectMenus', function(err, res) {
             res.forEach(file => {
                 if (fs.statSync(file).isDirectory()) return;
-                selectMenuFiles.push(file)
+                const btn = require(file)
+                client.selectMenus.set(btn.name, btn)
             }) //res.forEach
         }) //Function End
     } // SelectMenus End
 
+static slashCount() {
+	FileManager(HOME + '/Home/CMDFiles/SlashCmds', function(err, res) {
+            res.forEach(file => {
+            	if (fs.statSync(file).isDirectory()) return;
+            	slashCount.push(file)
+            	})
+            })
+	}
+
     static loadSlashCommands(client) {
+    	client.slashCommands.clear()
         FileManager(HOME + '/Home/CMDFiles/SlashCmds', function(err, res) {
             res.forEach(file => {
                 if (fs.statSync(file).isDirectory()) return;
                 const cmd = require(file)
-                const server = client.guilds.cache.get(cmd.guild)
-                if (server) {
-                    if (server.commands.cache.find(x => x.name === cmd.name)) {
-                        server.commands.edit(server.commands.cache.find(x => x.name === cmd.name).id, {
-                            name: cmd.name,
-                            description: cmd.description ?? "Slash command :D",
-                            options: cmd.options ?? [],
-                            type: cmd.type ?? "CHAT_INPUT"
-                        })
-                    } else {
-                        server.commands.create({
-                            name: cmd.name,
-                            description: cmd.description ?? "Slash command :D",
-                            options: cmd.options ?? [],
-                            type: cmd.type ?? "CHAT_INPUT"
-                        })
-                    }
-                } else {
-                    if (client.application.commands.cache.find(x => x.name === cmd.name)) {
-                        server.commands.edit(client.application.commands.cache.find(x => x.name === cmd.name).id, {
-                            name: cmd.name,
-                            description: cmd.description ?? "Slash command :D",
-                            options: cmd.options ?? [],
-                            type: cmd.type ?? "CHAT_INPUT"
-                        })
-                    } else {
-                        client.application.commands.create({
-                            name: cmd.name,
-                            description: cmd.description ?? "Slash command :D",
-                            options: cmd.options ?? [],
-                            type: cmd.type ?? "CHAT_INPUT"
-                        })
-                    }
-                }
-                slashFiles.push(file)
+                client.slashCommands.set(cmd.name, cmd)
+                let creator = ""
+                if (client.slashCommands.get(cmd.name)?.guild) creator = client.guilds.cache.get(client.slashCommands.get(cmd.name).guild)
+                else creator = client.application
+                if (creator.commands.cache.find(x => x.name == client.slashCommands.get(cmd.name).name)) creator.commands.edit(creator.commands.cache.find(x => x.name == client.slashCommands.get(cmd.name).name).id,{
+                	name: client.slashCommands.get(cmd.name).name,
+                            description: client.slashCommands.get(cmd.name).description ?? "Slash command :D",
+                            options: client.slashCommands.get(cmd.name).options ?? [],
+                            type: client.slashCommands.get(cmd.name).type ?? "CHAT_INPUT"
+                	})
+                else creator.commands.create({
+                	name: client.slashCommands.get(cmd.name).name,
+                            description: client.slashCommands.get(cmd.name).description ?? "Slash command :D",
+                            options: client.slashCommands.get(cmd.name).options ?? [],
+                            type: client.slashCommands.get(cmd.name).type ?? "CHAT_INPUT"
+                            })
+                
             }) // res.foreach() end
         }) // filemanager end
     } // SlashCmds end
-
-    static getSlashCount() {
-        FileManager(HOME + '/Home/CMDFiles/SlashCmds', function(err, res) {
-            res.forEach(file => {
-                if (fs.statSync(file).isDirectory()) return
-                slashCount.push(1)
-            })
-        })
-    }
 
     static loadErrorManager() {
         const chalk = require('chalk')
@@ -136,11 +111,5 @@ class Handler {
 
 module.exports = {
     Handler,
-    commandFiles,
-    eventFiles,
-    aliasesCount,
-    buttonFiles,
-    selectMenuFiles,
-    slashFiles,
     slashCount
 }

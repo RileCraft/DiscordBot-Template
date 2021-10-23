@@ -1,7 +1,6 @@
 module.exports = {
 	name: "interactionCreate",
 	run: async(interaction) => {
-			const { buttonFiles, selectMenuFiles, slashFiles } = require(HOME + "/Home/Classes/Handler")
 			const { client } = require(HOME + "/bot")
 			const Discord = require('discord.js')
 			const { errorEmbedLoader } = require(HOME + "/Home/Classes/ErrorEmbeds")
@@ -10,9 +9,9 @@ module.exports = {
 			let author = interaction.user
 		
 		if (interaction.isButton()) {
-			buttonFiles.forEach(x => {
+			client.buttonCommands.forEach(x => {
 				(async () => {
-				let btn = require(x)
+				let btn = x
 				if (btn.name !== interaction.customId) return;
 						if (!validator.cooldown(btn, interaction, true, "button")) {
 if (btn.returnCooldownError == false || btn.returnNoErrors) return; 
@@ -87,8 +86,8 @@ if (btn.guildOnly == false) btn.run(client, interaction, Discord)
 			} // Button Interaction End
 			
 			else if (interaction.isSelectMenu()) {
-				selectMenuFiles.forEach(i => {
-					let sm = require(i)
+				client.selectMenus.forEach(i => {
+					let sm = i
 			if (sm.name == interaction.customId || sm.name == interaction.values[0]) {
 						
             if (!validator.cooldown(sm, interaction, true, "selectmenu")) {
@@ -161,8 +160,8 @@ if (sm.guildOnly == false) sm.run(client, interaction, Discord)
 		} // SelectMenu End
 		
 		else if (interaction.isCommand()) {
-			slashFiles.forEach(z => {
-				let slush = require(z)
+			client.slashCommands.forEach(z => {
+				let slush = z
 	if (slush.name !== interaction.commandName) return;
 
 if (!validator.cooldown(slush, interaction, true, "slashcmd")) {
