@@ -93,7 +93,7 @@ if (btn.guildOnly == false) btn.run(client, interaction, Discord)
 						
             if (!validator.cooldown(sm, interaction, true, "selectmenu")) {
 if (sm.returnCooldownError == false || sm.returnNoErrors) return; 
-else interaction.reply({ embeds: [errorEmbedLoader.cooldown(author, interaction, true, "selectmenu")], ephemeral: true })
+else interaction.reply({ embeds: [errorEmbedLoader.cooldown(author, sm, true, "selectmenu")], ephemeral: true })
  }
  else if (!validator.expireAfter(sm, interaction, "selectmenu")) {
     let array = []
@@ -167,7 +167,7 @@ if (sm.guildOnly == false) sm.run(client, interaction, Discord)
 
 if (!validator.cooldown(slush, interaction, true, "slashcmd")) {
 if (slush.returnCooldownError == false || slush.returnNoErrors) return; 
-else interaction.reply({ embeds: [errorEmbedLoader.cooldown(author, interaction, true, "slashcmd")], ephemeral: true })
+else interaction.reply({ embeds: [errorEmbedLoader.cooldown(author, slush, true, "slashcmd")], ephemeral: true })
  }
 			else if (!validator.ownerOnly(slush, interaction, true)) {
 if (slush.returnOwnerOnlyError == false || slush.returnNoErrors) return; 
