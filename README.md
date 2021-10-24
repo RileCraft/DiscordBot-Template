@@ -11,7 +11,7 @@
 <img src="https://emoji.gg/assets/emoji/3821-arroworange.png" width="18px" height="18px" alt="arroworange"> Events , Buttons , SelectMenus and SlashCommands have their own collection like `client.commands` now.
 
 # 『 Currently Known Bugs 』
-* It says "Unknown Interaction" in console for some reason sometimes.
+* It says "Unknown Interaction" in console when using `expireAfter` handler in SelectMenus.
 
 # 『 Features 』
 <img src="https://emoji.gg/assets/emoji/2522-arrow.png" width="18px" height="18px" alt="arrow"> Custom command handler with ton of handlers included to make ur life easier!<br>
