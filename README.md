@@ -30,15 +30,15 @@
 
 <img src="https://emoji.gg/assets/emoji/4596-froggy-arrow.png" width="24px" height="24px" alt="froggy_arrow"> Global SlashCommands only update per hour. It is recommended to first make a guild command for testing as guild commands are updated immediately and then make them a global command.
 
-<img src="https://emoji.gg/assets/emoji/4596-froggy-arrow.png" width="24px" height="24px" alt="froggy_arrow"> If you want to change the `ready` event then remember that the `class Handler` exports arrays of the loaded events , commands and aliases count. To get the correct value then do like this.
+<img src="https://emoji.gg/assets/emoji/4596-froggy-arrow.png" width="24px" height="24px" alt="froggy_arrow"> If you want to change the `ready` event then remember to use these to get the values.
 ```js
-const info = require(Path to handler class file)
+const info = require(HOME + "/Home/Classes/Handler")
 info.Handler.loadSlashCommands(client) // Required to be in ready event.
-info.commandFiles.length
-info.eventFiles.length
-info.aliasesCount.length
-info.buttonFiles.length
-info.selectMenuFiles.length
+client.commands.size
+client.aliases.size
+client.events.size
+client.buttonCommands.size
+client.selectMenus.size
 info.slashCount.length
 ```
 
