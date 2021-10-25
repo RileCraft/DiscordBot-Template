@@ -1,14 +1,12 @@
 <p align="center"><img src="https://media.discordapp.net/attachments/774290264764055582/890955909566722048/0001-8574372447_20210924_191019_0000.png" height=200 width=400><br>
 <a href="https://discord.gg/zqySsESftt"><img src="https://img.shields.io/badge/discord-invite-5865f2?style=for-the-badge&logo=discord&logoColor=white"></a>
-<img src="https://img.shields.io/badge/version-3.1.2-05122A?style=for-the-badge">
+<img src="https://img.shields.io/badge/version-3.1.3-05122A?style=for-the-badge">
 <img src="https://img.shields.io/github/issues/RileCraft/DiscordBot-Template.svg?style=for-the-badge">
 <img src="https://img.shields.io/github/forks/RileCraft/DiscordBot-Template.svg?style=for-the-badge">
 <img src="https://img.shields.io/github/stars/RileCraft/DiscordBot-Template.svg?style=for-the-badge"></p>
 
 # 『 Changelog 』
-<img src="https://emoji.gg/assets/emoji/3821-arroworange.png" width="18px" height="18px" alt="arroworange"> Fixed cooldown returning **NaN** in interactions. <br>
-<img src="https://emoji.gg/assets/emoji/3821-arroworange.png" width="18px" height="18px" alt="arroworange"> Revamped `Handler` class and made it more efficient.<br>
-<img src="https://emoji.gg/assets/emoji/3821-arroworange.png" width="18px" height="18px" alt="arroworange"> Events , Buttons , SelectMenus and SlashCommands have their own collection like `client.commands` now.
+<img src="https://emoji.gg/assets/emoji/3821-arroworange.png" width="18px" height="18px" alt="arroworange"> Added option to provide a array of guilds in guild slashcommands to make the same guild commands for multiple guilds. *Check before for the example*.
 
 # 『 Currently Known Bugs 』
 * It says "Unknown Interaction" in console when using `expireAfter` handler in SelectMenus.
@@ -112,6 +110,7 @@ module.exports = {
 ```js
 module.exports = {
     name : 'fun', // Name of the slash command.
+    guild: "GuildID" or ["GuildID", "GuildID"] // Makes this command a guild command in these guilds. // Optional
     description: "A fun command :)", // Description of slash command. Optional
     type: "CHAT_INPUT", // Type of / command. Optional
     options: [{
