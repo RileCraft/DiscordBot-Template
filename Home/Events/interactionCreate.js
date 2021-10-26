@@ -162,7 +162,8 @@ if (sm.guildOnly == false) sm.run(client, interaction, Discord)
 		else if (interaction.isCommand()) {
 			client.slashCommands.forEach(z => {
 				let slush = z
-	if (slush.name !== interaction.commandName) return;
+				const aliases = slush?.aliases
+	if (!aliases.some(x => x == interaction.commandName) && slush.name != interaction.commandName) return;
 
 if (!validator.cooldown(slush, interaction, true, "slashcmd")) {
 if (slush.returnCooldownError == false || slush.returnNoErrors) return; 
