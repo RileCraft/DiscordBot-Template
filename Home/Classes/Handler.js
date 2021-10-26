@@ -83,7 +83,7 @@ static slashCount() {
                     let guild = client.guilds.cache.get(x)
                     if (!guild) return;
                     if (guild.commands.cache.find(x => x.name == client.slashCommands.get(cmd.name).name)) creator.commands.edit(creator.commands.cache.find(x => x.name == client.slashCommands.get(cmd.name).name).id, {
-                        name: client.cmmands.get(cmd.name).name,
+                        name: client.slashCommands.get(cmd.name).name,
                         description: client.slashCommands.get(cmd.name).description ?? "Slash command :D",
                         options: client.slashCommands.get(cmd.name).options ?? [],
                         type: client.slashCommands.get(cmd.name).type ?? "CHAT_INPUT"
@@ -97,7 +97,7 @@ static slashCount() {
                 })
             } else {
                 if (creator.commands.cache.find(x => x.name == client.slashCommands.get(cmd.name).name)) creator.commands.edit(creator.commands.cache.find(x => x.name == client.slashCommands.get(cmd.name).name).id, {
-                    name: client.cmmands.get(cmd.name).name,
+                    name: client.slashCommands.get(cmd.name).name,
                     description: client.slashCommands.get(cmd.name).description ?? "Slash command :D",
                     options: client.slashCommands.get(cmd.name).options ?? [],
                     type: client.slashCommands.get(cmd.name).type ?? "CHAT_INPUT"
