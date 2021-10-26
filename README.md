@@ -6,7 +6,7 @@
 <img src="https://img.shields.io/github/stars/RileCraft/DiscordBot-Template.svg?style=for-the-badge"></p>
 
 # 『 Changelog 』
-<img src="https://emoji.gg/assets/emoji/3821-arroworange.png" width="18px" height="18px" alt="arroworange"> Fixed slashCommands handler.
+<img src="https://emoji.gg/assets/emoji/3821-arroworange.png" width="18px" height="18px" alt="arroworange"> Fixed typo slashCommands handler. (reee)
 
 # 『 Currently Known Bugs 』
 * It says "Unknown Interaction" in console when using `expireAfter` handler in SelectMenus.
