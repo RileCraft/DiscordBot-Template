@@ -33,6 +33,7 @@ client.buttonCommands = new Collection()
 const { Handler } = require(`${HOME}/Home/Classes/Handler`)
 Handler.loadCommands(client) // COMMAND HANDLER
 Handler.loadEvents(client) // EVENT HANDLER
+Handler.slashCount()
 Handler.loadButtons(client) // BUTTON HANDLER
 Handler.loadSelectMenus(client) // SELECTMENUS HANDLER
 Handler.loadErrorManager(client) // ERRORHANDLER HANDLER
