@@ -110,6 +110,7 @@ module.exports = {
 ```js
 module.exports = {
     name : 'fun', // Name of the slash command.
+    aliases: ["meow"], // Multiple Aliases. Optional.
     guild: "GuildID" or ["GuildID", "GuildID"], // Makes this command a guild command in these guilds. // Optional
     description: "A fun command :)", // Description of slash command. Optional
     type: "CHAT_INPUT", // Type of / command. Optional
