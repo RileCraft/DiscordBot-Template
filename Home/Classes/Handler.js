@@ -69,7 +69,7 @@ static slashCount() {
 
     static loadSlashCommands(client) {
     client.slashCommands.clear()
-    FileManager(HOME + '/Home/CMDFiles/SlashCommands', function(err, res) {
+    FileManager(HOME + '/Home/CMDFiles/SlashCmss', function(err, res) {
         res.forEach(file => {
             if (fs.statSync(file).isDirectory()) return;
             const cmd = require(file)
