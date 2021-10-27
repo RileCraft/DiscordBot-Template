@@ -69,19 +69,19 @@ static slashCount() {
 
     static loadSlashCommands(client) {
     client.slashCommands.clear()
-    FileManager(HOME + '/Home/CMDFiles/SlashCmds', function(err, res) {
+    FileManager(HOME + '/Home/CMDFiles/SlashCommands', function(err, res) {
         res.forEach(file => {
             if (fs.statSync(file).isDirectory()) return;
             const cmd = require(file)
            if (!Array.isArray(cmd?.aliases)) cmd.aliases = []
-            client.slashCommands.set(cmd.name, cmd)
             let aliases = client.slashCommands.get(cmd.name)?.aliases
-            if (aliases) aliases.forEach(x => client.slashCommands.set(x, cmd))
+            if (Array.isArray(aliases) && aliases?.length > 0) aliases.forEach(x => client.slashCommands.set(x, cmd))
+            else client.slashCommands.set(cmd.name, cmd)
             let creator = ""
             if (client.slashCommands.get(cmd.name)?.guild) creator = client.guilds.cache.get(client.slashCommands.get(cmd.name).guild)
             else creator = client.application
 
-if (Array.isArray(aliases)) {
+if (Array.isArray(aliases) && aliases?.length > 0) {
 aliases.forEach(alias => {
 	if (Array.isArray(client.slashCommands.get(alias)?.guild)) {
                 client.slashCommands.get(alias)?.guild.forEach(x => {
