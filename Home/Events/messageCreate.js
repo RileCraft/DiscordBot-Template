@@ -8,7 +8,11 @@ module.exports = {
 			client.cooldb = cooldb
 			const { validator } = require(HOME + "/Home/Classes/Validator")
 			const data = require(HOME + "/Home/Classes/Validator")
-			const prefix = process.env.prefix || client.config.prefix
+			let prefix = config.prefix
+			if (!Array.isArray(prefix)) prefix = [prefix]
+			prefix.forEach(x => {
+if (message.content.includes(x)) prefix = x
+})
 if (!message.content.toString().toLowerCase().startsWith(prefix)) return;
 const cmd = message.content.toString().toLowerCase().slice(prefix.length).trim().split(" ")[0]
 if (!cmd) return;
