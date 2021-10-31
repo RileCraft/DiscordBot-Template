@@ -1,5 +1,6 @@
 const { Collection, Client, Discord, MessageEmbed, Intents } = require('discord.js')
 const chalk = require('chalk')
+global.HOME = __dirname
 global.config = require(HOME + "/Home/Storage/Vault/Config")
 require("dotenv").config()
 const client = new Client({
@@ -23,7 +24,6 @@ require('figlet')("DJS", (err, data) => console.log(data))
 client.login(process.env.token || client?.config?.token || config?.token)
 client.cooldb = require("quick.db")
 exports.client = client
-global.HOME = __dirname
 client.commands = new Collection()
 client.aliases = new Collection()
 client.slashCommands = new Collection()
