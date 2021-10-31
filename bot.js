@@ -1,5 +1,6 @@
 const { Collection, Client, Discord, MessageEmbed, Intents } = require('discord.js')
 const chalk = require('chalk')
+global.config = require(HOME + "/Home/Storage/Vault/Config")
 require("dotenv").config()
 const client = new Client({
     intents: [
