@@ -1,3 +1,4 @@
+// if multiple prefixes then ["!", "?"]
 module.exports = {
-	prefix: "!"// if multiple prefixes then ["!", "?"],
+	prefix: "!"
 }
