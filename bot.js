@@ -20,7 +20,7 @@ partials: ["CHANNEL"]
 global.HOME = __dirname
 client.config = require(`${HOME}/config.json`)
 require('figlet')("DJS", (err, data) => console.log(data))
-client.login(process.env.token || client.config.token || config.token)
+client.login(process.env.token || client?.config?.token || config?.token)
 client.cooldb = require("quick.db")
 exports.client = client
 global.HOME = __dirname
