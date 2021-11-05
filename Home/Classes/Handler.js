@@ -73,8 +73,9 @@ static slashCount() {
             if (fs.statSync(file).isDirectory()) return;
             const cmd = require(file)
             if (cmd?.aliases && !Array.isArray(cmd?.aliases)) cmd.aliases = [cmd.aliases]
-            if (cmd?.aliases?.length > 0) cmd.aliases.forEach(x => client.slashCommands.set(x, cmd))
-            else client.slashCommands.set(cmd.name, cmd)
+            else cmd.aliases = []
+        if (cmd?.aliases?.length > 0) cmd.aliases.forEach(x => client.slashCommands.set(x, cmd))
+        else client.slashCommands.set(cmd.name, cmd)
 
             if (Array.isArray(cmd?.guild) && cmd?.guild?.length > 0) {
                 cmd.guild.forEach(g => {
