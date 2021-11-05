@@ -68,88 +68,67 @@ static slashCount() {
 	}
 
     static loadSlashCommands(client) {
-    client.slashCommands.clear()
     FileManager(HOME + '/Home/CMDFiles/SlashCmds', function(err, res) {
         res.forEach(file => {
             if (fs.statSync(file).isDirectory()) return;
             const cmd = require(file)
-           if (!Array.isArray(cmd?.aliases)) cmd.aliases = []
-            let aliases = client.slashCommands.get(cmd.name)?.aliases
-            if (Array.isArray(aliases) && aliases?.length > 0) aliases.forEach(x => client.slashCommands.set(x, cmd))
+            if (cmd?.aliases && !Array.isArray(cmd?.aliases)) cmd.aliases = [cmd.aliases]
+            if (cmd?.aliases?.length > 0) cmd.aliases.forEach(x => client.slashCommands.set(x, cmd))
             else client.slashCommands.set(cmd.name, cmd)
-            let creator = ""
-            if (client.slashCommands.get(cmd.name)?.guild) creator = client.guilds.cache.get(client.slashCommands.get(cmd.name).guild)
-            else creator = client.application
 
-if (Array.isArray(aliases) && aliases?.length > 0) {
-aliases.forEach(alias => {
-	if (Array.isArray(client.slashCommands.get(alias)?.guild)) {
-                client.slashCommands.get(alias)?.guild.forEach(x => {
-                    let guild = client.guilds.cache.get(x)
-                    if (!guild) return;
-                    if (guild.commands.cache.find(x => x.name == alias)) creator.commands.edit(creator.commands.cache.find(x => x.name == alias).id, {
-                        name: alias,
-                        description: client.slashCommands.get(alias).description ?? "Slash command :D",
-                        options: client.slashCommands.get(alias).options ?? [],
-                        type: client.slashCommands.get(alias).type ?? "CHAT_INPUT"
-                    })
-                    else guild.commands.create({
-                        name: alias,
-                        description: client.slashCommands.get(alias).description ?? "Slash command :D",
-                        options: client.slashCommands.get(alias).options ?? [],
-                        type: client.slashCommands.get(alias).type ?? "CHAT_INPUT"
+            if (Array.isArray(cmd?.guild) && cmd?.guild?.length > 0) {
+                cmd.guild.forEach(g => {
+                    const guild = client.guilds.cache.get(g)
+                    if (cmd?.aliases) {
+                        cmd.aliases.forEach(alias => {
+                            if (guild.commands.cache.find(x => x.name == alias)) guild.commands.edit(guild.commands.cache.find(x => x.name == alias).id, {
+                                name: alias,
+                                description: cmd?.description ?? "Slash command :D",
+                                options: cmd?.options ?? [],
+                                type: cmd?.type ?? "CHAT_INPUT"
+                            })
+                            else guild.commands.create({
+                                name: alias,
+                                description: cmd?.description ?? "Slash command :D",
+                                options: cmd?.options ?? [],
+                                type: cmd?.type ?? "CHAT_INPUT"
+                            })
+                        })
+                    } else {
+                        if (guild.commands.cache.find(x => x.name == cmd.name)) guild.commands.edit(guild.commands.cache.find(x => x.name == cmd.name).id, {
+                            name: cmd.name,
+                            description: cmd?.description ?? "Slash command :D",
+                            options: cmd?.options ?? [],
+                            type: cmd?.type ?? "CHAT_INPUT"
+                        })
+                        else guild.commands.create({
+                            name: cmd.name,
+                            description: cmd?.description ?? "Slash command :D",
+                            options: cmd?.options ?? [],
+                            type: cmd?.type ?? "CHAT_INPUT"
+                        })
+                    } // aliases else 
                 })
-                })
+
             } else {
-                if (creator.commands.cache.find(x => x.name == alias)) creator.commands.edit(creator.commands.cache.find(x => x.name == alias).id, {
-                    name: alias,
-                    description: client.slashCommands.get(alias).description ?? "Slash command :D",
-                    options: client.slashCommands.get(alias).options ?? [],
-                    type: client.slashCommands.get(alias).type ?? "CHAT_INPUT"
+                let creator = ""
+                if (cmd?.guild) creator = client.guilds.cache.get(cmd.guild)
+                else creator = client.application
+                if (creator.commands.cache.find(x => x.name == cmd.name)) creator.commands.edit(creator.commands.cache.find(x => x.name == cmd.name).id, {
+                    name: cmd.name,
+                    description: cmd?.description ?? "Slash command :D",
+                    options: cmd?.options ?? [],
+                    type: cmd?.type ?? "CHAT_INPUT"
                 })
                 else creator.commands.create({
-                    name: alias,
-                    description: client.slashCommands.get(alias).description ?? "Slash command :D",
-                    options: client.slashCommands.get(alias).options ?? [],
-                    type: client.slashCommands.get(alias).type ?? "CHAT_INPUT"
+                    name: cmd.name,
+                    description: cmd?.description ?? "Slash command :D",
+                    options: cmd?.options ?? [],
+                    type: cmd?.type ?? "CHAT_INPUT"
                 })
-            } // else End
-	})
-} else {
-            if (Array.isArray(client.slashCommands.get(cmd.name)?.guild)) {
-                client.slashCommands.get(cmd.name)?.guild.forEach(x => {
-                    let guild = client.guilds.cache.get(x)
-                    if (!guild) return;
-                    if (guild.commands.cache.find(x => x.name == client.slashCommands.get(cmd.name).name)) creator.commands.edit(creator.commands.cache.find(x => x.name == client.slashCommands.get(cmd.name).name).id, {
-                        name: client.slashCommands.get(cmd.name).name,
-                        description: client.slashCommands.get(cmd.name).description ?? "Slash command :D",
-                        options: client.slashCommands.get(cmd.name).options ?? [],
-                        type: client.slashCommands.get(cmd.name).type ?? "CHAT_INPUT"
-                    })
-                    else guild.commands.create({
-                        name: client.slashCommands.get(cmd.name).name,
-                        description: client.slashCommands.get(cmd.name).description ?? "Slash command :D",
-                        options: client.slashCommands.get(cmd.name).options ?? [],
-                        type: client.slashCommands.get(cmd.name).type ?? "CHAT_INPUT"
-                })
-                })
-            } else {
-                if (creator.commands.cache.find(x => x.name == client.slashCommands.get(cmd.name).name)) creator.commands.edit(creator.commands.cache.find(x => x.name == client.slashCommands.get(cmd.name).name).id, {
-                    name: client.slashCommands.get(cmd.name).name,
-                    description: client.slashCommands.get(cmd.name).description ?? "Slash command :D",
-                    options: client.slashCommands.get(cmd.name).options ?? [],
-                    type: client.slashCommands.get(cmd.name).type ?? "CHAT_INPUT"
-                })
-                else creator.commands.create({
-                    name: client.slashCommands.get(cmd.name).name,
-                    description: client.slashCommands.get(cmd.name).description ?? "Slash command :D",
-                    options: client.slashCommands.get(cmd.name).options ?? [],
-                    type: client.slashCommands.get(cmd.name).type ?? "CHAT_INPUT"
-                })
-            } // else End
-            
-            } // aliases Else End
-            
+
+            } // Guild Array Else End
+
         }) // res.foreach() end
     }) // filemanager end
 } // SlashCommandz end
