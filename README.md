@@ -12,6 +12,7 @@
 
 # 『 Currently Known Bugs 』
 * It says "Unknown Interaction" in console when using `expireAfter` handler in SelectMenus.
+* **If you have lot of slashcommands then your bot can get ratelimited as discord API has a limit of updating / creating 5 slashCommands per 20s.**
 
 # 『 Features 』
 <img src="https://emoji.gg/assets/emoji/2522-arrow.png" width="18px" height="18px" alt="arrow"> Custom command handler with ton of handlers included to make ur life easier!<br>
