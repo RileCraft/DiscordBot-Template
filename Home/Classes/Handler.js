@@ -116,7 +116,7 @@ static slashCount() {
         
         } else {
         	let creator = ""
-        if (cmd?.guild) creator = client.guilds.cache.get(cmd.guild) ?? throw new Error("Invalid Guild ID was provided.")
+        if (cmd?.guild) creator = client.guilds.cache.get(cmd.guild) ?? console.log("Invalid Guild ID was provided.")
         else creator = client.application
         if (creator.commands.cache.find(x => x.name == cmd.name)) creator.commands.edit(creator.commands.cache.find(x => x.name == cmd.name).id, {
                     name: cmd.name,
