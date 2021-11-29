@@ -1,17 +1,27 @@
 <p align="center"><img src="https://media.discordapp.net/attachments/774290264764055582/890955909566722048/0001-8574372447_20210924_191019_0000.png" height=200 width=400><br>
 <a href="https://discord.gg/zqySsESftt"><img src="https://img.shields.io/badge/discord-invite-5865f2?style=for-the-badge&logo=discord&logoColor=white"></a>
-<img src="https://img.shields.io/badge/version-3.2.1-05122A?style=for-the-badge">
+<img src="https://img.shields.io/badge/version-4.0.0-05122A?style=for-the-badge">
 <img src="https://img.shields.io/github/issues/RileCraft/DiscordBot-Template.svg?style=for-the-badge">
 <img src="https://img.shields.io/github/forks/RileCraft/DiscordBot-Template.svg?style=for-the-badge">
 <img src="https://img.shields.io/github/stars/RileCraft/DiscordBot-Template.svg?style=for-the-badge"></p>
 
-# Developer currently on break
+# Developer currently on break (V4 Big Update)
 
 # 『 Changelog 』
-<img src="https://emoji.gg/assets/emoji/3821-arroworange.png" width="18px" height="18px" alt="arroworange"> Fixed "unexpected throw" error thingy.
+<img src="https://emoji.gg/assets/emoji/3821-arroworange.png" width="18px" height="18px" alt="arroworange"> Revamped the entire handler.<br>
+<img src="https://emoji.gg/assets/emoji/3821-arroworange.png" width="18px" height="18px" alt="arroworange"> Removed `authorOnly, expireAfter` options.<br>
+<img src="https://emoji.gg/assets/emoji/3821-arroworange.png" width="18px" height="18px" alt="arroworange"> All the token , prefix , dev ids will now go in `Storage/Vault/Config.js`.<br>
+<img src="https://emoji.gg/assets/emoji/3821-arroworange.png" width="18px" height="18px" alt="arroworange"> In slashCommands the `guild: "ID"` option has been changed to `guilds: ["ID", "ID", . . .]`<br>
+<img src="https://emoji.gg/assets/emoji/3821-arroworange.png" width="18px" height="18px" alt="arroworange"> Aliases for slashCommands has been removed.<br>
+<img src="https://emoji.gg/assets/emoji/3821-arroworange.png" width="18px" height="18px" alt="arroworange"> All the collection which stores the commands has been changed. (Refer to bot.js to view changes).<br>
+<img src="https://emoji.gg/assets/emoji/3821-arroworange.png" width="18px" height="18px" alt="arroworange"> All the code has been minimalized and i have tried to kept it as simple as possible.<br>
+<img src="https://emoji.gg/assets/emoji/3821-arroworange.png" width="18px" height="18px" alt="arroworange"> slashCommands are no longer required to be loaded from `Ready.js` event.<br>
+<img src="https://emoji.gg/assets/emoji/3821-arroworange.png" width="18px" height="18px" alt="arroworange"> The main folder has been renamed from `Home` to `Root`.<br>
+<img src="https://emoji.gg/assets/emoji/3821-arroworange.png" width="18px" height="18px" alt="arroworange"> The old way of using `HOME` to get root path has been replaced with `ROOT.path` and the config can be accessed using `Root.config`.<br>
+<img src="https://emoji.gg/assets/emoji/3821-arroworange.png" width="18px" height="18px" alt="arroworange"> Handler is currenty not 100% tested so if you encounter any bugs let us know!<br>
 
 # 『 Currently Known Bugs 』
-* It says "Unknown Interaction" in console when using `expireAfter` handler in SelectMenus.
+* None.
 
 # 『 Features 』
 <img src="https://emoji.gg/assets/emoji/2522-arrow.png" width="18px" height="18px" alt="arrow"> Custom command handler with ton of handlers included to make ur life easier!<br>
@@ -26,27 +36,23 @@
 
 <img src="https://emoji.gg/assets/emoji/4596-froggy-arrow.png" width="24px" height="24px" alt="froggy_arrow"> Recommended NodeJS V16+.
 
-<img src="https://emoji.gg/assets/emoji/4596-froggy-arrow.png" width="24px" height="24px" alt="froggy_arrow"> `message.channel.sendEmbed()` is just a additional function to make it easier to send embeds quickly. You can still use the default `message.channel.send()` like normally you do.
-
 <img src="https://emoji.gg/assets/emoji/4596-froggy-arrow.png" width="24px" height="24px" alt="froggy_arrow"> SlashCommands are auto deployed and you don't have to run any code to create them manually. But you have to run the delete code from discord.js docs manually to delete them.
 
 <img src="https://emoji.gg/assets/emoji/4596-froggy-arrow.png" width="24px" height="24px" alt="froggy_arrow"> Global SlashCommands only update per hour. It is recommended to first make a guild command for testing as guild commands are updated immediately and then make them a global command.
 
 <img src="https://emoji.gg/assets/emoji/4596-froggy-arrow.png" width="24px" height="24px" alt="froggy_arrow"> If you want to change the `ready` event then remember to use these to get the values.
 ```js
-const info = require(HOME + "/Home/Classes/Handler")
-info.Handler.loadSlashCommands(client) // Required to be in ready event.
-client.commands.size
-client.aliases.size
+client.commands.normal.size
+client.commands.normal.aliases.size
 client.events.size
-client.buttonCommands.size
-client.selectMenus.size
-info.slashCount.length
+client.commands.buttons.size
+client.commands.menus.size
+client.commands.slash.size
 ```
 
 # 『 Setup / Configuration 』
 <img src="https://emoji.gg/assets/emoji/9266_arrow_rainbow.gif" width="18px" height="18px" alt="arrow_rainbow"> Install the required modules in the `package.json` file using the command `npm i`.<br>
-<img src="https://emoji.gg/assets/emoji/9266_arrow_rainbow.gif" width="18px" height="18px" alt="arrow_rainbow"> Fill / Edit the contents of either `config.json` or `.env`.<br>
+<img src="https://emoji.gg/assets/emoji/9266_arrow_rainbow.gif" width="18px" height="18px" alt="arrow_rainbow"> Fill / Edit the contents of `config.js`<br>
 <img src="https://emoji.gg/assets/emoji/9266_arrow_rainbow.gif" width="18px" height="18px" alt="arrow_rainbow"> Make sure you have read the `Important Notes` sector.<br>
 
 # 『 Examples 』
@@ -77,7 +83,7 @@ module.exports = {
 ### Non Client Event
 ```js
 module.exports = {
-	custom: true,
+	customEvent: true,
 	run: async(client) => {
 		client.distube.on("error", (message, error) => {
 		console.error(error)
@@ -92,7 +98,7 @@ module.exports = {
     name : 'evalbtn', // Must be same as button's Custom Id
     // Check below for avaliable optional options that can be used he
     run : async(client, interaction, Discord) => {
-interaction.reply("yo")
+        interaction.reply("yo")
     }
 }     
 ```
@@ -112,8 +118,7 @@ module.exports = {
 ```js
 module.exports = {
     name : 'fun', // Name of the slash command.
-    aliases: ["meow"], // Multiple Aliases. Optional.
-    guild: "GuildID" or ["GuildID", "GuildID"], // Makes this command a guild command in these guilds. // Optional
+    guilds: ["GuildID", "GuildID"], // Makes this command a guild command in these guilds. // Optional
     description: "A fun command :)", // Description of slash command. Optional
     type: "CHAT_INPUT", // Type of / command. Optional
     options: [{
@@ -133,17 +138,6 @@ module.exports = {
 `ownerOnly: true / false`
 * Default: `false`. 
 * When true, The command will only be runnable by the bot owner.
-
-`authorOnly: true / false` 
-* **Only for button commands**
-* Default: `false`
-* When true, Only the person who ran the command which had the buttons will be able to interact with them.
-
-`expireAfter: Time in ms`
-* **Only for button and selectmenu commands**
-* Default: `None`
-* The buttons / selectmenu will be disabled after this time has passed.
-For SelectMenu use, Refer to `Home/CMDFiles/SelectMenus/select.js`
 
 `cooldown: Time in ms`
 * Default: `0`.
@@ -177,9 +171,13 @@ For SelectMenu use, Refer to `Home/CMDFiles/SelectMenus/select.js`
 * Default: `None`
 * Only the provided user IDs will be able to run the command.
 
-`onlyRoles: ["Role ID", "Role ID" . . .]`
+`requiredRoles: ["Role ID", "Role ID" . . .]`
 * Default: `None`
-* Only the users with one of the provided roles will be able to run the command.
+* Users will need to have all these role to be able to run the command.
+
+`requiredAnyRole: ["Role ID", "Role ID" . . .]`
+* Default: `None`
+* Users will need to have any one of these roles to be able to run the command.
 
 `onlyChannels: ["Channel ID", "Channel ID" . . .]`
 * Default: `None`
@@ -196,43 +194,47 @@ These are a part of the above options. You can choose which option should give t
 * Default: `false`
 * When true, None of the errors usually sent by the options above will be sent. Basically it is like having all the options below as `false`.
 
-`returnCooldownError: true / false`
+`returnCooldown: true / false`
 * Default: `true`
 * When false, The error message sent by the `cooldown handler` will not be sent.
 
-`returnOwnerOnlyError: true / false`
+`returnOwnerOnly: true / false`
 * Default: `true`
 * When false, The error message sent by the `ownerOnly handler` will not be sent.
 
-`returnUserPermissionsError: true / false`
+`returnUserPermissions: true / false`
 * Default: `true`
 * When false, The error message sent by the `userPermissions handler` will not be sent.
 
-`returnClientPermissionsError: true / false`
+`returnClientPermissions: true / false`
 * Default: `true`
 * When false, The error message sent by the `clientPermissions handler` will not be sent.
 
-`returnAnyUserPermissionsError: true / false`
+`returnAnyUserPermissions: true / false`
 * Default: `true`
 * When false, The error message sent by the `anyUserPermissions handler` will not be sent.
 
-`returnAnyClientPermissionsError: true / false`
+`returnAnyClientPermissions: true / false`
 * Default: `true`
 * When false, The error message sent by the `anyClientPermissions handler` will not be sent.
 
-`returnOnlyUsersError: true / false`
+`returnOnlyUsers: true / false`
 * Default: `true`
 * When false, The error message sent by the `onlyUsers handler` will not be sent.
 
-`returnOnlyRolesError: true / false`
+`returnRequiredRoles: true / false`
 * Default: `true`
-* When false, The error message sent by the `onlyRoles handler` will not be sent.
+* When false, The error message sent by the `requiredRoles handler` will not be sent.
 
-`returnOnlyChannelsError: true / false`
+`returnRequiredAnyRole: true / false`
+* Default: `true`
+* When false, The error message sent by the `requiredAnyRole handler` will not be sent.
+
+`returnOnlyChannels: true / false`
 * Default: `true`
 * When false, The error message sent by the `onlyChannels handler` will not be sent.
 
-`returnOnlyGuildsError: true / false`
+`returnOnlyGuilds: true / false`
 * Default: `true`
 * When false, The error message sent by the `onlyGuilds handler` will not be sent.
 
