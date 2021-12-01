@@ -2,7 +2,7 @@ module.exports = async function (message, command, Discord) {
     if (!command.userPermissions) return false;
     let missing = []
     command.userPermissions.forEach(i => {
-        if (message.member.permissions.has(i)) missing.push(i)
+        if (!message.member.permissions.has(i)) missing.push(i)
     })
     if (missing.length == 0) return false
     else {
