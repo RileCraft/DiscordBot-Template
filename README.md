@@ -33,7 +33,7 @@
 <img src="https://emoji.gg/assets/emoji/2522-arrow.png" width="18px" height="18px" alt="arrow"> Chalk logging.<br>
 
 # 『 Important Notes 』
-<img src="https://emoji.gg/assets/emoji/4596-froggy-arrow.png" width="24px" height="24px" alt="froggy_arrow"> This is made in **Discord.JS V13** and if you want to use this in V12 then you would have to do changes.
+<img src="https://emoji.gg/assets/emoji/4596-froggy-arrow.png" width="24px" height="24px" alt="froggy_arrow"> Each new / old slashcommand takes 5s each to be created / updated as to comply with Discord API.
 
 <img src="https://emoji.gg/assets/emoji/4596-froggy-arrow.png" width="24px" height="24px" alt="froggy_arrow"> Recommended NodeJS V16+.
 
