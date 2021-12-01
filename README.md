@@ -22,7 +22,7 @@
 <img src="https://emoji.gg/assets/emoji/3821-arroworange.png" width="18px" height="18px" alt="arroworange"> Handler is currenty not 100% tested so if you encounter any bugs let us know!<br>
 
 # 『 Currently Known Bugs 』
-* None.
+* Bot doesn't log anything on start but it still responds to commands.
 
 # 『 Features 』
 <img src="https://emoji.gg/assets/emoji/2522-arrow.png" width="18px" height="18px" alt="arrow"> Custom command handler with ton of handlers included to make ur life easier!<br>
