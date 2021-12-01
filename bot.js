@@ -29,9 +29,9 @@ client.commands.menus = new Discord.Collection();
 client.commands.slash = new Discord.Collection();
 
 const Handler = require(`${ROOT.path}/Root/Classes/Handlers/Handler`);
-await client.login(ROOT.config.token);
 await Handler.loadCommands(client);
 await Handler.loadEvents(client);
+await client.login(ROOT.config.token);
 await Handler.loadSlashCommands(client);
 await Handler.loadButtonCommands(client);
 await Handler.loadSelectMenuCommands(client);
