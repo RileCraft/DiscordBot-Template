@@ -4,7 +4,8 @@
   "description": "Discord bot template",
   "main": "bot.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node bot.js"
   },
   "author": "RileCraft",
   "license": "MIT",
