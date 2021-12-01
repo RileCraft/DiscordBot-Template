@@ -8,6 +8,7 @@
 # Developer currently on break (V4 Big Update)
 
 # 『 Changelog 』
+<img src="https://emoji.gg/assets/emoji/3821-arroworange.png" width="18px" height="18px" alt="arroworange"> Fixed eval button not working , `userPermissions` not working properly.<br>
 <img src="https://emoji.gg/assets/emoji/3821-arroworange.png" width="18px" height="18px" alt="arroworange"> Revamped the entire handler.<br>
 <img src="https://emoji.gg/assets/emoji/3821-arroworange.png" width="18px" height="18px" alt="arroworange"> Removed `authorOnly, expireAfter` options.<br>
 <img src="https://emoji.gg/assets/emoji/3821-arroworange.png" width="18px" height="18px" alt="arroworange"> All the token , prefix , dev ids will now go in `Storage/Vault/Config.js`.<br>
