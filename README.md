@@ -7,19 +7,7 @@
 # Developer currently on break (V4 Big Update)
 
 # 『 Changelog 』
-<img src="https://emoji.gg/assets/emoji/3821-arroworange.png" width="18px" height="18px" alt="arroworange"> Fixed eval button not working , `userPermissions` not working properly.<br>
-<img src="https://emoji.gg/assets/emoji/3821-arroworange.png" width="18px" height="18px" alt="arroworange"> Fixed bot not logging on reboot.<br>
-<img src="https://emoji.gg/assets/emoji/3821-arroworange.png" width="18px" height="18px" alt="arroworange"> Revamped the entire handler.<br>
-<img src="https://emoji.gg/assets/emoji/3821-arroworange.png" width="18px" height="18px" alt="arroworange"> Removed `authorOnly, expireAfter` options.<br>
-<img src="https://emoji.gg/assets/emoji/3821-arroworange.png" width="18px" height="18px" alt="arroworange"> All the token , prefix , dev ids will now go in `Storage/Vault/Config.js`.<br>
-<img src="https://emoji.gg/assets/emoji/3821-arroworange.png" width="18px" height="18px" alt="arroworange"> In slashCommands the `guild: "ID"` option has been changed to `guilds: ["ID", "ID", . . .]`<br>
-<img src="https://emoji.gg/assets/emoji/3821-arroworange.png" width="18px" height="18px" alt="arroworange"> Aliases for slashCommands has been removed.<br>
-<img src="https://emoji.gg/assets/emoji/3821-arroworange.png" width="18px" height="18px" alt="arroworange"> All the collection which stores the commands has been changed. (Refer to bot.js to view changes).<br>
-<img src="https://emoji.gg/assets/emoji/3821-arroworange.png" width="18px" height="18px" alt="arroworange"> All the code has been minimalized and i have tried to kept it as simple as possible.<br>
-<img src="https://emoji.gg/assets/emoji/3821-arroworange.png" width="18px" height="18px" alt="arroworange"> slashCommands are no longer required to be loaded from `Ready.js` event.<br>
-<img src="https://emoji.gg/assets/emoji/3821-arroworange.png" width="18px" height="18px" alt="arroworange"> The main folder has been renamed from `Home` to `Root`.<br>
-<img src="https://emoji.gg/assets/emoji/3821-arroworange.png" width="18px" height="18px" alt="arroworange"> The old way of using `HOME` to get root path has been replaced with `ROOT.path` and the config can be accessed using `Root.config`.<br>
-<img src="https://emoji.gg/assets/emoji/3821-arroworange.png" width="18px" height="18px" alt="arroworange"> Handler is currenty not 100% tested so if you encounter any bugs let us know!<br>
+<img src="https://emoji.gg/assets/emoji/3821-arroworange.png" width="18px" height="18px" alt="arroworange"> Fixed `guildOnly` and `allowBots`.<br>
 
 # 『 Currently Known Bugs 』
 * None

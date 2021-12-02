@@ -21,11 +21,7 @@ module.exports = async function (client, message, command, isInteraction, intera
             if (!command) return;
             let args = message.content.slice(prefix.length).trim()
             if (args.toLowerCase().startsWith(cmdName)) args = args.slice(cmdName.length).trim().split(" ")
-            if (command.guildOnly == false) command.run(client, message, args, Discord)
-            else if (!message.guild) return;
-            else if (command.allowBots) command.run(client, message, args, Discord)
-            else if (message.author.bot) return;
-            else command.run(client, message, args, Discord)
+            command.run(client, message, args, Discord)
         })
     }
 }
