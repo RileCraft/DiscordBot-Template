@@ -7,7 +7,7 @@
 # Developer currently on break (V4 Big Update)
 
 # 『 Changelog 』
-<img src="https://emoji.gg/assets/emoji/3821-arroworange.png" width="18px" height="18px" alt="arroworange"> Fixed `guildOnly` and `allowBots`.<br>
+<img src="https://emoji.gg/assets/emoji/3821-arroworange.png" width="18px" height="18px" alt="arroworange"> Temporary fixed `cannot read properties of undefined (reading cooldown)`
 
 # 『 Currently Known Bugs 』
 * None
