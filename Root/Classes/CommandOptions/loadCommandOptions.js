@@ -1,4 +1,5 @@
 module.exports = async function (client, message, command, isInteraction, interactionType) {
+	if (!command) return;
     const Discord = require("discord.js")
     if (await require(`${ROOT.path}/Root/Classes/CommandOptions/Cooldown`)(client, message, command, isInteraction, interactionType, Discord)) return;
     else if (await require(`${ROOT.path}/Root/Classes/CommandOptions/OwnerOnly`)(message, command, Discord)) return;
