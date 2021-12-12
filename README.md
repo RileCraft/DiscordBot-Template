@@ -7,7 +7,7 @@
 # Developer currently on break (V4 Big Update)
 
 # 『 Changelog 』
-<img src="https://emoji.gg/assets/emoji/3821-arroworange.png" width="18px" height="18px" alt="arroworange"> Fixes slashCommands not logging in console on bot startup.
+<img src="https://emoji.gg/assets/emoji/3821-arroworange.png" width="18px" height="18px" alt="arroworange"> Fixed selectMenu handler.
 
 # 『 Currently Known Bugs 』
 * None
