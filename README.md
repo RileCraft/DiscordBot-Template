@@ -4,8 +4,6 @@
 <img src="https://img.shields.io/github/forks/RileCraft/DiscordBot-Template.svg?style=for-the-badge">
 <img src="https://img.shields.io/github/stars/RileCraft/DiscordBot-Template.svg?style=for-the-badge"></p>
 
-# Developer currently on break (V4 Big Update)
-
 # 『 Changelog 』
 <img src="https://emoji.gg/assets/emoji/3821-arroworange.png" width="18px" height="18px" alt="arroworange"> Fixed `requiredAnyRole` command option.
 
