@@ -7,7 +7,7 @@
 # Developer currently on break (V4 Big Update)
 
 # 『 Changelog 』
-<img src="https://emoji.gg/assets/emoji/3821-arroworange.png" width="18px" height="18px" alt="arroworange"> SelectMenu interaction now supports multiple options selectMenus.
+<img src="https://emoji.gg/assets/emoji/3821-arroworange.png" width="18px" height="18px" alt="arroworange"> Fixed `requiredAnyRole` command option.
 
 # 『 Currently Known Bugs 』
 * None
