@@ -9,6 +9,8 @@ module.exports = async function (client, message, command, isInteraction, intera
             await db.set(`CooldownSystem.${message.guild.id}.${command.name}.${interactionType ?? "Normal"}.${user.id}`, currentTime)
             return false;
         } else {
+            if (command.returnCooldown == false || command.returnNoErrors) return true;
+            else {
             message.reply({
                 embeds: [new Discord.MessageEmbed()
                 .setAuthor(user.tag, user.displayAvatarURL({ dynamic: true }))
@@ -19,6 +21,6 @@ module.exports = async function (client, message, command, isInteraction, intera
                     repliedUser: false
                 }
             })
-            return true;
+            return true;}
         }
 }
