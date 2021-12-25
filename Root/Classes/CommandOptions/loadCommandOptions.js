@@ -16,7 +16,7 @@ module.exports = async function (client, message, command, isInteraction, intera
     if (isInteraction) command.run(client, message, Discord)
     else {
         ROOT.config.prefix.forEach(prefix => {
-            if (!message.content.startsWith(prefix)) return;
+            if (!message.content.toLowerCase().startsWith(prefix)) return;
             const cmdName = message.content.toString().toLowerCase().slice(prefix.length).trim().split(" ")[0]
             const command = client.commands.normal.get(cmdName) ?? client.commands.normal.get(client.commands.normal.aliases.get(cmdName))
             if (!command) return;
