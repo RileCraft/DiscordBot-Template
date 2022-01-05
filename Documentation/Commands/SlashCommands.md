@@ -25,7 +25,7 @@ module.exports = {
     run: async(client, interaction, Discord) => {
         const user = interaction.options.getUser("user")
         interaction.reply({
-            content: `Get ponged <@${user.id}>`
+            content: `Get ponged <@${user.id}> lol`
         })
     }
 }
