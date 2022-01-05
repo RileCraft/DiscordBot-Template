@@ -13,22 +13,22 @@ module.exports = {
 ### **SelectMenu Code**
 ```js
 new Discord.MessageActionRow().addComponents(
-   new Discord.MessageSelectMenu()
-					.setCustomId('help')
-					.setPlaceholder('Avaliable Commands')
-					.addOptions([
-                        {
-							label: '🛠 HomePage',
-							description: 'Return back to homepage.',
-							value: 'home',
-						},
-						{
-							label: 'Bababooey',
-							description: 'E',
-							value: 'bababooey',
-						}
-					]),
-    );
+    new Discord.MessageSelectMenu()
+    .setCustomId('help')
+	.setPlaceholder('Avaliable Commands')
+    .addOptions([
+        {
+            label: '🛠 HomePage',
+            description: 'Return back to homepage.',
+            value: 'home',
+            },
+            {
+                label: 'Bababooey',
+                description: 'E',
+                value: 'bababooey',
+                }
+            ]),
+        );
 ```
 
 ### **bababooey.js**
