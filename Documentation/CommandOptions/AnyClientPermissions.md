@@ -4,5 +4,5 @@
 ## **Usage**
 ```js
 anyClientPermissions: ["Perm1", "Perm2"]
-returnAnyClientPermissions: true / false // Default: false
+returnAnyClientPermissions: true / false // Default: true
 ```

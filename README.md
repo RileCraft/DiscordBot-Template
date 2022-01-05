@@ -51,6 +51,7 @@ client.commands.buttonCommands //Buttons collection
 * [**AnyClientPermissions**](Documentation/CommandOptions/AnyClientPermissions.md)
 * [**AnyUserPermissions**](Documentation/CommandOptions/AnyUserPermissions.md)
 * [**ClientPermissions**](Documentation/CommandOptions/ClientPermissions.md)
+* [**UserPermissions**](Documentation/CommandOptions/UserPermissions.md)
 * [**Cooldown**](Documentation/CommandOptions/Cooldown.md)
 * [**OnlyChannels**](Documentation/CommandOptions/OnlyChannels.md)
 * [**OnlyGuilds**](Documentation/CommandOptions/OnlyGuilds.md)
