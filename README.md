@@ -48,6 +48,7 @@ client.commands.buttonCommands //Buttons collection
 * [**Buttons**](Documentation/Commands/ButtonCommands.md)
 
 ## 『 CommandOptions Documentation 』
+* [**ReturnNoErrors**](Documentation/CommandOptions/ReturnNoErrors.md)
 * [**AnyClientPermissions**](Documentation/CommandOptions/AnyClientPermissions.md)
 * [**AnyUserPermissions**](Documentation/CommandOptions/AnyUserPermissions.md)
 * [**ClientPermissions**](Documentation/CommandOptions/ClientPermissions.md)
