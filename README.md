@@ -17,7 +17,7 @@
 
 # 『 Important Notes 』
 * [**NodeJS**](https://nodejs.org) V16 and above.
-* `ContextMenus` and `SlashCommands` take 5second each command file to create and update because of Discord's Ratelimit. But the `run()` function is updated immediately on startup so if you only need to update existing command code then it will be done instantly so thats a nice thing :D.
+* `ContextMenus` and `SlashCommands` take 5 second each command file to create and update because of Discord's Ratelimit. But the `run()` function is updated immediately on startup so if you only need to update existing command code then it will be done instantly so thats a nice thing :D.
 * Global commands can take upto a hour to update because that's how Discord made global commands so we cannot do anything about it.
 * These are the collections where events and commands are stored.
 ```js
