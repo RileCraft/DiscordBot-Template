@@ -12,28 +12,29 @@ const client = new Discord.Client({
         Discord.Intents.FLAGS.GUILD_WEBHOOKS,
         Discord.Intents.FLAGS.GUILD_VOICE_STATES,
         Discord.Intents.FLAGS.GUILD_INVITES,
-        Discord.Intents.FLAGS.GUILD_BANS,
+        Discord.Intents.FLAGS.GUILD_BANS
     ],
-partials: ["CHANNEL"]
+    partials: ["CHANNEL"]
 });
-
 exports.client = client;
 global.ROOT = {}
 ROOT.path = __dirname;
-ROOT.config = require(`${ROOT.path}/Root/Storage/Vault/Config`)
-client.commands = new Discord.Collection();
-client.commands.normal = new Discord.Collection();
+ROOT.config = require("./Config")
+client.commands = {};
 client.events = new Discord.Collection();
-client.commands.normal.aliases = new Discord.Collection();
-client.commands.buttons = new Discord.Collection();
-client.commands.menus = new Discord.Collection();
-client.commands.slash = new Discord.Collection();
-
-const Handler = require(`${ROOT.path}/Root/Classes/Handlers/Handler`);
-await Handler.loadCommands(client);
+client.commands.messageCommands = new Discord.Collection();
+client.commands.messageCommands.aliases = new Discord.Collection();
+client.commands.contextMenus = new Discord.Collection();
+client.commands.slashCommands = new Discord.Collection();
+client.commands.buttonCommands = new Discord.Collection();
+client.commands.selectMenus = new Discord.Collection();
+    
+const Handler = require(`${ROOT.path}/Root/Structures/Handlers/Handler`);
+await Handler.loadMessageCommands(client);
 await Handler.loadEvents(client);
 await client.login(ROOT.config.token);
 await Handler.loadSlashCommands(client);
+await Handler.loadContextMenus(client);
 await Handler.loadButtonCommands(client);
-await Handler.loadSelectMenuCommands(client);
+await Handler.loadSelectMenus(client);
 })()

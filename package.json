@@ -1,17 +1,28 @@
 {
   "name": "discordbot-template",
-  "version": "4.0.8",
-  "description": "Discord bot template",
+  "version": "5.0.0",
+  "description": "Advanced Template",
   "main": "bot.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node bot.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RileCraft/DiscordBot-Template.git"
+  },
+  "keywords": [
+    "Yes"
+  ],
   "author": "RileCraft",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RileCraft/DiscordBot-Template/issues"
+  },
+  "homepage": "https://github.com/RileCraft/DiscordBot-Template#readme",
   "dependencies": {
     "chalk": "^4.1.2",
-    "discord.js": "^13.3.1",
+    "child_process": "^1.0.2",
+    "discord.js": "^13.5.0",
     "fs": "^0.0.1-security",
     "glob": "^7.2.0",
     "quick.db": "^7.1.3"
