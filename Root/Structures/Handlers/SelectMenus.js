@@ -5,6 +5,7 @@ module.exports = async function(client) {
         res.forEach(file => {
             if (fs.statSync(file).isDirectory()) return;
             const selectMenu = require(file)
+            if (selectMenu.ignoreFile) return;
             client.commands.selectMenus.set(selectMenu.name, selectMenu)
         })
     })

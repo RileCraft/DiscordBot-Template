@@ -4,6 +4,8 @@ module.exports = async function(client) {
     Filer(`${ROOT.path}/Root/Commands/SlashCommands`, async function(err, res) {
         res.forEach(file => {
             if (fs.statSync(file).isDirectory()) return;
+            const cmd = require(file);
+            if (cmd.ignoreFile) return;
             client.commands.slashCommands.set(require(file).name, require(file))
         })
         let promise = Promise.resolve()

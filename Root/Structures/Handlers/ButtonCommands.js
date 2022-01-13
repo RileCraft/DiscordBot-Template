@@ -5,6 +5,7 @@ module.exports = async function(client) {
         res.forEach(file => {
             if (fs.statSync(file).isDirectory()) return;
             const button = require(file)
+            if (button.ignoreFile) return;
             client.commands.buttonCommands.set(button.name, button)
         })
     })
