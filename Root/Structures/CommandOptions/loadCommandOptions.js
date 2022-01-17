@@ -10,7 +10,7 @@ module.exports = async function (client, message, command, isInteraction, intera
     else if (await require("./RequiredAnyRole")(message, command, Discord)) return;
     else if (await require("./RequiredRoles")(message, command, Discord)) return;
     else if (await require("./OnlyChannels")(message, command, Discord)) return;
-    else if (await require("./OnlyGuilds")(message, command, Discord)) return;
+    else if (await require("./OnlyGuilds")(client, message, command, Discord)) return;
     else if (await require("./OnlyUsers")(client, message, command, Discord)) return;
     else {
         if (isInteraction) command.run(client, message, Discord)
