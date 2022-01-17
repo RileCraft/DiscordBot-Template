@@ -13,7 +13,7 @@ module.exports = async function (message, command, Discord) {
                 })
                 .setColor("RANDOM")
                 .setTimestamp()
-                .setDescription(`You are required to have any one of these roles to be able to run this command.\n•${missing.join("\n•")}`)],
+                .setDescription(`You are required to have any one of these roles to be able to run this command.\n•${requiredRoles.join("\n•")}`)],
                 allowedMentions: {
                     repliedUser: false
                 }
