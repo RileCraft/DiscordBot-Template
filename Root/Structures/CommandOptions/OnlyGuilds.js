@@ -1,4 +1,4 @@
-module.exports = async function (message, command, Discord) {
+module.exports = async function (client, message, command, Discord) {
     if (!command.onlyGuilds) return false;
     if (command.onlyGuilds.some(id => id == message.guild.id)) return false;
     else {
