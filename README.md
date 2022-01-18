@@ -61,7 +61,7 @@ client.commands.buttonCommands //Buttons collection
 * [**OwnerOnly**](Documentation/CommandOptions/OwnerOnly.md)
 * [**RequiredAnyRole**](Documentation/CommandOptions/RequiredAnyRole.md)
 * [**RequiredRoles**](Documentation/CommandOptions/RequiredRoles.md)
-* [**IgnoreFile**](Documentation/CommandOptions/IgnoreFilemd)
+* [**IgnoreFile**](Documentation/CommandOptions/IgnoreFile.md)
 
 # 『 Contribution 』
 If you want to contribute towards this repository then follow these steps.
