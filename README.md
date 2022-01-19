@@ -36,14 +36,16 @@ client.commands.buttonCommands //Buttons collection
 * Fill all the fields in `Config.js`.
 * Use the command `node bot.js` or `node .` to start the bot and enjoy :D
 
+# 『 Hosting 』
+* [![Run on Repl.it](https://repl.it/badge/github/RileCraft/DiscordBot-Template)](https://repl.it/github/RileCraft/DiscordBot-Template.git)
+* [![Deploy to heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/RileCraft/DiscordBot-Template.git/tree/Master)
+
 # 『 Documentation 』
 ## 『 Events Documentation 』
 * [**Client Events**](Documentation/Events/ClientEvents.md)
 * [**Non-Client Events**](Documentation/Events/CustomEvents.md)
 
-## 『 Hosting 』
-* [![Run on Repl.it](https://repl.it/badge/github/RileCraft/DiscordBot-Template)](https://repl.it/github/RileCraft/DiscordBot-Template.git)
-* [![Deploy to heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/RileCraft/DiscordBot-Template.git/tree/Master)
+
 
 ## 『 Commands Documentation 』
 * [**MessageCommands**](Documentation/Commands/MessageCommands.md)
