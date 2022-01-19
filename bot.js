@@ -1,4 +1,5 @@
 (async () => {
+require("./Server/server.js")();
 const Discord = require("discord.js");
 const client = new Discord.Client({
     intents: [

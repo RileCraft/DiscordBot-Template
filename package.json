@@ -1,10 +1,12 @@
 {
   "name": "discordbot-template",
-  "version": "5.0.0",
+  "version": "5.0.2",
   "description": "Advanced Template",
   "main": "bot.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "prettier --write . --ignore-unknown",
+    "format:check": "prettier --check ."
   },
   "repository": {
     "type": "git",
@@ -18,11 +20,20 @@
   "bugs": {
     "url": "https://github.com/RileCraft/DiscordBot-Template/issues"
   },
+  "engines": {
+    "node": "16.x"
+  },
   "homepage": "https://github.com/RileCraft/DiscordBot-Template#readme",
+  "devDependencies": {
+    "node": "^16.13.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.5.1"
+  },
   "dependencies": {
     "chalk": "^4.1.2",
     "child_process": "^1.0.2",
-    "discord.js": "^13.5.0",
+    "discord.js": "^13.6.0",
+    "express": "^4.17.1",
     "fs": "^0.0.1-security",
     "glob": "^7.2.0",
     "quick.db": "^7.1.3"

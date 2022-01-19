@@ -1,0 +1,11 @@
+{
+    "name": "DiscordBot-Template",
+    "description": "A bot template with command , event , button , selectmenus , slashcommands handler and error handlers. Made in Discord.JS V13",
+    "repository": "https://github.com/RileCraft/DiscordBot-Template.git",
+    "stack": "heroku-20",
+    "buildpacks": [{
+      "url": "heroku/nodejs"
+    }],
+    "env": {
+    }
+}

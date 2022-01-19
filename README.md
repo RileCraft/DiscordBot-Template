@@ -41,6 +41,9 @@ client.commands.buttonCommands //Buttons collection
 * [**Client Events**](Documentation/Events/ClientEvents.md)
 * [**Non-Client Events**](Documentation/Events/CustomEvents.md)
 
+## 『 Hosting 』
+* [![Run on Repl.it](https://repl.it/badge/github/RileCraft/DiscordBot-Template)](https://repl.it/github/RileCraft/DiscordBot-Template.git)
+* [![Deploy to heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/RileCraft/DiscordBot-Template.git/tree/Master)
 ## 『 Commands Documentation 』
 * [**MessageCommands**](Documentation/Commands/MessageCommands.md)
 * [**SlashCommands**](Documentation/Commands/SlashCommands.md)
