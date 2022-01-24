@@ -1,3 +1,2 @@
-# **Changelog for 5.0.2**
-* Fixed `onlyGuilds` Structure.
-* Fixed `requiredAnyRole` Structure.
+# **Changelog for 5.0.3**
+* Update `discord.js` version in `package.json`.
