@@ -1,4 +1,4 @@
-<p align="center"><img src="https://media.discordapp.net/attachments/774290264764055582/935942979057754212/Blue_and_Red_Classic_Maximalist_Sports_Football_Banner.gif" height=200 width=400><br>
+<p align="center"><img src="https://media.discordapp.net/attachments/774290264764055582/890955909566722048/0001-8574372447_20210924_191019_0000.png" height=200 width=400><br>
 <img src="https://img.shields.io/badge/version-5.0.3-05122A?style=for-the-badge">
 <a href="https://discord.gg/VStdRr8nP2"><img src="https://img.shields.io/badge/discord-invite-5865f2?style=for-the-badge&logo=discord&logoColor=white"></a>
 <img src="https://img.shields.io/github/issues/RileCraft/DiscordBot-Template.svg?style=for-the-badge">
