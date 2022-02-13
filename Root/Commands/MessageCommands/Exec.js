@@ -2,10 +2,10 @@ const { exec } = require("child_process")
 module.exports = {
     name: 'exec',
     ownerOnly: true,
-    run: async (client, message, args, Discord) => {
-        const row = new Discord.MessageActionRow()
+    run: async (client, message, args, container) => {
+        const row = new container.Discord.MessageActionRow()
         .addComponents(
-            new Discord.MessageButton()
+            new container.Discord.MessageButton()
             .setCustomId('evalbtn')
             .setLabel('Delete Output')
             .setStyle('DANGER')

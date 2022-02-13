@@ -4,7 +4,7 @@
 ```js
 module.exports = {
     name: "buttonName",
-    run: async(client, interaction, Discord) => {
+    run: async(client, interaction, container) => {
         // Do your dumb stuff.
     }
 }
@@ -12,8 +12,8 @@ module.exports = {
 ## **Example**
 ### **Button Code**
 ```js
-new Discord.MessageActionRow().addComponents(
-    new Discord.MessageButton()
+new container.Discord.MessageActionRow().addComponents(
+    new container.Discord.MessageButton()
     .setCustomId('deleteButton')
     .setLabel('Delete Output')
     .setStyle('DANGER')
@@ -25,7 +25,7 @@ new Discord.MessageActionRow().addComponents(
 module.exports = {
     name: "deleteButton",
     ownerOnly: true,
-    run: async(client, interaction, Discord) => {
+    run: async(client, interaction, container) => {
         interaction.message.delete()
     }
 }

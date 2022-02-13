@@ -4,7 +4,7 @@
 module.exports = {
     name: "cmdname",
     description: "cmd description",
-    run: async(client, interaction, Discord) => {
+    run: async(client, interaction, container) => {
         //stuff
     }
 }
@@ -22,7 +22,7 @@ module.exports = {
     }],
     description: "Ping users yes",
     guilds: ["ID"], // Optional (Makes it a guild cmd in the provided Guild IDs)
-    run: async(client, interaction, Discord) => {
+    run: async(client, interaction, container) => {
         const user = interaction.options.getUser("user")
         interaction.reply({
             content: `Get ponged <@${user.id}> lol`

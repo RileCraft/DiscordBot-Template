@@ -1,17 +1,23 @@
 const fs = require("fs");
 const Filer = require("../../Utils/Filer");
 const Discord = require("discord.js");
+const { path, config } = require("../../../bot")
 module.exports = async function(client) {
-    Filer(`${ROOT.path}/Root/Events`, async function(err, res){
+    const container = {
+        RootPath: path,
+        Config: config,
+        Discord: Discord
+    };
+    Filer(`${container.Path}/Root/Events`, async function(err, res){
         res.forEach(file => {
             if (fs.statSync(file).isDirectory()) return;
             const event = require(file);
             if (event.ignoreFile) return;
-            if (event.customEvent) event.run(client, Discord);
+            if (event.customEvent) event.run(client, container);
             client.events.set(event.name, event);
 
-            if (event.once) client.once(event.name, (...args) => event.run(...args, client, Discord));
-            else client.on(event.name, (...args) => event.run(...args, client, Discord));
+            if (event.once) client.once(event.name, (...args) => event.run(...args, client, container));
+            else client.on(event.name, (...args) => event.run(...args, client, container));
         })
      })
     }

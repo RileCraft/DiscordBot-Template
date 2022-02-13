@@ -25,6 +25,7 @@
     "discord.js": "^13.6.0",
     "fs": "^0.0.1-security",
     "glob": "^7.2.0",
+    "cli-box": "^6.0.10",
     "quick.db": "^7.1.3"
   }
 }

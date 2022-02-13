@@ -3,7 +3,7 @@
 ```js
 module.exports = {
     name: "name", // selectMenu's Custom ID or one of the options values.
-    run: async(client, interaction, Discord) => {
+    run: async(client, interaction, container) => {
         //Stuff
     }
 }
@@ -12,8 +12,8 @@ module.exports = {
 ## **Example**
 ### **SelectMenu Code**
 ```js
-new Discord.MessageActionRow().addComponents(
-    new Discord.MessageSelectMenu()
+new container.Discord.MessageActionRow().addComponents(
+    new container.Discord.MessageSelectMenu()
     .setCustomId('help')
 	.setPlaceholder('Avaliable Commands')
     .addOptions([
@@ -36,7 +36,7 @@ new Discord.MessageActionRow().addComponents(
 module.exports = {
     name: "bababooey",
     ownerOnly: true,
-    run: async(client, interaction, Discord) => {
+    run: async(client, interaction, container) => {
         interaction.reply({
             content: "Bababooey indeed"
         })

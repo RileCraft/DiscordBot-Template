@@ -1,8 +1,8 @@
 module.exports = {
 	name: "ping",
 	description: "Run this to see my ping.",
-	run: async(client, interaction, Discord) => {
-		const ping = new Discord.MessageEmbed()
+	run: async(client, interaction, container) => {
+		const ping = new container.Discord.MessageEmbed()
 		.setColor('RANDOM')
 		.setTimestamp()
 		.setTitle('🏓╎ Pong!')

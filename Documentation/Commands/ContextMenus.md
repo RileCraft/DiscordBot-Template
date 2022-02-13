@@ -4,7 +4,7 @@
 module.exports = {
     name: "cmdname",
     type: "cmdtype", // Either USER or MESSAGE
-    run: async(client, interaction, Discord) => {
+    run: async(client, interaction, container) => {
         // Your Stuff
     }
 }
@@ -15,7 +15,7 @@ module.exports = {
 module.exports = {
     name: "log-content",
     type: "MESSAGE",
-    run: async(client, interaction, Discord) => {
+    run: async(client, interaction, container) => {
         const msgContent = interaction.channel.messages.cache.get(interaction.targetId ?? await interaction.channel.messages.fetch(interaction.targetId)
         console.log(msgContent)
     }

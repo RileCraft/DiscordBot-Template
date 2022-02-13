@@ -1,18 +1,62 @@
 const chalk = require("chalk")
+const Box = require("cli-box")
 module.exports = {
     name: "ready",
     once: true,
     run: async(client) => {
-        client.user.setActivity('RileCraft.', {
+        client.user.setActivity('Cookies get baked.', {
             type: `WATCHING`,
         })
-        console.log(chalk.bold.yellowBright("[Bot] ") + chalk.bold.blueBright(`Connected to ${client.user.tag}`))
-        if (client.commands.messageCommands.size > 0) console.log(chalk.bold.redBright("[Handler]") + chalk.bold.greenBright(` Loaded ${client.commands.messageCommands.size} commands.`))
-        if (client.commands.messageCommands.aliases.size > 0) console.log(chalk.bold.whiteBright("[Handler]") + chalk.bold.magentaBright(` Loaded ${client.commands.messageCommands.aliases.size} aliases.`))
-        if (client.events.size > 0) console.log(chalk.bold.greenBright("[Handler]") + chalk.bold.cyanBright(` Loaded ${client.events.size} events.`))
-        if (client.commands.buttonCommands.size > 0) console.log(chalk.bold.yellow("[Handler]") + chalk.bold.blue(` Loaded ${client.commands.buttonCommands.size} buttons.`))
-        if (client.commands.selectMenus.size > 0) console.log(chalk.bold.white("[Handler]") + chalk.bold.green(` Loaded ${client.commands.selectMenus.size} selectMenus.`))
-        if (client.commands.slashCommands.size > 0) console.log(chalk.bold.red("[Handler]") + chalk.bold.yellow(` Found ${client.commands.slashCommands.size} slashCommands. Starting to load.`))
-        if (client.commands.contextMenus.size > 0) console.log(chalk.bold.greenBright("[Handler]") + chalk.bold.cyanBright(` Found ${client.commands.contextMenus.size} contextMenus. Starting to load.`))
+        const ClientBox = new Box({
+            w: Math.floor(client.user.tag.length + 27 ),
+            h: 7,
+            stringify: false,
+            marks: {
+              nw: '╭',
+              n: '─',
+              ne: '╮',
+              e: '│',
+              se: '╯',
+              s: '─',
+              sw: '╰',
+              w: '│'
+            },
+            hAlign: 'left',
+          }, `C L I E N T   I N F O R M A T I O N
+
+Client Details    ::    ${client.user.tag}
+Guilds Count      ::    ${client.guilds.cache.size}
+User Count        ::    ${client.users.cache.size}
+NodeJS Version    ::    ${process.version}
+`).stringify()
+
+        const CommandsBox = new Box({
+            w: Math.floor(`Initiating ${client.commands.messageCommands.aliases.size} messageCommands Aliases.`.length + 37),
+            h: 8,
+            stringify: false,
+            marks: {
+                nw: '╭',
+                n: '─',
+                ne: '╮',
+                e: '│',
+                se: '╯',
+                s: '─',
+                sw: '╰',
+                w: '│'
+            },
+            hAlign: "left",
+        }, `C O M M A N D S   I N F O R M A T I O N
+
+MessageCommands            ::    Initiating ${client.commands.messageCommands.size} messageCommands.
+MessageCommands Aliases    ::    Initiating ${client.commands.messageCommands.aliases.size} messageCommands Aliases.
+SlashCommands              ::    Initiating ${client.commands.slashCommands.size} slashCommands.
+SelectMenus                ::    Initiating ${client.commands.selectMenus.size} selectMenus.
+ContextMenus               ::    Initiating ${client.commands.contextMenus.size} contextMenus.
+ButtonCommands             ::    Initiating ${client.commands.buttonCommands.size} buttonCommands.
+Client Events              ::    Initiating ${client.events.size} events.
+`).stringify()
+
+        console.log(chalk.bold.greenBright(ClientBox))
+        console.log(chalk.bold.blueBright(CommandsBox))
     }
 }

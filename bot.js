@@ -1,5 +1,7 @@
 (async () => {
 const Discord = require("discord.js");
+const config = require("./Config");
+const path = __dirname;
 const client = new Discord.Client({
     intents: [
         Discord.Intents.FLAGS.GUILDS,
@@ -17,9 +19,8 @@ const client = new Discord.Client({
     partials: ["CHANNEL"]
 });
 exports.client = client;
-global.ROOT = {}
-ROOT.path = __dirname;
-ROOT.config = require("./Config")
+exports.path = path;
+exports.config = config;
 client.commands = {};
 client.events = new Discord.Collection();
 client.commands.messageCommands = new Discord.Collection();
@@ -29,12 +30,12 @@ client.commands.slashCommands = new Discord.Collection();
 client.commands.buttonCommands = new Discord.Collection();
 client.commands.selectMenus = new Discord.Collection();
     
-const Handler = require(`${ROOT.path}/Root/Structures/Handlers/Handler`);
-await Handler.loadMessageCommands(client);
+const Handler = require(`${path}/Root/Structures/Handlers/Handler`);
+await Handler.loadMessageCommands(client, path);
 await Handler.loadEvents(client);
-await client.login(ROOT.config.token);
-await Handler.loadSlashCommands(client);
-await Handler.loadContextMenus(client);
-await Handler.loadButtonCommands(client);
-await Handler.loadSelectMenus(client);
+await client.login(config.token);
+await Handler.loadSlashCommands(client, path);
+await Handler.loadContextMenus(client, path);
+await Handler.loadButtonCommands(client, path);
+await Handler.loadSelectMenus(client, path);
 })()
