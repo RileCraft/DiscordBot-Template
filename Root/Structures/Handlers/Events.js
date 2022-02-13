@@ -8,7 +8,7 @@ module.exports = async function(client) {
         Config: config,
         Discord: Discord
     };
-    Filer(`${container.Path}/Root/Events`, async function(err, res){
+    Filer(`${container.RootPath}/Root/Events`, async function(err, res){
         res.forEach(file => {
             if (fs.statSync(file).isDirectory()) return;
             const event = require(file);
