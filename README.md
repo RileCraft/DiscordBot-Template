@@ -8,6 +8,10 @@
 # 『 Changelog 』
 [**Click here to visit the latest changelog and checkout the changes done. (Major Update)**](Documentation/Changelog.md)
 
+# 『 FAQ 』
+[**Click here to see frequently asked questions**](Documentation/FAQ.md)
+
+
 
 # 『 Features 』
 * Chalk Logging
