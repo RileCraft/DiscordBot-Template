@@ -6,7 +6,7 @@ module.exports = {
 		.setColor('RANDOM')
 		.setTimestamp()
 		.setTitle('🏓╎ Pong!')
-		.setDescription(`🏠╎Websocket Latency: ${client.ws.ping}ms\n🤖╎Bot Latency: ${Date.now() - interaction.createdTimestamp}ms`);
+		.setDescription(`🏠╎Websocket Latency: ${client.ws.ping}ms\n🤖╎Bot Latency: ${interaction.createdTimestamp - Date.now()}ms`);
 		interaction.reply({ embeds: [ping] })
 	}
 }
