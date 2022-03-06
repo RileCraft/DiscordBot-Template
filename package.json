@@ -1,6 +1,6 @@
 {
   "name": "discordbot-template",
-  "version": "5.0.3",
+  "version": "6.0.1",
   "description": "Advanced Template",
   "main": "bot.js",
   "scripts": {
