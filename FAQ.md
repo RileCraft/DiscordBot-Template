@@ -8,11 +8,11 @@ This can happen due to various factors. Make sure to check the console for any t
 - Possible host issue (Lag or ratelimits).
 
 - Make sure you invited your bot with the `application.commands` scope.
-- * You can do so by following these steps.
-- * * Go to [Discord Developer Portal](https://discord.com/developers/applications) 
-<img src = "./Images/FAQ/01/Developer_Homepage.png">
-- * * Choose the bot.
-- * * Goto `OAuth2` and then `URL Generator`.
-- * * Then click `application.commands` and `bot` scopes.
-<img src = "./Images/FAQ/01/OAuth2.png">
-- * * Then just click the bot permissions you need and copy the generated URL and you're done.
+    - You can do so by following these steps.
+       - Go to [Discord Developer Portal](https://discord.com/developers/applications) 
+<img src = "./Images/FAQ/01/Developer_Homepage.png"><br>
+       - Choose the bot.
+       - Goto `OAuth2` and then `URL Generator`.
+       - Then click `application.commands` and `bot` scopes.
+<img src = "./Images/FAQ/01/OAuth2.png"><br>
+       - Then just click the bot permissions you need and copy the generated URL and you're done.
