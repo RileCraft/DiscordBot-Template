@@ -16,3 +16,6 @@ This can happen due to various factors. Make sure to check the console for any t
        - Then click `application.commands` and `bot` scopes.
 <img src = "./Images/FAQ/01/OAuth2.png"><br>
        - Then just click the bot permissions you need and copy the generated URL and you're done.
+
+## Are you going to update to `Discord.JS V14`?
+No, V14 is currently in dev and far from stable so there will be no point in adapting its changes just now.
