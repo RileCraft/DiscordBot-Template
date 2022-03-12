@@ -1,21 +1,21 @@
 # Welcome!
 
-## Welcome to Doo do doo
+## Welcome to DiscordBot-Template Documentation.
 
-Welcome to MyAPI! Here you'll find all the documentation you need to get up and running with the MyAPI API.
+These are the official documentation and is open-source. If you want to edit it then you can do so by opening a pull request in the repository's `Documentation` Branch.
 
-## Want to jump right in?
+## Getting Started
 
-Feeling like an eager beaver? Jump in to the quick start docs and get making your first request:
+Steps on how to install the template:
 
-{% content-ref url="quick-start.md" %}
-[quick-start.md](quick-start.md)
+{% content-ref url="Getting_Started.md" %}
+[Getting Started](Getting_Started.md)
 {% endcontent-ref %}
 
-## Want to deep dive?
+## Frequently Asked Questions
 
-Dive a little deeper and start exploring our API reference to get an idea of everything that's possible with the API:
+Questions which are frequently asked by the community:
 
-{% content-ref url="reference/api-reference/" %}
-[api-reference](reference/api-reference/)
+{% content-ref url="FAQ.md" %}
+[FAQ](FAQ.md)
 {% endcontent-ref %}
