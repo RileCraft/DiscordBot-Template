@@ -9,7 +9,7 @@ This can happen due to various factors. Make sure to check the console for any t
 
 - Make sure you invited your bot with the `application.commands` scope.
     - You can do so by following these steps.
-       - Go to [Discord Developer Portal](https://discord.com/developers/applications) 
+       - Go to [Discord Developer Portal](https://discord.com/developers/applications)<br>
 <img src = "./Images/FAQ/01/Developer_Homepage.png"><br>
        - Choose the bot.
        - Goto `OAuth2` and then `URL Generator`.
