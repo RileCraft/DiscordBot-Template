@@ -17,5 +17,5 @@ Steps on how to install the template:
 Questions which are frequently asked by the community:
 
 {% content-ref url="FAQ.md" %}
-[FAQ](FAQ.md)
+[FAQ](/FAQ.md)
 {% endcontent-ref %}
