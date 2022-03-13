@@ -8,6 +8,7 @@
 # 『 Changelog 』
 * The `Root` folder is now renamed to `Src` as it makes more sense. *I had to do it ok :(*
 * Depth flag which can be used as `--depth=Number` to increase or decrease depths in evals. Default depth is `0`.
+* `npm start` command finally added.
 * Documentation and FAQ has been moved to Gitbook to manage them more easier and cause it looks fancy kek. There is a new branch `Documentation` which you can open contribute to, all commits to the branch are automatically updated on the docs site.
 
 # 『 Documentation 』
