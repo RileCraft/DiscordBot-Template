@@ -30,7 +30,7 @@ client.commands.slashCommands = new Discord.Collection();
 client.commands.buttonCommands = new Discord.Collection();
 client.commands.selectMenus = new Discord.Collection();
     
-const Handler = require(`${path}/Root/Structures/Handlers/Handler`);
+const Handler = require(`${path}/Src/Structures/Handlers/Handler`);
 await Handler.loadMessageCommands(client, path);
 await Handler.loadEvents(client);
 await client.login(config.token);

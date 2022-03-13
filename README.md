@@ -1,15 +1,12 @@
 <p align="center"><img src="https://media.discordapp.net/attachments/774290264764055582/890955909566722048/0001-8574372447_20210924_191019_0000.png" height=200 width=400><br>
-<img src="https://img.shields.io/badge/version-6.0.2-05122A?style=for-the-badge">
+<img src="https://img.shields.io/badge/version-6.0.3-05122A?style=for-the-badge">
 <a href="https://discord.gg/VStdRr8nP2"><img src="https://img.shields.io/badge/discord-invite-5865f2?style=for-the-badge&logo=discord&logoColor=white"></a>
 <img src="https://img.shields.io/github/issues/RileCraft/DiscordBot-Template.svg?style=for-the-badge">
 <img src="https://img.shields.io/github/forks/RileCraft/DiscordBot-Template.svg?style=for-the-badge">
 <img src="https://img.shields.io/github/stars/RileCraft/DiscordBot-Template.svg?style=for-the-badge"></p>
 
 # 『 Changelog 』
-* The `Root` folder is now renamed to `Src` as it makes more sense. *I had to do it ok :(*
-* Depth flag which can be used as `--depth=Number` to increase or decrease depths in evals. Default depth is `0`.
-* `npm start` command finally added.
-* Documentation and FAQ has been moved to Gitbook to manage them more easier and cause it looks fancy kek. There is a new branch `Documentation` which you can open contribute to, all commits to the branch are automatically updated on the docs site.
+* Fixed broken file path in `bot.js`.
 
 # 『 Documentation 』
 [Click me](https://dbt.cozydevs.ml/) to go the official documentation site which has all the required information.
