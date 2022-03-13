@@ -11,6 +11,12 @@
 npm i
 ```
 {% endtab %}
+{% tab title="Yarn"%}
+```
+# Install via Yarn
+yarn
+```
+{% endtab %}
 {% endtabs %}
 
 ## Edit the `Config.js` file.
