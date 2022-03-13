@@ -5,7 +5,7 @@
 
 ## Install the modules / packages required.
 {% tabs %}
-{% tab title="NPM"}
+{% tab title="NPM"%}
 ```
 # Install via NPM
 npm i
