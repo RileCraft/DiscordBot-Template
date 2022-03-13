@@ -26,3 +26,7 @@ Fill the required fields correctly.
 ```js
 npm start
 ```
+or
+```js
+node bot.js
+```
