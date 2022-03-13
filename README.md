@@ -1,17 +1,20 @@
 <p align="center"><img src="https://media.discordapp.net/attachments/774290264764055582/890955909566722048/0001-8574372447_20210924_191019_0000.png" height=200 width=400><br>
-<img src="https://img.shields.io/badge/version-6.0.1-05122A?style=for-the-badge">
+<img src="https://img.shields.io/badge/version-6.0.2-05122A?style=for-the-badge">
 <a href="https://discord.gg/VStdRr8nP2"><img src="https://img.shields.io/badge/discord-invite-5865f2?style=for-the-badge&logo=discord&logoColor=white"></a>
 <img src="https://img.shields.io/github/issues/RileCraft/DiscordBot-Template.svg?style=for-the-badge">
 <img src="https://img.shields.io/github/forks/RileCraft/DiscordBot-Template.svg?style=for-the-badge">
 <img src="https://img.shields.io/github/stars/RileCraft/DiscordBot-Template.svg?style=for-the-badge"></p>
 
 # 『 Changelog 』
-[**Click here to visit the latest changelog and checkout the changes done. (Major Update)**](Documentation/Changelog.md)
+* The `Root` folder is now renamed to `Src` as it makes more sense. *I had to do it ok :(*
+* Depth flag which can be used as `--depth=Number` to increase or decrease depths in evals. Default depth is `0`.
+* Documentation and FAQ has been moved to Gitbook to manage them more easier and cause it looks fancy kek. There is a new branch `Documentation` which you can open contribute to, all commits to the branch are automatically updated on the docs site.
+
+# 『 Documentation 』
+[Click me](https://dbt.cozydevs.ml/) to go the official documentation site which has all the required information.
 
 # 『 FAQ 』
-[**Click here to see frequently asked questions**](Documentation/FAQ.md)
-
-
+[**Click here to see frequently asked questions**](https://dbt.cozydevs.ml/faq)
 
 # 『 Features 』
 * Chalk Logging
@@ -40,32 +43,6 @@ client.commands.buttonCommands //Buttons collection
 * Fill all the fields in `Config.js`.
 * Use the command `node bot.js` or `node .` to start the bot and enjoy :D
 
-# 『 Documentation 』
-## 『 Events Documentation 』
-* [**Client Events**](Documentation/Events/ClientEvents.md)
-* [**Non-Client Events**](Documentation/Events/CustomEvents.md)
-
-## 『 Commands Documentation 』
-* [**MessageCommands**](Documentation/Commands/MessageCommands.md)
-* [**SlashCommands**](Documentation/Commands/SlashCommands.md)
-* [**ContextMenus**](Documentation/Commands/ContextMenus.md)
-* [**SelectMenus**](Documentation/Commands/SelectMenus.md)
-* [**Buttons**](Documentation/Commands/ButtonCommands.md)
-
-## 『 CommandOptions Documentation 』
-* [**ReturnNoErrors**](Documentation/CommandOptions/ReturnNoErrors.md)
-* [**AnyClientPermissions**](Documentation/CommandOptions/AnyClientPermissions.md)
-* [**AnyUserPermissions**](Documentation/CommandOptions/AnyUserPermissions.md)
-* [**ClientPermissions**](Documentation/CommandOptions/ClientPermissions.md)
-* [**UserPermissions**](Documentation/CommandOptions/UserPermissions.md)
-* [**Cooldown**](Documentation/CommandOptions/Cooldown.md)
-* [**OnlyChannels**](Documentation/CommandOptions/OnlyChannels.md)
-* [**OnlyGuilds**](Documentation/CommandOptions/OnlyGuilds.md)
-* [**OnlyUsers**](Documentation/CommandOptions/OnlyUsers.md)
-* [**OwnerOnly**](Documentation/CommandOptions/OwnerOnly.md)
-* [**RequiredAnyRole**](Documentation/CommandOptions/RequiredAnyRole.md)
-* [**RequiredRoles**](Documentation/CommandOptions/RequiredRoles.md)
-* [**IgnoreFile**](Documentation/CommandOptions/IgnoreFile.md)
 
 # 『 Contribution 』
 If you want to contribute towards this repository then follow these steps.
