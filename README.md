@@ -6,7 +6,8 @@
 <img src="https://img.shields.io/github/stars/RileCraft/DiscordBot-Template.svg?style=for-the-badge"></p>
 
 # 『 Changelog 』
-* Fixed broken file path in `bot.js`.
+* Removed `glob, child_process, fs` dependencies as they come back with node.js.
+* Added nodemon to auto restart the bot on file changing to save developers time.
 
 # 『 Documentation 』
 [Click me](https://dbt.cozydevs.ml/) to go the official documentation site which has all the required information.
