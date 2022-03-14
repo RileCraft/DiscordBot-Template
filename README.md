@@ -4,6 +4,12 @@
 
 These are the official documentation and is open-source. If you want to edit it then you can do so by opening a pull request in the repository's `Documentation` Branch.
 
+## Join our discord to hang out with us or for support!
+
+{% content-ref url="https://discord.gg/VStdRr8nP2" %}
+[Discord Server](https://discord.gg/VStdRr8nP2)
+{% endcontent-ref %}
+
 ## Getting Started
 
 Steps on how to install the template:
