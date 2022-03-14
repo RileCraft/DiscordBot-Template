@@ -1,7 +1,7 @@
 # **Button Interaction**
 
 ## **Default Format**
-```js
+```javascript
 module.exports = {
     name: "buttonName",
     run: async(client, interaction, container) => {
@@ -11,7 +11,7 @@ module.exports = {
 ```
 ## **Example**
 ### **Button Code**
-```js
+```javascript
 new container.Discord.MessageActionRow().addComponents(
     new container.Discord.MessageButton()
     .setCustomId('deleteButton')
@@ -21,7 +21,7 @@ new container.Discord.MessageActionRow().addComponents(
 ```
 
 ### **deleteButton.js**
-```js
+```javascript
 module.exports = {
     name: "deleteButton",
     ownerOnly: true,

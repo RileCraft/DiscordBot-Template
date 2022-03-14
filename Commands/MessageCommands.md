@@ -1,6 +1,6 @@
 # **Message / Normal Commands**
 ## **Default Format**
-```js
+```javascript
 module.exports = {
     name: "cmdname",
     run: async(client, message, args, container) => {
@@ -10,7 +10,7 @@ module.exports = {
 ```
 
 ## **Example**
-```js
+```javascript
 module.exports = {
     name: "ping",
     run: async(client, message, args, container) => {

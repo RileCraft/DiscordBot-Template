@@ -1,6 +1,6 @@
 # **SlashCommands**
 ## **Default Format**
-```js
+```javascript
 module.exports = {
     name: "cmdname",
     description: "cmd description",
@@ -11,7 +11,7 @@ module.exports = {
 ```
 
 ## **Example**
-```js
+```javascript
 module.exports = {
     name: "ping",
     options: [{

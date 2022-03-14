@@ -1,6 +1,6 @@
 # **SelectMenu Interactions**
 ## **Default Format**
-```js
+```javascript
 module.exports = {
     name: "name", // selectMenu's Custom ID or one of the options values.
     run: async(client, interaction, container) => {
@@ -11,7 +11,7 @@ module.exports = {
 
 ## **Example**
 ### **SelectMenu Code**
-```js
+```javascript
 new container.Discord.MessageActionRow().addComponents(
     new container.Discord.MessageSelectMenu()
     .setCustomId('help')
@@ -32,7 +32,7 @@ new container.Discord.MessageActionRow().addComponents(
 ```
 
 ### **bababooey.js**
-```js
+```javascript
 module.exports = {
     name: "bababooey",
     ownerOnly: true,

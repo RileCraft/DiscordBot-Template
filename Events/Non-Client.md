@@ -3,7 +3,7 @@
 **Note:** In the async function `run()` you can always call `client, container` after you call your required arguments for the event to access them.
 {% endhint %}
 ## **Format**
-```js
+```javascript
 module.exports = {
     customEvent: true,
     run: async(<args>) => {
@@ -13,7 +13,7 @@ module.exports = {
 ```
 
 ## **Example Usage**
-```js
+```javascript
 const Bababooey = require("something")
 module.exports = {
     customEvent: true,

@@ -6,13 +6,13 @@
 ## Install the modules / packages required.
 {% tabs %}
 {% tab title="NPM"%}
-```
+```javascript
 # Install via NPM
 npm i
 ```
 {% endtab %}
 {% tab title="Yarn"%}
-```
+```javascript
 # Install via Yarn
 yarn
 ```
@@ -23,10 +23,10 @@ yarn
 Fill the required fields correctly.
 
 ## Start the bot.
-```js
+```javascript
 npm start
 ```
 or
-```js
+```javascript
 node bot.js
 ```

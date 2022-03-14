@@ -1,6 +1,6 @@
 # **ContextMenu Interactions**
 ## **Default Format**
-```js
+```javascript
 module.exports = {
     name: "cmdname",
     type: "cmdtype", // Either USER or MESSAGE
@@ -11,7 +11,7 @@ module.exports = {
 ```
 
 ## **Example**
-```js
+```javascript
 module.exports = {
     name: "log-content",
     type: "MESSAGE",
