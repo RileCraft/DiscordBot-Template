@@ -6,7 +6,7 @@ These are the official documentation and is open-source. If you want to edit it 
 
 ## Join our discord to hang out with us or for support!
 
-{% content-ref url="https://discord.gg/VStdRr8nP2" %}
+{% content-ref url="Join us!" %}
 [Discord Server](https://discord.gg/VStdRr8nP2)
 {% endcontent-ref %}
 
