@@ -12,7 +12,7 @@ module.exports = async function (client, message, command, isInteraction, intera
         if (command.returnCooldown == false || command.returnNoErrors) return true;
         else {
             message.reply({
-                embeds: [new Discord.MessageEmbed()
+                embeds: [new Discord.EmbedBuilder()
                     .setAuthor({
                         name: message.member.user.tag,
                         iconURL: message.member.user.displayAvatarURL({ dynamic: true })

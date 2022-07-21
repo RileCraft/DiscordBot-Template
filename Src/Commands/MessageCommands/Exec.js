@@ -3,9 +3,9 @@ module.exports = {
     name: 'exec',
     ownerOnly: true,
     run: async (client, message, args, container) => {
-        const row = new container.Discord.MessageActionRow()
+        const row = new container.Discord.ActionRowBuilder()
         .addComponents(
-            new container.Discord.MessageButton()
+            new container.Discord.ButtonBuilder()
             .setCustomId('evalbtn')
             .setLabel('Delete Output')
             .setStyle('DANGER')
