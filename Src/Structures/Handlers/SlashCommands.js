@@ -1,5 +1,6 @@
 const fs = require("fs");
 const Filer = require("../../Utils/Filer");
+const { ApplicationCommandType } = require('discord.js');
 module.exports = async function(client, path) {
     Filer(`${path}/Src/Commands/SlashCommands`, async function(err, res) {
         res.forEach(file => {
@@ -24,13 +25,13 @@ module.exports = async function(client, path) {
                         name: cmd.name,
                         description: cmd.description ?? "None",
                         options: cmd.options ?? [],
-                        type: cmd.type ?? "CHAT_INPUT"
+                       type: cmd.type ?? ApplicationCommandType.ChatInput,
                     })
                     else await guild.commands.create({
                         name: cmd.name,
                         description: cmd.description ?? "None",
                         options: cmd.options ?? [],
-                        type: cmd.type ?? "CHAT_INPUT"
+                       type: cmd.type ?? ApplicationCommandType.ChatInput,
                     })
                 })()
             })
@@ -40,13 +41,13 @@ module.exports = async function(client, path) {
                         name: cmd.name,
                         description: cmd.description ?? "None.",
                         options: cmd.options ?? [],
-                        type: cmd.type ?? "CHAT_INPUT"
+                       type: cmd.type ?? ApplicationCommandType.ChatInput,
                     })
                     else await client.application.commands.create({
                         name: cmd.name,
                         description: cmd.description ?? "None.",
                         options: cmd.options ?? [],
-                        type: cmd.type ?? "CHAT_INPUT"
+                       type: cmd.type ?? ApplicationCommandType.ChatInput,
                     })
                 }
 

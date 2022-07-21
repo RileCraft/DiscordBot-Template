@@ -8,7 +8,7 @@ module.exports = async function (message, command, Discord) {
         })
         if (command.returnOnlyChannels == false || command.returnNoErrors) return true;
         else message.reply({
-            embeds: [new Discord.MessageEmbed()
+            embeds: [new Discord.EmbedBuilder()
                 .setAuthor({
                     name: message.member.user.tag,
                     iconURL: message.member.user.displayAvatarURL({ dynamic: true })
