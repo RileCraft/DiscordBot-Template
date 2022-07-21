@@ -1,8 +1,8 @@
 module.exports = {
     name: "call",
     run: async(client, message, args, container) => {
-        const row = new container.Discord.MessageActionRow().addComponents(
-            new container.Discord.MessageSelectMenu()
+        const row = new container.Discord.ActionRowBuilder().addComponents(
+            new container.Discord.SelectMenuBuilder()
 					.setCustomId('test')
 					.setPlaceholder('Open me ;)')
 					.addOptions([
