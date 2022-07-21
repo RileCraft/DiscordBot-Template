@@ -1,31 +1,30 @@
 (async () => {
     const Discord = require("discord.js");
-    const { GatewayIntentBits, Partials } = require("discord.js");
     const config = require("./Config");
     const path = __dirname;
     const client = new Discord.Client({
         intents: [
-            GatewayIntentBits.DirectMessages,
-            GatewayIntentBits.GuildMembers,
-            GatewayIntentBits.GuildPresences,
-            GatewayIntentBits.GuildBans,
-            GatewayIntentBits.Guilds,
-            GatewayIntentBits.MessageContent,
-            GatewayIntentBits.GuildInvites,
-            GatewayIntentBits.GuildMessageReactions,
-            GatewayIntentBits.GuildWebhooks,
-            GatewayIntentBits.DirectMessageReactions,
-            GatewayIntentBits.GuildIntegrations,
-            GatewayIntentBits.GuildVoiceStates,
-            GatewayIntentBits.GuildMessages
+            Discord.GatewayIntentBits.DirectMessages,
+            Discord.GatewayIntentBits.GuildMembers,
+            Discord.GatewayIntentBits.GuildPresences,
+            Discord.GatewayIntentBits.GuildBans,
+            Discord.GatewayIntentBits.Guilds,
+            Discord.GatewayIntentBits.MessageContent,
+            Discord.GatewayIntentBits.GuildInvites,
+            Discord.GatewayIntentBits.GuildMessageReactions,
+            Discord.GatewayIntentBits.GuildWebhooks,
+            Discord.GatewayIntentBits.DirectMessageReactions,
+            Discord.GatewayIntentBits.GuildIntegrations,
+            Discord.GatewayIntentBits.GuildVoiceStates,
+            Discord.GatewayIntentBits.GuildMessages
         ],
         partials: [
-            Partials.GuildScheduledEvent, 
-            Partials.Channel, 
-            Partials.Message,
-            Partials.User, 
-            Partials.GuildMember,
-            Partials.GuildPresences
+            Discord.Partials.GuildScheduledEvent, 
+            Discord.Partials.Channel, 
+            Discord.Partials.Message,
+            Discord.Partials.User, 
+            Discord.Partials.GuildMember,
+            Discord.Partials.GuildPresences
         ]
     });
     exports.client = client;
