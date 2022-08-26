@@ -3,7 +3,6 @@ module.exports = {
     name: "ping",
     type: ApplicationCommandType.ChatInput,
     description: "Bot's latency.",
-    guilds: ["705681476674650143"],
     run: async(DiscordClient, interaction) => {
         const ping = new EmbedBuilder()
 		.setColor('#FF0000')

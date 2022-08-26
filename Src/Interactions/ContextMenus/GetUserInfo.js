@@ -2,8 +2,6 @@ const { ApplicationCommandType, EmbedBuilder } = require("discord.js")
 module.exports = {
     name: "UserInfo",
     type: ApplicationCommandType.User,
-    onlyChannels: ["705681477169315863", "828470909751787600"],
-    guilds: ["705681476674650143"],
     run: async(DiscordClient, interaction) => {
         const targetId = interaction.targetId
         const User = await DiscordClient.user.fetch(targetId)

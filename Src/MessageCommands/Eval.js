@@ -4,7 +4,6 @@ const { botToken } = require("../Credentials/Config")
 module.exports = {
     name: 'eval',
     ownerOnly: true,
-    allowBots: true,
     run: async (DiscordClient, message, args) => {
         const row = new ActionRowBuilder()
             .addComponents(

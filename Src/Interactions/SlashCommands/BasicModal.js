@@ -3,7 +3,6 @@ module.exports = {
     name: "modal",
     type: ApplicationCommandType.ChatInput,
     description: "Test Modal.",
-    guilds: ["705681476674650143"],
     run: async(DiscordClient, interaction) => {
         const modal = new ModalBuilder()
 			.setCustomId('BasicInfoModal')
