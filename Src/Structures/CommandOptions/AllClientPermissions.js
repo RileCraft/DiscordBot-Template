@@ -1,24 +1,23 @@
 const { bold } = require("chalk");
 const { EmbedBuilder } = require("discord.js");
-module.exports = (DiscordClient, message, Command) => {
-    if (!Command.onlyGuilds) return true;
-    if (!Array.isArray(Command.onlyGuilds)) {
+module.exports = (message, Command, InteractionType) => {
+    if (!Command.allClientPermissions) return true;
+    if (!Array.isArray(Command.allClientPermissions)) {
         console.log(bold.yellow(`[ERROR] Invalid input detected in AllClientPermissions option of ${Command.name} of ${InteractionType}.`))
         return true;
     }
     if (!message.guild) {
-        console.log(bold.blue(`[WARN] Guild object not found in OnlyChannels option of ${Command.name} of ${InteractionType}.`))
+        console.log(bold.blue(`[WARN] Guild object not found in AllClientPermissions option of ${Command.name} of ${InteractionType}.`))
         return true;
     }
-    let GuildNames = []
+    let MissingPermissions = []
 
-    if (Command.onlyGuilds.some(Id => Id == message.guild.id)) return true;
+    Command.allClientPermissions.forEach(Permission => {
+        if (!message.guild.members.me.permissions.has(Permission)) MissingPermissions.push(Permission)
+    })
+    if (MissingPermissions.length == 0) return true;
     else {
-        Command.onlyGuilds.forEach(Id => {
-            GuildNames.push(DiscordClient.guilds.cache.get(Id).name)
-        })
-
-        if (Command.returnErrors == false || Command.returnOnlyGuildsError == false) return false;
+        if (Command.returnErrors == false || Command.returnAllClientPermissionsError == false) return false;
         else {
             const errorEmbed = new EmbedBuilder()
                 .setColor('#FF0000')
@@ -29,7 +28,7 @@ module.exports = (DiscordClient, message, Command) => {
                     })
                 })
                 .setTimestamp()
-                .setDescription(`This command can only be run in these guilds: \n${GuildNames.map(Name => `\`${Name}\``).join(", ")}`);
+                .setDescription(`I don't have these required permissions to use this command. Required permissions: \n${MissingPermissions.map(permission => `\`${permission}\``).join(", ")}`);
 
             message.reply({
                 embeds: [errorEmbed],

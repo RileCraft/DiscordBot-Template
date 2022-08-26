@@ -1,41 +1,47 @@
 (async () => {
-const Discord = require("discord.js");
-const config = require("./Config");
-const path = __dirname;
-const client = new Discord.Client({
+const { Client, GatewayIntentBits, Partials, Collection } = require("discord.js");
+const CredentialManager = require("./Src/Credentials/Config");
+const DirPath = __dirname;
+const { MessageCommandHandler, EventManager, ButtonCommandHandler, SelectMenuHandler, SlashCommandsHandler, ContextMenuHandler, ModalFormsHandler } = require("./Src/Structures/Handlers/HandlersManager")
+
+const DiscordClient = new Client({
     intents: [
-        Discord.Intents.FLAGS.GUILDS,
-        Discord.Intents.FLAGS.GUILD_MESSAGES,
-        Discord.Intents.FLAGS.GUILD_PRESENCES,
-        Discord.Intents.FLAGS.DIRECT_MESSAGES,
-        Discord.Intents.FLAGS.DIRECT_MESSAGE_REACTIONS,
-        Discord.Intents.FLAGS.GUILD_MEMBERS,
-        Discord.Intents.FLAGS.GUILD_MESSAGE_REACTIONS,
-        Discord.Intents.FLAGS.GUILD_WEBHOOKS,
-        Discord.Intents.FLAGS.GUILD_VOICE_STATES,
-        Discord.Intents.FLAGS.GUILD_INVITES,
-        Discord.Intents.FLAGS.GUILD_BANS
+        GatewayIntentBits.Guilds,
+        GatewayIntentBits.GuildMessages,
+        GatewayIntentBits.GuildPresences,
+        GatewayIntentBits.DirectMessages,
+        GatewayIntentBits.MessageContent,
+        GatewayIntentBits.DirectMessageReactions,
+        GatewayIntentBits.GuildMembers,
+        GatewayIntentBits.GuildMessageReactions,
+        GatewayIntentBits.GuildWebhooks,
+        GatewayIntentBits.GuildVoiceStates,
+        GatewayIntentBits.GuildInvites,
+        GatewayIntentBits.GuildBans
     ],
-    partials: ["CHANNEL"]
+    partials: [Partials.Channel]
 });
-exports.client = client;
-exports.path = path;
-exports.config = config;
-client.commands = {};
-client.events = new Discord.Collection();
-client.commands.messageCommands = new Discord.Collection();
-client.commands.messageCommands.aliases = new Discord.Collection();
-client.commands.contextMenus = new Discord.Collection();
-client.commands.slashCommands = new Discord.Collection();
-client.commands.buttonCommands = new Discord.Collection();
-client.commands.selectMenus = new Discord.Collection();
-    
-const Handler = require(`${path}/Src/Structures/Handlers/Handler`);
-await Handler.loadMessageCommands(client, path);
-await Handler.loadEvents(client);
-await client.login(config.token);
-await Handler.loadSlashCommands(client, path);
-await Handler.loadContextMenus(client, path);
-await Handler.loadButtonCommands(client, path);
-await Handler.loadSelectMenus(client, path);
+
+exports.client = DiscordClient;
+exports.rootPath = DirPath;
+
+DiscordClient.limitCommandUses = new Collection()
+DiscordClient.expireAfter = new Collection()
+DiscordClient.messageCommands = new Collection()
+DiscordClient.messageCommands_Aliases = new Collection()
+DiscordClient.events = new Collection()
+DiscordClient.slashCommands = new Collection()
+DiscordClient.contextMenus = new Collection()
+DiscordClient.selectMenus = new Collection()
+DiscordClient.buttonCommands = new Collection()
+DiscordClient.modalForms = new Collection()
+
+await MessageCommandHandler(DiscordClient, DirPath)
+await EventManager(DiscordClient, DirPath)
+await ButtonCommandHandler(DiscordClient, DirPath)
+await SelectMenuHandler(DiscordClient, DirPath)
+await ModalFormsHandler(DiscordClient, DirPath)
+await DiscordClient.login(CredentialManager.botToken)
+await SlashCommandsHandler(DiscordClient, DirPath)
+await ContextMenuHandler(DiscordClient, DirPath)
 })()

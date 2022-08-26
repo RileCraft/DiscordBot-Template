@@ -1,22 +1,30 @@
-const config = require("../../../Config")
-module.exports = async function (message, command, Discord) {
-    if (!command.ownerOnly) return false;
-    if (config.developers.some(id => message.member.user.id == id)) return false
+const { EmbedBuilder } = require("discord.js")
+const { developersIds } = require("../../Credentials/Config")
+module.exports = (message, command, IsInteraction) => {
+    if (!command.ownerOnly) return true;
+    let user;
+    if (IsInteraction) user = message.user
+    else user = message.author
+
+    if (developersIds.some(Id => user.id == Id)) return true;
     else {
-        if (command.returnOwnerOnly == false || command.returnNoErrors) return true;
-        else message.reply({
-            embeds: [new Discord.MessageEmbed()
-                .setAuthor({
-                    name: message.member.user.tag,
-                    iconURL: message.member.user.displayAvatarURL({ dynamic: true })
-                })
-                .setColor("RANDOM")
-                .setTimestamp()
-                .setDescription(`This command is reserved for the developers of the bot.`)],
+        if (command.returnErrors == false || command.returnOwnerOnlyError == false) return false;
+        else {
+            const errorEmbed = new EmbedBuilder()
+            .setTimestamp()
+            .setColor("#FF0000")
+            .setAuthor({
+                name: user.tag,
+                iconURL: user.displayAvatarURL({ dynamic: true })
+            })
+            .setDescription("You are not authorized to run this command as this command is reserved for the developers of this bot.");
+            message.reply({
+                embeds: [errorEmbed],
                 allowedMentions: {
                     repliedUser: false
                 }
             })
-            return true
+            return false;
         }
     }
+}

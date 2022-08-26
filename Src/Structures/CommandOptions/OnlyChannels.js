@@ -1,25 +1,38 @@
-module.exports = async function (message, command, Discord) {
-    if (!command.onlyChannels) return false;
-    if (command.onlyChannels.some(id => id == message.channel.id)) return false;
+const { bold } = require("chalk");
+const { EmbedBuilder } = require("discord.js");
+module.exports = (message, Command, InteractionType) => {
+    if (!Command.onlyChannels) return true;
+    if (!message.guild) {
+        console.log(bold.blue(`[WARN] Guild object not found in OnlyChannels option of ${Command.name} of ${InteractionType}.`))
+        return true;
+    }
+    Command.onlyChannels.forEach(Id => {
+        if (!message.guild.channels.cache.get(Id)) console.log(bold.yellow(`[WARN] Invalid Channel Id [${Id}] provided in OnlyChannels option of ${Command.name} of ${InteractionType}.`))
+        return true;
+    })
+
+    if (Command.onlyChannels.some(Id => message.channel.id == Id)) return true;
     else {
-        let onlyChannels = []
-        command.onlyChannels.forEach(id => {
-            onlyChannels.push(`<#${id}>`)
-        })
-        if (command.returnOnlyChannels == false || command.returnNoErrors) return true;
-        else message.reply({
-            embeds: [new Discord.MessageEmbed()
+        if (Command.returnErrors == false || Command.returnOnlyChannelsError == false) return false;
+        else {
+            const errorEmbed = new EmbedBuilder()
+                .setColor('#FF0000')
                 .setAuthor({
                     name: message.member.user.tag,
-                    iconURL: message.member.user.displayAvatarURL({ dynamic: true })
+                    iconURL: message.member.user.displayAvatarURL({
+                        dynamic: true
+                    })
                 })
-                .setColor("RANDOM")
                 .setTimestamp()
-                .setDescription(`This command can only be ran in these channels.\n•${onlyChannels.join("\n•")}`)],
+                .setDescription(`This command can only be run in these channels: \n${Command.onlyChannels.map(Id => `<#${Id}>`).join(", ")}`);
+
+            message.reply({
+                embeds: [errorEmbed],
                 allowedMentions: {
                     repliedUser: false
                 }
             })
-            return true;
+            return false;
         }
     }
+}

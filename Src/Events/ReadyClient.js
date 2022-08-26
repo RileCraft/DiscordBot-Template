@@ -1,62 +1,20 @@
-const chalk = require("chalk")
-const Box = require("cli-box")
+const { ActivityType } = require("discord.js");
+const chalk = require("chalk");
 module.exports = {
     name: "ready",
-    once: true,
-    run: async(client) => {
-        client.user.setActivity('Cookies get baked.', {
-            type: `WATCHING`,
-        })
-        const ClientBox = new Box({
-            w: Math.floor(client.user.tag.length + 27 ),
-            h: 7,
-            stringify: false,
-            marks: {
-              nw: '╭',
-              n: '─',
-              ne: '╮',
-              e: '│',
-              se: '╯',
-              s: '─',
-              sw: '╰',
-              w: '│'
-            },
-            hAlign: 'left',
-          }, `C L I E N T   I N F O R M A T I O N
+    runOnce: true,
+    run: async (DiscordClient) => {
+        DiscordClient.user.setActivity("I will take over the world", {
+            type: ActivityType.Listening
+        });
 
-Client Details    ::    ${client.user.tag}
-Guilds Count      ::    ${client.guilds.cache.size}
-User Count        ::    ${client.users.cache.size}
-NodeJS Version    ::    ${process.version}
-`).stringify()
-
-        const CommandsBox = new Box({
-            w: Math.floor(`Initiating ${client.commands.messageCommands.aliases.size} messageCommands Aliases.`.length + 37),
-            h: 8,
-            stringify: false,
-            marks: {
-                nw: '╭',
-                n: '─',
-                ne: '╮',
-                e: '│',
-                se: '╯',
-                s: '─',
-                sw: '╰',
-                w: '│'
-            },
-            hAlign: "left",
-        }, `C O M M A N D S   I N F O R M A T I O N
-
-MessageCommands            ::    Initiating ${client.commands.messageCommands.size} messageCommands.
-MessageCommands Aliases    ::    Initiating ${client.commands.messageCommands.aliases.size} messageCommands Aliases.
-SlashCommands              ::    Initiating ${client.commands.slashCommands.size} slashCommands.
-SelectMenus                ::    Initiating ${client.commands.selectMenus.size} selectMenus.
-ContextMenus               ::    Initiating ${client.commands.contextMenus.size} contextMenus.
-ButtonCommands             ::    Initiating ${client.commands.buttonCommands.size} buttonCommands.
-Client Events              ::    Initiating ${client.events.size} events.
-`).stringify()
-
-        console.log(chalk.bold.greenBright(ClientBox))
-        console.log(chalk.bold.blueBright(CommandsBox))
-    }
+        console.log(chalk.bold.green(`Logging into ${DiscordClient.user.tag}.`))
+        if (DiscordClient.messageCommands.size > 0) console.log(chalk.bold.blue("[MessageCommands]", `Loading ${DiscordClient.messageCommands.size} MessageCommands with ${DiscordClient.messageCommands_Aliases.size} Aliases.`))
+        if (DiscordClient.events.size > 0) console.log(chalk.bold.yellow("[EventManager]", `Loading ${DiscordClient.events.size} Events.`))
+        if (DiscordClient.buttonCommands.size > 0) console.log(chalk.bold.magenta("[ButtonCommands]", `Loading ${DiscordClient.buttonCommands.size} ButtonCommands.`))
+        if (DiscordClient.selectMenus.size > 0) console.log(chalk.hex("#5B5F13").bold("[SelectMenus]", `Loading ${DiscordClient.selectMenus.size} SelectMenus.`))
+        if (DiscordClient.slashCommands.size > 0) console.log(chalk.hex("#3535FF").bold("[SlashCommands]", `Loading ${DiscordClient.slashCommands.size} SlashCommands.`))
+        if (DiscordClient.contextMenus.size > 0) console.log(chalk.hex("#44FF00").bold("[ContextMenus]", `Loading ${DiscordClient.contextMenus.size} ContextMenus.`))
+        if (DiscordClient.modalForms.size > 0) console.log(chalk.hex("#067A00").bold("[ModalForms]", `Loading ${DiscordClient.modalForms.size} Modal Forms.`))
+    } 
 }
