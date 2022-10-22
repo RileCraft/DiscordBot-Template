@@ -4,7 +4,7 @@ module.exports = {
     type: ApplicationCommandType.User,
     run: async(DiscordClient, interaction) => {
         const targetId = interaction.targetId
-        const User = await DiscordClient.user.fetch(targetId)
+        const User = await DiscordClient.users.fetch(targetId)
 
         const UserDetailsEmbed = new EmbedBuilder()
         .setColor("#FF0000")
