@@ -30,3 +30,31 @@ module.exports = {
     }
 }
 ```
+## **Sub-Commands**
+```javascript
+const {  ApplicationCommandType, ApplicationCommandOptionType } = require("discord.js")
+module.exports = {
+    name: "ping",
+    type: ApplicationCommandType.ChatInput,
+    description: "Bot's latency.",
+    options: [
+        {
+            name: 'user',
+            description: 'User to select',
+            type: ApplicationCommandOptionType.Subcommand,
+        },
+        {
+            name: 'server',
+            description: 'Server to select',
+            type: ApplicationCommandOptionType.Subcommand,
+        }
+    ],
+    run: async(DiscordClient, interaction) => {
+        if (interaction.options.getSubcommand() === 'user') {
+            await interaction.reply('You chose user!')
+        } else if (interaction.options.getSubcommand() === 'server') {
+            await interaction.reply('You chose server!')
+        }
+    }
+}
+```
