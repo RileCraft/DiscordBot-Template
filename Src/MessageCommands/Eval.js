@@ -1,10 +1,9 @@
 const { inspect } = require('util')
 const { ButtonBuilder, ActionRowBuilder } = require("discord.js")
-const { botToken } = require("../Credentials/Config")
 module.exports = {
     name: 'eval',
     ownerOnly: true,
-    run: async (DiscordClient, message, args) => {
+    run: async (client, message, args) => {
         const row = new ActionRowBuilder()
             .addComponents(
                 new ButtonBuilder()
@@ -28,7 +27,7 @@ module.exports = {
                 depth: depth
             })
             if (String(code).length > 1990) code = "Output is too long"
-            if (String(code).includes(botToken)) code = "This message contained client's token."
+            if (String(code).includes(client.token)) code = "This message contained client's token."
             if (originalCode.includes("--silent")) return;
             else message.reply({
                 content: `\`\`\`js\n${code}\n\`\`\``,

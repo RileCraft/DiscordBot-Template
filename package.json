@@ -1,32 +1,16 @@
 {
   "name": "discordbot-template",
-  "version": "7.0.0",
-  "description": "Advanced Template",
+  "version": "8.0.0",
+  "description": "Just your average discord bot template",
   "main": "bot.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node bot.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/RileCraft/DiscordBot-Template.git"
-  },
-  "keywords": [
-    "Yes"
-  ],
-  "author": "RileCraft",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/RileCraft/DiscordBot-Template/issues"
-  },
-  "homepage": "https://github.com/RileCraft/DiscordBot-Template#readme",
   "dependencies": {
-    "chalk": "4.1.2",
-    "discord.js": "^14.2.0",
-    "fs": "^0.0.1-security",
-    "glob": "^8.0.3",
-    "ms": "^2.1.3",
-    "node-recursive-directory": "^1.2.0",
-    "path": "^0.12.7"
-  }
+    "chalk": "^4.1.2",
+    "discord.js": "^14.8.0",
+    "node-recursive-directory": "^1.2.0"
+  },
+  "author": "RileCraft",
+  "license": "MIT"
 }

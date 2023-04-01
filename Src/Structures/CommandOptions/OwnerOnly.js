@@ -1,30 +1,24 @@
-const { EmbedBuilder } = require("discord.js")
-const { developersIds } = require("../../Credentials/Config")
-module.exports = (message, command, IsInteraction) => {
-    if (!command.ownerOnly) return true;
-    let user;
-    if (IsInteraction) user = message.user
-    else user = message.author
-
-    if (developersIds.some(Id => user.id == Id)) return true;
+const { EmbedBuilder } = require("discord.js");
+const { ownerIds } = require("../../Credentials/Config");
+module.exports = async(client, message, command, isInteraction) => {
+    if (!command.ownerOnly && typeof command?.ownerOnly != "boolean") return true;
+    const user = isInteraction ? message.user : message.author;
+    if (ownerIds.includes(user.id)) return true;
     else {
         if (command.returnErrors == false || command.returnOwnerOnlyError == false) return false;
-        else {
-            const errorEmbed = new EmbedBuilder()
-            .setTimestamp()
-            .setColor("#FF0000")
-            .setAuthor({
-                name: user.tag,
-                iconURL: user.displayAvatarURL({ dynamic: true })
-            })
-            .setDescription("You are not authorized to run this command as this command is reserved for the developers of this bot.");
-            message.reply({
-                embeds: [errorEmbed],
-                allowedMentions: {
-                    repliedUser: false
-                }
-            })
-            return false;
-        }
-    }
-}
+        const errorEmbed = new EmbedBuilder()
+        .setColor("DarkRed")
+        .setTimestamp()
+        .setAuthor({
+            name: user.tag,
+            iconURL: user.displayAvatarURL({ dynamic: true })
+        })
+        .setThumbnail(client.user.displayAvatarURL({ dynamic: true }))
+        .setDescription("The command you tried to run is __restricted__ for the developers of this bot and thus the command failed to execute.");
+
+        message.reply({
+            embeds: [errorEmbed]
+        });
+        return false;
+    };
+};
