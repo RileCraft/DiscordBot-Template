@@ -22,7 +22,7 @@
   "homepage": "https://github.com/RileCraft/DiscordBot-Template#readme",
   "dependencies": {
     "chalk": "4.1.2",
-    "discord.js": "^14.2.0",
+    "discord.js": "^14.9.0",
     "fs": "^0.0.1-security",
     "glob": "^8.0.3",
     "ms": "^2.1.3",
