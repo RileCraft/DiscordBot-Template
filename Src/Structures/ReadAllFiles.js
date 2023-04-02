@@ -2,6 +2,7 @@ const fs = require('node:fs');;
 
 module.exports = function readFiles(dir, filesList = []) {
     const files = fs.readdirSync(dir);
+    if (!files) return;
     files.forEach((file) => {
         const filePath = `${dir}/${file}`;
         if (fs.statSync(filePath).isDirectory()) {

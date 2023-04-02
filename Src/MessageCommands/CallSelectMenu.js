@@ -1,7 +1,7 @@
 const { ActionRowBuilder, StringSelectMenuBuilder } = require("discord.js")
 module.exports = {
     name: "callmenu",
-    anyClientPermissions: ["Administrator"],
+    anyUserPermissions: ["ManageEvents", "ModerateMembers"],
     run: async (client, message, args) => {
         const ActionRow = new ActionRowBuilder().addComponents(
             new StringSelectMenuBuilder()
