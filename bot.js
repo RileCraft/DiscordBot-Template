@@ -1,5 +1,6 @@
 (async () => {
     const { Client, GatewayIntentBits, Partials, Collection } = require("discord.js");
+    const { QuickDB } = require("quick.db");
     const credentialManager = require("./Src/Credentials/Config");
     const dirPath = __dirname;
     const { messageCommandsManager, eventsManager, buttonManager, selectMenuManager, modalFormsManager, slashCommandsManager } = require("./Src/Structures/Managers/Export");
@@ -23,6 +24,15 @@
 
     exports.rootPath = dirPath;
     exports.client = botClient;
+    exports.guildCooldownDB = new QuickDB({
+        filePath: `${dirPath}/guildCooldownDB.sqlite`
+    });
+    exports.globalCooldownDB = new QuickDB({
+        filePath: `${dirPath}/globalCooldownDB.sqlite`
+    });
+    exports.channelCooldownDB = new QuickDB({
+        filePath: `${dirPath}/channelCooldownDB.sqlite`
+    });
 
     botClient.messageCommands = new Collection();
     botClient.messageCommandsAliases = new Collection();

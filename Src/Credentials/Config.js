@@ -1,5 +1,5 @@
 module.exports = {
-    prefix: ["BOT PREFIX "],
-    botToken: "BOT TOKEN",
-    ownerIds: ["BOT OWNER USER ID"]
+    prefix: ["Bot Prefix"],
+    botToken: "Bot Token",
+    ownerIds: ["Bot Owner ID"]
 };

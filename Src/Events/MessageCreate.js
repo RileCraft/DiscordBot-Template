@@ -11,8 +11,8 @@ module.exports = {
             const args = message.content.slice(botPrefix.length).trim().slice(commandName.length).trim().split(" ");
 
             if (!message.guild || message.author.bot) return;
-            const authenticatedCMDOptions = await commandOptionsProcessor(client, message, command, false);
-            if (authenticatedCMDOptions) return command.run(client, message, args);
+            const authenticatedCMDOptions = await commandOptionsProcessor(client, message, command, false, "MessageCommand");
+            if (authenticatedCMDOptions) return await command.run(client, message, args);
         });
     }
 };
