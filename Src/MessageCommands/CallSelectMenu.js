@@ -1,4 +1,4 @@
-const { ActionRowBuilder, StringSelectMenuBuilder } = require("discord.js")
+const { ActionRowBuilder, StringSelectMenuBuilder } = require("discord.js");
 module.exports = {
     name: "callmenu",
     run: async (client, message, args) => {

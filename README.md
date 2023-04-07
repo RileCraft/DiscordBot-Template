@@ -5,10 +5,6 @@
 <img src="https://img.shields.io/github/forks/RileCraft/DiscordBot-Template.svg?style=for-the-badge">
 <img src="https://img.shields.io/github/stars/RileCraft/DiscordBot-Template.svg?style=for-the-badge">
 
-<center>
-
-[AllClientPermissions](/.github/Docs//CMDOptions/AllClientPermissions.md) | [AllUserPermissions](/.github/Docs//CMDOptions/AllUserPermissions.md) | [AnyClientPermissions](/.github/Docs//CMDOptions/AnyClientPermissions.md) | [AnyUserPermissions](/.github/Docs//CMDOptions/AnyUserPermissions.md) | [ChannelCooldown](/.github/Docs//CMDOptions/ChannelCooldown.md) | [GlobalCooldown](/.github/Docs//CMDOptions/GlobalCooldown.md) | [GuildCooldown](/.github/Docs//CMDOptions/GuildCooldown.md) | [OnlyChannels](/.github/Docs//CMDOptions/OnlyChannels.md) | [OnlyGuilds](/.github/Docs//CMDOptions/OnlyGuilds.md) | [OnlyUsers](/.github/Docs//CMDOptions/OnlyUsers.md) | [OwnerOnly](/.github/Docs//CMDOptions/OwnerOnly.md)
-</center></p>
 
 # Changelog
 * Latest `Discord.JS` adaptation.
@@ -19,6 +15,28 @@
 * There is now a new method of registering `global` and `guild` slashCommands/contextMenus and `guilds: []` properity is now removed. Follow up here to see the guide for new method of registering `slashCommands/contextMenus`.
 * `expireAfter` and `limitUses` command option is now removed.
 * Cooldown command option has been readded and has been divided into 3 options: `guildCooldown`, `globalCooldown`, `channelCooldown`. Each of them accepting `Number` of time delay in between each time command is ran **Note: Provide time in milliseconds, Example: 5 seconds to be provided as 5000**.
+
+# Documentation
+|Command Options|Documentation|
+| -------- | --------------------------------- |
+|`AllClientPermissions`| [Click Here](/.github/Docs/CMDOptions/AllClientPermissions.md)|
+|`AllUserPermissions`| [Click Here](/.github/Docs/CMDOptions/AllUserPermissions.md)|
+|`AnyClientPermissions`| [Click Here](/.github/Docs/CMDOptions/AnyClientPermissions.md)|
+|`AnyUserPermissions`| [Click Here](/.github/Docs/CMDOptions/AnyUserPermissions.md)|
+|`ChannelCooldown`| [Click Here](/.github/Docs/CMDOptions/ChannelCooldown.md)|
+|`GlobalCooldown`| [Click Here](/.github/Docs/CMDOptions/GlobalCooldown.md)|
+|`GuildCooldown`| [Click Here](/.github/Docs/CMDOptions/GuildCooldown.md)|
+|`OnlyChannels`| [Click Here](/.github/Docs/CMDOptions/OnlyChannels.md)|
+|`OnlyGuilds`| [Click Here](/.github/Docs/CMDOptions/OnlyGuilds.md)|
+|`OnlyUsers`| [Click Here](/.github/Docs/CMDOptions/OnlyUsers.md)|
+|`OwnerOnly`| [Click Here](/.github/Docs/CMDOptions/OwnerOnly.md)|
+|Managers|Documentation|
+|`MessageCommands`|[Click Here](/.github/Docs/Managers/MessageCommands.md)|
+|`SelectMenus`|[Click Here](/.github/Docs/Managers/SelectMenus.md)|
+|`Buttons`|[Click Here](/.github/Docs/Managers/Buttons.md)|
+|`Events`|[Click Here](/.github/Docs/Managers/Events.md)|
+|`SlashCommands`|[Click Here](/.github/Docs/Managers/SlashCommands.md)|
+|`ModalForms`|[Click Here](/.github/Docs/Managers/ModalForms.md)|
 
 # Features
 * Colorful and organized logging.
