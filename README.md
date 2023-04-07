@@ -19,6 +19,8 @@
 # Documentation
 |Command Options|Documentation|
 | -------- | --------------------------------- |
+|`ReturnErrors`| [Click Here](/.github/Docs/CMDOptions/ReturnErrors.md)|
+|`Ignore`| [Click Here](/.github/Docs/CMDOptions/Ignore.md)|
 |`AllClientPermissions`| [Click Here](/.github/Docs/CMDOptions/AllClientPermissions.md)|
 |`AllUserPermissions`| [Click Here](/.github/Docs/CMDOptions/AllUserPermissions.md)|
 |`AnyClientPermissions`| [Click Here](/.github/Docs/CMDOptions/AnyClientPermissions.md)|
