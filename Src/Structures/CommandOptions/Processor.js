@@ -8,9 +8,10 @@ module.exports = async (client, message, command, isInteraction, interactionType
     const guildCooldown = await require("./GuildCooldown")(client, message, command, isInteraction, interactionType);
     const onlyChannels = await require("./OnlyChannels")(client, message, command);
     const onlyGuilds = await require("./OnlyGuilds")(client, message, command);
+    const onlyRoles = await require("./OnlyRoles")(client, message, command);
     const onlyUsers = await require("./OnlyUsers")(client, message, command, isInteraction);
     const ownerOnly = await require("./OwnerOnly")(client, message, command, isInteraction);
-    const finalCorrection = [allClientPermissions, anyClientPermissions, allUserPermissions, anyUserPermissions, channelCooldown, guildCooldown, globalCooldown, onlyChannels, onlyGuilds, onlyUsers, ownerOnly];
+    const finalCorrection = [allClientPermissions, anyClientPermissions, allUserPermissions, anyUserPermissions, channelCooldown, guildCooldown, globalCooldown, onlyChannels, onlyGuilds, onlyRoles, onlyUsers, ownerOnly];
     if (finalCorrection.includes(false)) return false;
     else return true;
 };

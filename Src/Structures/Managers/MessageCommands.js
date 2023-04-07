@@ -10,7 +10,7 @@ module.exports = async(client, rootPath) => {
 
         client.messageCommands.set(messageCommand.name, messageCommand);
         if (messageCommand.aliases && Array.isArray(messageCommand.aliases)) messageCommand.aliases.forEach(messageCommandAlias => {
-            client.messageCommandAlias.set(messageCommandAlias, messageCommand.name);
+            client.messageCommandsAliases.set(messageCommandAlias, messageCommand.name);
         });
     });
 };

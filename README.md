@@ -28,6 +28,7 @@
 |`GuildCooldown`| [Click Here](/.github/Docs/CMDOptions/GuildCooldown.md)|
 |`OnlyChannels`| [Click Here](/.github/Docs/CMDOptions/OnlyChannels.md)|
 |`OnlyGuilds`| [Click Here](/.github/Docs/CMDOptions/OnlyGuilds.md)|
+|`OnlyRoles`| [Click Here](/.github/Docs/CMDOptions/OnlyRoles.md)|
 |`OnlyUsers`| [Click Here](/.github/Docs/CMDOptions/OnlyUsers.md)|
 |`OwnerOnly`| [Click Here](/.github/Docs/CMDOptions/OwnerOnly.md)|
 |Managers|Documentation|

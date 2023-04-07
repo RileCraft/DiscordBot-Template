@@ -9,7 +9,7 @@ module.exports = async(client, message, command) => {
     });
     if (missingPermissions.length == 0) return true;
     else {
-        if (command.returnErrors == false || command.returnallUserPermissionsError == false) return false;
+        if (command.returnErrors == false || command.returnAllUserPermissionsError == false) return false;
         const errorEmbed = new EmbedBuilder()
         .setColor("DarkRed")
         .setTimestamp()
