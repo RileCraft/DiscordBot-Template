@@ -9,10 +9,15 @@ module.exports = {
             const command = client.messageCommands.get(commandName) ?? client.messageCommands.get(client.messageCommandsAliases.get(commandName));
             if (!command) return;
             const args = message.content.slice(botPrefix.length).trim().slice(commandName.length).trim().split(" ");
-
-            if (!message.guild || message.author.bot) return;
             const authenticatedCMDOptions = await commandOptionsProcessor(client, message, command, false, "MessageCommand");
-            if (authenticatedCMDOptions) return await command.run(client, message, args);
+            
+            if (command.allowInDms) {
+                if (authenticatedCMDOptions) return await command.run(client, message, args);
+            } else if (!message.guild) return;
+            else if (command.allowBots) {
+                if (authenticatedCMDOptions) return await command.run(client, message, args);
+            } else if (message.author.bot) return;
+            else if (authenticatedCMDOptions) return await command.run(client, message, args);
         });
     }
 };

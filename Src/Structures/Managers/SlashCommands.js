@@ -6,7 +6,7 @@ module.exports = async (client, rootPath) => {
     const allGuildsSlashCommandsFiles = readFiles(`${rootPath}/Src/Interactions/SlashCommands/Guilds`);
     const rest = new REST({ version: '10' }).setToken(client.token);
 
-    if (globalSlashCommandsFiles.length > 0) {
+    if (globalSlashCommandsFiles?.length > 0) {
         let AGCOA = []; // All global commands as an array of objects.
         await globalSlashCommandsFiles.forEach(async globalFile => {
             const globalCommand = require(globalFile);
@@ -29,7 +29,7 @@ module.exports = async (client, rootPath) => {
             console.log(error);
         }
     };
-    if (allGuildsSlashCommandsFiles.length > 0) {
+    if (allGuildsSlashCommandsFiles?.length > 0) {
         allGuildsSlashCommandsFiles.forEach(async(guild) => {
             let ASCOA = []; // All commands of this particular guild as an array of objects.
             const guildId = guild.flat(9999)[0].split(`${rootPath}/Src/Interactions/SlashCommands/Guilds`)[1].split("/")[1];

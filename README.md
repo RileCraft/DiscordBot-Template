@@ -22,6 +22,8 @@
 |`ReturnErrors`| [Click Here](/.github/Docs/CMDOptions/ReturnErrors.md)|
 |`Ignore`| [Click Here](/.github/Docs/CMDOptions/Ignore.md)|
 |`AllClientPermissions`| [Click Here](/.github/Docs/CMDOptions/AllClientPermissions.md)|
+|`AllowBots`| [Click Here](/.github/Docs/CMDOptions/AllowBots.md)|
+|`AllowInDms`| [Click Here](/.github/Docs/CMDOptions/AllowInDms.md)|
 |`AllUserPermissions`| [Click Here](/.github/Docs/CMDOptions/AllUserPermissions.md)|
 |`AnyClientPermissions`| [Click Here](/.github/Docs/CMDOptions/AnyClientPermissions.md)|
 |`AnyUserPermissions`| [Click Here](/.github/Docs/CMDOptions/AnyUserPermissions.md)|
