@@ -1,38 +1,24 @@
-const { bold } = require("chalk");
 const { EmbedBuilder } = require("discord.js");
-module.exports = (message, Command, InteractionType) => {
-    if (!Command.onlyChannels) return true;
-    if (!message.guild) {
-        console.log(bold.blue(`[WARN] Guild object not found in OnlyChannels option of ${Command.name} of ${InteractionType}.`))
-        return true;
-    }
-    Command.onlyChannels.forEach(Id => {
-        if (!message.guild.channels.cache.get(Id)) console.log(bold.yellow(`[WARN] Invalid Channel Id [${Id}] provided in OnlyChannels option of ${Command.name} of ${InteractionType}.`))
-        return true;
-    })
 
-    if (Command.onlyChannels.some(Id => message.channel.id == Id)) return true;
+module.exports = async (client, message, command) => {
+    if (!command.onlyChannels || !Array.isArray(command.onlyChannels || !message.guild)) return true;
+    const member = message.member;
+    if (command.onlyChannels.some(channelId => message.channel.id == channelId)) return true;
     else {
-        if (Command.returnErrors == false || Command.returnOnlyChannelsError == false) return false;
-        else {
-            const errorEmbed = new EmbedBuilder()
-                .setColor('#FF0000')
-                .setAuthor({
-                    name: message.member.user.tag,
-                    iconURL: message.member.user.displayAvatarURL({
-                        dynamic: true
-                    })
-                })
-                .setTimestamp()
-                .setDescription(`This command can only be run in these channels: \n${Command.onlyChannels.map(Id => `<#${Id}>`).join(", ")}`);
+        if (command.returnErrors == false || command.returnOnlyChannelsError == false) return false;
+        const errorEmbed = new EmbedBuilder()
+        .setColor("DarkRed")
+        .setTimestamp()
+        .setAuthor({
+            name: member.user.tag,
+            iconURL: member.user.displayAvatarURL({ dynamic: true })
+        })
+        .setThumbnail(client.user.displayAvatarURL({ dynamic: true }))
+        .setDescription(`The command you tried to execute cannot be ran in the current channel. Please execute the command in of these authorized channels:\n${command.onlyChannels.map(channelId => `↳ <#${channelId}>`).join("\n")}`);
 
-            message.reply({
-                embeds: [errorEmbed],
-                allowedMentions: {
-                    repliedUser: false
-                }
-            })
-            return false;
-        }
+        message.reply({
+            embeds: [errorEmbed]
+        });
+        return false;
     }
-}
+};

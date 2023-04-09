@@ -1,42 +1,28 @@
-const { bold } = require("chalk");
 const { EmbedBuilder } = require("discord.js");
-module.exports = (message, Command, InteractionType) => {
-    if (!Command.allUserPermissions) return true;
-    if (!Array.isArray(Command.allUserPermissions)) {
-        console.log(bold.yellow(`[ERROR] Invalid input detected in AnyUserPermissions option of ${Command.name} of ${InteractionType}.`))
-        return true;
-    }
-    if (!message.guild) {
-        console.log(bold.blue(`[WARN] Guild object not found in AnyUserPermissions option of ${Command.name} of ${InteractionType}.`))
-        return true;
-    }
-    let MissingPermissions = []
 
-    Command.allUserPermissions.forEach(Permission => {
-        if (!message.member.permissions.has(Permission)) MissingPermissions.push(Permission)
-    })
-    if (MissingPermissions.length == 0) return true;
+module.exports = async(client, message, command) => {
+    if (!command.allUserPermissions || !Array.isArray(command.allUserPermissions || !message.guild)) return true;
+    const user = message.member;
+    let missingPermissions = [];
+    await command.allUserPermissions.forEach(permission => {
+        if (!user.permissions.toArray().includes(permission)) missingPermissions.push(permission);
+    });
+    if (missingPermissions.length == 0) return true;
     else {
-        if (Command.returnErrors == false || Command.returnAllUserPermissionsError == false) return false;
-        else {
-            const errorEmbed = new EmbedBuilder()
-                .setColor('#FF0000')
-                .setAuthor({
-                    name: message.member.user.tag,
-                    iconURL: message.member.user.displayAvatarURL({
-                        dynamic: true
-                    })
-                })
-                .setTimestamp()
-                .setDescription(`You don't have these required permissions to use this command. Required permissions: \n${MissingPermissions.map(permission => `\`${permission}\``).join(", ")}`);
+        if (command.returnErrors == false || command.returnAllUserPermissionsError == false) return false;
+        const errorEmbed = new EmbedBuilder()
+        .setColor("DarkRed")
+        .setTimestamp()
+        .setAuthor({
+            name: user.user.tag,
+            iconURL: user.user.displayAvatarURL({ dynamic: true })
+        })
+        .setThumbnail(client.user.displayAvatarURL({ dynamic: true }))
+        .setDescription(`You are missing the set permissions which are necessary to run this command. Please acquire these permissions:\n${missingPermissions.map(permission => `↳ \`${permission}\``).join("\n")}`);
 
-            message.reply({
-                embeds: [errorEmbed],
-                allowedMentions: {
-                    repliedUser: false
-                }
-            })
-            return false;
-        }
+        message.reply({
+            embeds: [errorEmbed]
+        });
+        return false;
     }
-}
+};

@@ -1,78 +1,80 @@
-<p align="center"><img src="https://media.discordapp.net/attachments/774290264764055582/890955909566722048/0001-8574372447_20210924_191019_0000.png" height=200 width=400><br>
-<img src="https://img.shields.io/badge/version-7.0.0-05122A?style=for-the-badge">
+<p align="center"><img src="https://media.discordapp.net/attachments/774290264764055582/1093484780525469757/A_banner_for_a_discord_bots_template_made_using_discord.js.png?width=1280&height=670" height=200 width=400><br>
+<img src="https://img.shields.io/badge/version-8.0.0-05122A?style=for-the-badge">
 <a href="https://discord.gg/VStdRr8nP2"><img src="https://img.shields.io/badge/discord-invite-5865f2?style=for-the-badge&logo=discord&logoColor=white"></a>
 <img src="https://img.shields.io/github/issues/RileCraft/DiscordBot-Template.svg?style=for-the-badge">
 <img src="https://img.shields.io/github/forks/RileCraft/DiscordBot-Template.svg?style=for-the-badge">
-<img src="https://img.shields.io/github/stars/RileCraft/DiscordBot-Template.svg?style=for-the-badge"></p>
+<img src="https://img.shields.io/github/stars/RileCraft/DiscordBot-Template.svg?style=for-the-badge">
 
-# 『 Changelog 』**Breaking Changes!**
-* The handler has been updated to Discord.JS `14.2.0`.
-* Command options have been fully rewrited, improved, tested and can be applied to both `MessageCommands` and `Interaction Commands`.
-* The command options `cooldown`, `requiredRoles`, `requiredAnyRole` do not exist.
-* The file `Config.js` has been moved from the root directory to `Src/Credentials`.
-* The argument `container` which was passed in commands and was used to access config and `Discord` does not exist anymore and instead you now have to import everything manually.
-* The collection used for storing commands and events have been renamed. [ Check below for renamed versions. ]
-* These are the current `Command Options` that are currently avaliable:
-- `allowInDms`
-- `allowBots`
-- `allClientPermissions`
-- `allUserPermissions`
-- `anyClientPermissions`
-- `anyUserPermissions`
-- `expireAfter`
-- `limitUses`
-- `onlyChannels`
-- `onlyGuilds`
-- `onlyUsers`
-- `ownerOnly`
-* Both the `MessageCreate` and `InteractionCreate` events have been improved and are executed from their own file now instead of being dependent on `loadCommandOptions`.
-* The handler now contains all the basic `Events`, `MessageCommands` and `Interactions` examples given by default to help the user understand the format easier.
-* Significant changes have been made to `SlashCommands` and `ContextMenus` and the format now requires the command type to be specificed, you may learn the new format by seeing their example commands which are already given.
-* Interaction commands are now given their own seperate folder i.e `Src/Interactions/<InteractionType>` for better management.
-* The message now no longer require to be lowercase. For example before the command `Eval` was forced to be only `!eval` but now you can do `!eVaL` and it would be accepted.
-* `bot.js` now only exports `client` and `rootPath`.
-* The utility function `Filer.js` does not exist anymore and is replaced with the package `node-recursive-directory`.
-* The client has been improved to increase performance and consume much less memory.
-* Startup logging has been changed and is no longer a box as the package `cli-box` is no longer used.
-* Detailed format information at [here](https://dbt.cozydevs.ml)
-# 『 Documentation 』
-**[Click me](https://dbt.cozydevs.ml/) to go the official documentation site which has all the required information.**
 
-# 『 FAQ 』
-[**Click here to see frequently asked questions**](https://dbt.cozydevs.ml/faq)
+# Changelog
+* Latest `Discord.JS` adaptation.
+* Refactored all command options with vast improvements.
+* switched to camel case across the template.
+* All handlers are now called `managers`.
+* Refactor of slashCommands `handler(now manager)` to now use `Rest.put()` and `contextMenus` is now managed by the `slashCommands manager` itself.
+* There is now a new method of registering `global` and `guild` slashCommands/contextMenus and `guilds: []` properity is now removed. Follow up here to see the guide for new method of registering `slashCommands/contextMenus`.
+* `expireAfter` and `limitUses` command option is now removed.
+* Cooldown command option has been readded and has been divided into 3 options: `guildCooldown`, `globalCooldown`, `channelCooldown`. Each of them accepting `Number` of time delay in between each time command is ran **Note: Provide time in milliseconds, Example: 5 seconds to be provided as 5000**.
 
-# 『 Features 』
-* Chalk Logging
-* Organized layout and easily customizable.
-* Includes `MessageCommands` , `SelectMenus` , `Buttons` , `ContextMenus` , `SlashCommands` , `ModalForms` handler.
-* Inbuilt many command options that can be applied to all types of commands. (They will not work on events.)
-* Frequent updates to stay as upto date as possible.
+# Documentation
+|Command Options|Documentation|
+| -------- | --------------------------------- |
+|`ReturnErrors`| [Click Here](/.github/Docs/CMDOptions/ReturnErrors.md)|
+|`Ignore`| [Click Here](/.github/Docs/CMDOptions/Ignore.md)|
+|`AllClientPermissions`| [Click Here](/.github/Docs/CMDOptions/AllClientPermissions.md)|
+|`AllowBots`| [Click Here](/.github/Docs/CMDOptions/AllowBots.md)|
+|`AllowInDms`| [Click Here](/.github/Docs/CMDOptions/AllowInDms.md)|
+|`AllUserPermissions`| [Click Here](/.github/Docs/CMDOptions/AllUserPermissions.md)|
+|`AnyClientPermissions`| [Click Here](/.github/Docs/CMDOptions/AnyClientPermissions.md)|
+|`AnyUserPermissions`| [Click Here](/.github/Docs/CMDOptions/AnyUserPermissions.md)|
+|`ChannelCooldown`| [Click Here](/.github/Docs/CMDOptions/ChannelCooldown.md)|
+|`GlobalCooldown`| [Click Here](/.github/Docs/CMDOptions/GlobalCooldown.md)|
+|`GuildCooldown`| [Click Here](/.github/Docs/CMDOptions/GuildCooldown.md)|
+|`OnlyChannels`| [Click Here](/.github/Docs/CMDOptions/OnlyChannels.md)|
+|`OnlyGuilds`| [Click Here](/.github/Docs/CMDOptions/OnlyGuilds.md)|
+|`OnlyRoles`| [Click Here](/.github/Docs/CMDOptions/OnlyRoles.md)|
+|`OnlyUsers`| [Click Here](/.github/Docs/CMDOptions/OnlyUsers.md)|
+|`OwnerOnly`| [Click Here](/.github/Docs/CMDOptions/OwnerOnly.md)|
+|Managers|Documentation|
+|`MessageCommands`|[Click Here](/.github/Docs/Managers/MessageCommands.md)|
+|`SelectMenus`|[Click Here](/.github/Docs/Managers/SelectMenus.md)|
+|`Buttons`|[Click Here](/.github/Docs/Managers/Buttons.md)|
+|`Events`|[Click Here](/.github/Docs/Managers/Events.md)|
+|`SlashCommands`|[Click Here](/.github/Docs/Managers/SlashCommands.md)|
+|`ModalForms`|[Click Here](/.github/Docs/Managers/ModalForms.md)|
 
-# 『 Important Notes 』
-* [**NodeJS**](https://nodejs.org) V16 and above.
-* `ContextMenus` and `SlashCommands` take 5 second each command file to create and update because of Discord's Ratelimit. But the `run()` function is updated immediately on startup so if you only need to update existing command code then it will be done instantly so thats a nice thing :D.
-* Global commands can take upto a hour to update because that's how Discord made global commands so we cannot do anything about it.
-* These are the collections where events and commands are stored.
+# Features
+* Colorful and organized logging.
+* Room for customization as per user needs.
+* Includes management of `MessageCommands`, `Buttons`, `SelectMenus`, `SlashCommands`, `ContextMenus` and `ModalForms`.
+* Included variety of commonly-used command options (not applicable to `Events`.)
+* Included management of `Custom Events`.
+* Simple and understandable code.
+
+# Notes
+* Recommended `NodeJS` V16 & above.
+* Global `slashCommands`/`ContextMenus` may take time to refresh as it's fixed by discord.
+* Guild commands could potentially take time to refresh if perhaps too many different `guilds` commands.
+* Collections of where commands and events data is stored and used from.
 ```js
-<Client>.messageCommands // Normal message commands collection.
-<Client>.messageCommands_Aliases // Normal message commands aliases collection.
-<Client>.events // Events collection.
-<Client>.slashCommands // SlashCommands collection.
-<Client>.contextMenus // ContextMenus collection.
-<Client>.selectMenus // SelectMenus collection.
-<Client>.buttonCommands // ButtonCommands collection.
-<Client>.modalForms // ModalForms collection.
+<Client>.messageCommands //Message Commands Cache
+<Client>.messageCommandsAliases // Message Commands Aliases Cache
+<Client>.events // Client Events Cache
+<Client>.buttonCommands // Button Interactions Cache
+<Client>.selectMenus // SelectMenu Interactions Cache
+<Client>.modalForms // ModalForms Interactions Cache
+<Client>.slashCommands // SlashCommands Cache (Includes ContextMenus)
 ```
 
-# 『 Setup / Configuration 』
-* Install the required modules using the command `npm i` in your console and wait for it to finish.
-* Fill all the fields in `Src/Credentials/Config.js`.
-* Use the command `node bot.js` or `node .` to start the bot and enjoy :D
+# Installation
+* Clone the repository by either downloading it as a zip or running the command `git clone https://github.com/rilecraft/discordbot-template`.
+* Run the command `npm i` in the template's directory (Make sure npm is installed).
+* After all the required modules have been installed, goto the file `Src/Credentials/Config.js` and fill in the neccesary information.
+* Run the command `node bot.js` or `node .` to get the bot started!
 
-
-# 『 Contribution 』
-If you want to contribute towards this repository then follow these steps.
-* Fork this Repository.
-* Edit your fork and save the changes you want to make.
-* Open the pull request.
-* We will check out the code and if it is fine then your PR will be merged.
+# Contribution
+You are always welcome to make any contribution but make sure to follow these:
+* Fork the branch `Unstable`. **Important: All changes must be first made to the Unstable branch.**
+* Edit your forked repository and make your changes.
+* Open a pull request to the `Unstable` branch and it will be reviewed soon.
+* If everything checks out then the pull request would be merged.

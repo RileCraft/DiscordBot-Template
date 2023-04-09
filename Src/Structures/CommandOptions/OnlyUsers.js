@@ -1,34 +1,24 @@
-const { bold } = require("chalk");
 const { EmbedBuilder } = require("discord.js");
-module.exports = (message, Command, IsInteraction) => {
-    if (!Command.onlyUsers) return true;
-    let user;
 
-    if (IsInteraction) user = message.user
-    else user = message.author
-
-    if (Command.onlyUsers.some(Id => user.id == Id)) return true;
+module.exports = async (client, message, command, isInteraction) => {
+    if (!command.onlyUsers || !Array.isArray(command.onlyUsers)) return true;
+    const user = isInteraction ? message.user : message.author;
+    if (command.onlyUsers.some(userId => user.id == userId)) return true;
     else {
-        if (Command.returnErrors == false || Command.returnOnlyUsersError == false) return false;
-        else {
-            const errorEmbed = new EmbedBuilder()
-                .setColor('#FF0000')
-                .setAuthor({
-                    name: user.tag,
-                    iconURL: user.displayAvatarURL({
-                        dynamic: true
-                    })
-                })
-                .setTimestamp()
-                .setDescription(`This command can only be run by these people: \n${Command.onlyUsers.map(Id => `<@${Id}>`).join(", ")}`);
+        if (command.returnErrors == false || command.returnOnlyUsersError == false) return false;
+        const errorEmbed = new EmbedBuilder()
+        .setColor("DarkRed")
+        .setTimestamp()
+        .setAuthor({
+            name: user.tag,
+            iconURL: user.displayAvatarURL({ dynamic: true })
+        })
+        .setThumbnail(client.user.displayAvatarURL({ dynamic: true }))
+        .setDescription(`The command you tried to execute couldn't be ran as you are not one of the authorized users.`);
 
-            message.reply({
-                embeds: [errorEmbed],
-                allowedMentions: {
-                    repliedUser: false
-                }
-            })
-            return false;
-        }
+        message.reply({
+            embeds: [errorEmbed]
+        });
+        return false;
     }
-}
+};
