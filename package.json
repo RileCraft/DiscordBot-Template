@@ -14,5 +14,14 @@
     "quick.db": "^9.1.3"
   },
   "author": "RileCraft",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rilecraft/discordbot-template.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rilecraft/discordbot-template/issues"
+  },
+  "homepage": "https://github.com/rilecraft/discordbot-template#readme"
 }
