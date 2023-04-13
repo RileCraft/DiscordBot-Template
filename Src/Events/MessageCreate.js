@@ -3,8 +3,9 @@ const commandOptionsProcessor = require("../Structures/CommandOptions/Processor"
 module.exports = {
     name: "messageCreate",
     run: async(message, client) => {
-        if (!Array.isArray(prefix) && !message.content.startsWith(prefix)) return;
+        if (!Array.isArray(prefix)) return;
         prefix.forEach(async botPrefix => {
+            if (!message.content.startsWith(botPrefix)) return;
             const commandName = message.content.toLowerCase().slice(botPrefix.length).trim().split(" ")[0];
             const command = client.messageCommands.get(commandName) ?? client.messageCommands.get(client.messageCommandsAliases.get(commandName));
             if (!command) return;
