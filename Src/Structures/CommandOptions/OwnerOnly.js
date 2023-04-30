@@ -1,7 +1,7 @@
 const { EmbedBuilder } = require("discord.js");
 const { ownerIds } = require("../../Credentials/Config");
 module.exports = async(client, message, command, isInteraction) => {
-    if (!command.ownerOnly && typeof command?.ownerOnly != "boolean") return true;
+    if (!command.ownerOnly || typeof command?.ownerOnly != "boolean") return true;
     const user = isInteraction ? message.user : message.author;
     if (ownerIds.includes(user.id)) return true;
     else {
