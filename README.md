@@ -1,80 +1,96 @@
-<p align="center"><img src="https://media.discordapp.net/attachments/774290264764055582/1093484780525469757/A_banner_for_a_discord_bots_template_made_using_discord.js.png?width=1280&height=670" height=200 width=400><br>
-<img src="https://img.shields.io/badge/version-8.0.1-05122A?style=for-the-badge">
-<a href="https://discord.gg/VStdRr8nP2"><img src="https://img.shields.io/badge/discord-invite-5865f2?style=for-the-badge&logo=discord&logoColor=white"></a>
-<img src="https://img.shields.io/github/issues/RileCraft/DiscordBot-Template.svg?style=for-the-badge">
-<img src="https://img.shields.io/github/forks/RileCraft/DiscordBot-Template.svg?style=for-the-badge">
-<img src="https://img.shields.io/github/stars/RileCraft/DiscordBot-Template.svg?style=for-the-badge">
+<p align="center">
+  <img src="https://media.discordapp.net/attachments/774290264764055582/1093484780525469757/A_banner_for_a_discord_bots_template_made_using_discord.js.png" height="200" width="400"><br>
+  <img src="https://img.shields.io/badge/version-8.0.1-05122A?style=for-the-badge">
+  <a href="https://discord.gg/VStdRr8nP2"><img src="https://img.shields.io/badge/discord-invite-5865f2?style=for-the-badge&logo=discord&logoColor=white"></a>
+  <img src="https://img.shields.io/github/issues/RileCraft/DiscordBot-Template.svg?style=for-the-badge">
+  <img src="https://img.shields.io/github/forks/RileCraft/DiscordBot-Template.svg?style=for-the-badge">
+  <img src="https://img.shields.io/github/stars/RileCraft/DiscordBot-Template.svg?style=for-the-badge">
+</p>
 
+# Discord Bot Template
 
-# Changelog
-* Latest `Discord.JS` adaptation.
-* Refactored all command options with vast improvements.
-* switched to camel case across the template.
-* All handlers are now called `managers`.
-* Refactor of slashCommands `handler(now manager)` to now use `Rest.put()` and `contextMenus` is now managed by the `slashCommands manager` itself.
-* There is now a new method of registering `global` and `guild` slashCommands/contextMenus and `guilds: []` properity is now removed. Follow up here to see the guide for new method of registering `slashCommands/contextMenus`.
-* `expireAfter` and `limitUses` command option is now removed.
-* Cooldown command option has been readded and has been divided into 3 options: `guildCooldown`, `globalCooldown`, `channelCooldown`. Each of them accepting `Number` of time delay in between each time command is ran **Note: Provide time in milliseconds, Example: 5 seconds to be provided as 5000**.
+The Discord Bot Template provides a solid foundation for creating feature-rich Discord bots using Discord.js. It includes various managers for handling message commands, buttons, select menus, slash commands, context menus, and modal forms. The template offers customization options, colorful logging, and a simple code structure.
 
-# Documentation
-|Command Options|Documentation|
-| -------- | --------------------------------- |
-|`ReturnErrors`| [Click Here](/.github/Docs/CMDOptions/ReturnErrors.md)|
-|`Ignore`| [Click Here](/.github/Docs/CMDOptions/Ignore.md)|
-|`AllClientPermissions`| [Click Here](/.github/Docs/CMDOptions/AllClientPermissions.md)|
-|`AllowBots`| [Click Here](/.github/Docs/CMDOptions/AllowBots.md)|
-|`AllowInDms`| [Click Here](/.github/Docs/CMDOptions/AllowInDms.md)|
-|`AllUserPermissions`| [Click Here](/.github/Docs/CMDOptions/AllUserPermissions.md)|
-|`AnyClientPermissions`| [Click Here](/.github/Docs/CMDOptions/AnyClientPermissions.md)|
-|`AnyUserPermissions`| [Click Here](/.github/Docs/CMDOptions/AnyUserPermissions.md)|
-|`ChannelCooldown`| [Click Here](/.github/Docs/CMDOptions/ChannelCooldown.md)|
-|`GlobalCooldown`| [Click Here](/.github/Docs/CMDOptions/GlobalCooldown.md)|
-|`GuildCooldown`| [Click Here](/.github/Docs/CMDOptions/GuildCooldown.md)|
-|`OnlyChannels`| [Click Here](/.github/Docs/CMDOptions/OnlyChannels.md)|
-|`OnlyGuilds`| [Click Here](/.github/Docs/CMDOptions/OnlyGuilds.md)|
-|`OnlyRoles`| [Click Here](/.github/Docs/CMDOptions/OnlyRoles.md)|
-|`OnlyUsers`| [Click Here](/.github/Docs/CMDOptions/OnlyUsers.md)|
-|`OwnerOnly`| [Click Here](/.github/Docs/CMDOptions/OwnerOnly.md)|
-|Managers|Documentation|
-|`MessageCommands`|[Click Here](/.github/Docs/Managers/MessageCommands.md)|
-|`SelectMenus`|[Click Here](/.github/Docs/Managers/SelectMenus.md)|
-|`Buttons`|[Click Here](/.github/Docs/Managers/Buttons.md)|
-|`Events`|[Click Here](/.github/Docs/Managers/Events.md)|
-|`SlashCommands`|[Click Here](/.github/Docs/Managers/SlashCommands.md)|
-|`ModalForms`|[Click Here](/.github/Docs/Managers/ModalForms.md)|
+## Changelog
 
-# Features
-* Colorful and organized logging.
-* Room for customization as per user needs.
-* Includes management of `MessageCommands`, `Buttons`, `SelectMenus`, `SlashCommands`, `ContextMenus` and `ModalForms`.
-* Included variety of commonly-used command options (not applicable to `Events`.)
-* Included management of `Custom Events`.
-* Simple and understandable code.
+- Latest Discord.js adaptation.
+- Refactored command options with significant improvements.
+- Updated the code to use camel case throughout the template.
+- Renamed all handlers to managers.
+- Replaced the slashCommands handler (now manager) with the `Rest.put()` method. Context menus are now managed by the slashCommands manager.
+- Introduces a new method for registering global and guild slash commands and context menus. The `guilds: []` property has been removed. Please refer to the guide for the updated registration method.
+- Removed the `expireAfter` and `limitUses` command options.
+- Reintroduced the `cooldown` command option, divided into `guildCooldown`, `globalCooldown`, and `channelCooldown`. Each option accepts the delay time in milliseconds.
 
-# Notes
-* Recommended `NodeJS` V16 & above.
-* Global `slashCommands`/`ContextMenus` may take time to refresh as it's fixed by discord.
-* Guild commands could potentially take time to refresh if perhaps too many different `guilds` commands.
-* Collections of where commands and events data is stored and used from.
-```js
-<Client>.messageCommands //Message Commands Cache
-<Client>.messageCommandsAliases // Message Commands Aliases Cache
-<Client>.events // Client Events Cache
-<Client>.buttonCommands // Button Interactions Cache
-<Client>.selectMenus // SelectMenu Interactions Cache
-<Client>.modalForms // ModalForms Interactions Cache
-<Client>.slashCommands // SlashCommands Cache (Includes ContextMenus)
-```
+## Documentation
 
-# Installation
-* Clone the repository by either downloading it as a zip or running the command `git clone https://github.com/rilecraft/discordbot-template`.
-* Run the command `npm i` in the template's directory (Make sure npm is installed).
-* After all the required modules have been installed, goto the file `Src/Credentials/Config.js` and fill in the neccesary information.
-* Run the command `node bot.js` or `node .` to get the bot started!
+For detailed documentation on command options and managers, please refer to the following links:
 
-# Contribution
-You are always welcome to make any contribution but make sure to follow these:
-* Fork the branch `Unstable`. **Important: All changes must be first made to the Unstable branch.**
-* Edit your forked repository and make your changes.
-* Open a pull request to the `Unstable` branch and it will be reviewed soon.
-* If everything checks out then the pull request would be merged.
+### Command Options
+
+- [ReturnErrors](/.github/Docs/CMDOptions/ReturnErrors.md)
+- [Ignore](/.github/Docs/CMDOptions/Ignore.md)
+- [AllClientPermissions](/.github/Docs/CMDOptions/AllClientPermissions.md)
+- [AllowBots](/.github/Docs/CMDOptions/AllowBots.md)
+- [AllowInDms](/.github/Docs/CMDOptions/AllowInDms.md)
+- [AllUserPermissions](/.github/Docs/CMDOptions/AllUserPermissions.md)
+- [AnyClientPermissions](/.github/Docs/CMDOptions/AnyClientPermissions.md)
+- [AnyUserPermissions](/.github/Docs/CMDOptions/AnyUserPermissions.md)
+- [ChannelCooldown](/.github/Docs/CMDOptions/ChannelCooldown.md)
+- [GlobalCooldown](/.github/Docs/CMDOptions/GlobalCooldown.md)
+- [GuildCooldown](/.github/Docs/CMDOptions/GuildCooldown.md)
+- [OnlyChannels](/.github/Docs/CMDOptions/OnlyChannels.md)
+- [OnlyGuilds](/.github/Docs/CMDOptions/OnlyGuilds.md)
+- [OnlyRoles](/.github/Docs/CMDOptions/OnlyRoles.md)
+- [OnlyUsers](/.github/Docs/CMDOptions/OnlyUsers.md)
+- [OwnerOnly](/.github/Docs/CMDOptions/OwnerOnly.md)
+
+### Managers
+
+- [MessageCommands](/.github/Docs/Managers/MessageCommands.md)
+- [SelectMenus](/.github/Docs/Managers/SelectMenus.md)
+- [Buttons](/.github/Docs/Managers/Buttons.md)
+- [Events](/.github/Docs/Managers/Events.md)
+- [SlashCommands](/.github/Docs/Managers/SlashCommands.md)
+- [ModalForms](/.github/Docs/Managers/ModalForms.md)
+
+## Features
+
+- Colorful and organized logging.
+- Customization options to suit your needs.
+- Supports management of message commands, buttons, select menus, slash commands, context menus, and modal forms.
+- Includes a variety of commonly used command options (not applicable to events).
+- Supports management of custom events.
+- Simple and understandable code structure.
+
+## Notes
+
+- Recommended Node.js version: 16 and above.
+- Global slash commands and context menus may take time to refresh as it is controlled by Discord.
+- Guild commands may take time to refresh if there are a large number of different guild commands.
+- Collections where command and event data is stored and used:
+  - `<Client>.messageCommands`: Message commands cache
+  - `<Client>.messageCommandsAliases`: Message command aliases cache
+  - `<Client>.events`: Client events cache
+  - `<Client>.buttonCommands`: Button interactions cache
+  - `<Client>.selectMenus`: Select menu interactions cache
+  - `<Client>.modalForms`: Modal form interactions cache
+  - `<Client>.slashCommands`: Slash commands cache (includes context menus)
+
+## Installation
+
+To get started with the Discord Bot Template, follow these steps:
+
+1. Clone the repository by downloading it as a ZIP file or running the command `git clone https://github.com/rilecraft/discordbot-template`.
+2. Navigate to the template's directory and run the command `npm install` (make sure npm is installed).
+3. Once all the required modules are installed, open the `Src/Credentials/Config.js` file and fill in the necessary information.
+4. Run the command `node bot.js` or `node .` to start the bot.
+
+## Contribution
+
+Contributions to the Discord Bot Template are welcome. To contribute, please follow these guidelines:
+
+1. Fork the `Unstable` branch. **Important: All changes must be made to the Unstable branch.**
+2. Make your changes in your forked repository.
+3. Open a pull request to the `Unstable` branch, and it will be reviewed promptly.
+4. If everything checks out, the pull request will be merged.
