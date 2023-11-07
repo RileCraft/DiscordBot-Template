@@ -7,8 +7,9 @@ export default async(client, rootPath) => {
     const clientEventsFiles = await glob(`${rootPath}/Src/Events/**/*`);
     clientEventsFiles.forEach(async(eventFile) => {
         if (statSync(eventFile).isDirectory()) return;
-        const clientEvent = await import(pathToFileURL(join(rootPath, eventFile)));
-        
+        let clientEvent = await import(pathToFileURL(join(rootPath, eventFile)));
+
+        if (clientEvent.default) clientEvent = clientEvent.default;
         if (clientEvent.ignore || !clientEvent.run) return;
         if (clientEvent.customEvent) return clientEvent.run(client, rootPath);
         if (!clientEvent.name) return;

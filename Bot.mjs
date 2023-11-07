@@ -2,6 +2,10 @@ import { Client, GatewayIntentBits, Partials, Collection } from "discord.js";
 import config from "./Src/Config.mjs";
 import MessageCommandsHandler from "./Src/Structures/Managers/MessageCommands.mjs";
 import ClientEventHandler from "./Src/Structures/Managers/Events.mjs";
+import ButtonCommandsHandler from "./Src/Structures/Managers/ButtonCommands.mjs";
+import ModalFormsHandler from "./Src/Structures/Managers/ModalForms.mjs";
+import SelectMenusHandler from "./Src/Structures/Managers/SelectMenus.mjs";
+import SlashCommandsHandler from "./Src/Structures/Managers/SlashCommands.mjs";
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 
@@ -34,5 +38,9 @@ import { dirname } from 'path';
 
     await MessageCommandsHandler(client, __dirname);
     await ClientEventHandler(client, __dirname);
+    await ButtonCommandsHandler(client, __dirname);
+    await SelectMenusHandler(client, __dirname);
+    await ModalFormsHandler(client, __dirname);
     await client.login(config.botToken);
+    await SlashCommandsHandler(client, __dirname);
 })();

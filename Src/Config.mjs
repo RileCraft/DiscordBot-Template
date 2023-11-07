@@ -1,5 +1,5 @@
 export default  {
-    prefix: ["Enter bot's prefix here"],
-    botToken: "Enter bot's token here",
-    ownerIds: ["Enter bot's Owner ID here"]
+    prefix: ["."],
+    botToken: "ODA3NTk0MzI4NDAyNDI3OTM1.G0fLfh.Bl3FiyAXMhHAbXyVC-VsBdPCxwa-Z4V8No4yOs",
+    ownerIds: ["427109850368049162"]
 };;

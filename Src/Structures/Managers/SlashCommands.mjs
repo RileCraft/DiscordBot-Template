@@ -1,17 +1,23 @@
-const directorySearch = require("node-recursive-directory");
-const { REST, Routes } = require('discord.js');
-const readFiles = require("../ReadAllFiles");
-module.exports = async (client, rootPath) => {
-    const globalSlashCommandsFiles = await directorySearch(`${rootPath}/Src/Interactions/SlashCommands/Global`);
-    const allGuildsSlashCommandsFiles = readFiles(`${rootPath}/Src/Interactions/SlashCommands/Guilds`);
+import { statSync } from "fs";
+import { glob } from "glob";
+import { join } from "path";
+import { pathToFileURL } from "url";
+import { REST, Routes } from "discord.js";
+
+export default async(client, rootPath) => {
+    const globalSlashCommandsFiles = await glob(`${rootPath}/Src/Interactions/SlashCommands/Global/**/*`);
+    const allGuildsSlashCommands = await glob(`${rootPath}/Src/Interactions/SlashCommands/Guilds/*`);
     const rest = new REST({ version: '10' }).setToken(client.token);
 
     if (globalSlashCommandsFiles?.length > 0) {
         let AGCOA = []; // All global commands as an array of objects.
-        await globalSlashCommandsFiles.forEach(async globalFile => {
-            const globalCommand = require(globalFile);
+        for (const globalFile of globalSlashCommandsFiles) {
+            if (statSync(globalFile).isDirectory()) return;
+            let globalCommand = await import(pathToFileURL(join(rootPath, globalFile)));
+            if (globalCommand.default) globalCommand = globalCommand.default;
             if (!globalCommand.name || globalCommand.ignore || !globalCommand.run) return;
             await client.slashCommands.set(globalCommand.name, globalCommand);
+
             if (!globalCommand.description) AGCOA.push({
                 name: globalCommand.name,
                 type: globalCommand.type
@@ -22,21 +28,25 @@ module.exports = async (client, rootPath) => {
                 type: globalCommand.type,
                 options: globalCommand?.options ?? []
             });
-        });
+        }
         try {
             await rest.put(Routes.applicationCommands(client.application.id), { body: AGCOA });
         } catch (error) {
             console.log(error);
         }
     };
-    if (allGuildsSlashCommandsFiles?.length > 0) {
-        allGuildsSlashCommandsFiles.forEach(async(guild) => {
-            let ASCOA = []; // All commands of this particular guild as an array of objects.
-            const guildId = guild.flat(9999)[0].split(`${rootPath}/Src/Interactions/SlashCommands/Guilds`)[1].split("/")[1];
-            await guild.flat(9999).forEach(async commandFile => {
-                const guildCommand = require(commandFile);
+    if (allGuildsSlashCommands?.length > 0) {
+        let ASCOA = []; // All commands of this particular guild as an array of objects.
+        allGuildsSlashCommands.forEach(async(guild) => {
+            const guildId = guild.split("Guilds")[1].slice(1).trim();
+            const guildCommandFiles = await glob(`${rootPath}/Src/Interactions/SlashCommands/Guilds/${guildId}/**/*`);
+
+            for (const commandFile of guildCommandFiles) {
+                let guildCommand = await import(pathToFileURL(join(rootPath, commandFile)));
+                if (guildCommand.default) guildCommand = guildCommand.default;
                 if (!guildCommand.name || guildCommand.ignore || !guildCommand.run) return;
                 await client.slashCommands.set(guildCommand.name, guildCommand);
+                
                 if (!guildCommand.description) ASCOA.push({
                     name: guildCommand.name,
                     type: guildCommand.type
@@ -47,7 +57,7 @@ module.exports = async (client, rootPath) => {
                     type: guildCommand.type,
                     options: guildCommand?.options ?? []
                 });
-            });
+            }
             try {
                 await rest.put(Routes.applicationGuildCommands(client.application.id, guildId), { body: ASCOA });
             } catch (error) {
