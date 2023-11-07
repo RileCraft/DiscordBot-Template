@@ -1,6 +1,6 @@
 <p align="center">
   <img src="https://media.discordapp.net/attachments/774290264764055582/1093484780525469757/A_banner_for_a_discord_bots_template_made_using_discord.js.png" height="200" width="400"><br>
-  <img src="https://img.shields.io/badge/version-8.0.1-05122A?style=for-the-badge">
+  <img src="https://img.shields.io/badge/version-8.0.2-05122A?style=for-the-badge">
   <a href="https://discord.gg/VStdRr8nP2"><img src="https://img.shields.io/badge/discord-invite-5865f2?style=for-the-badge&logo=discord&logoColor=white"></a>
   <img src="https://img.shields.io/github/issues/RileCraft/DiscordBot-Template.svg?style=for-the-badge">
   <img src="https://img.shields.io/github/forks/RileCraft/DiscordBot-Template.svg?style=for-the-badge">
@@ -14,13 +14,8 @@ The Discord Bot Template provides a solid foundation for creating feature-rich D
 ## Changelog
 
 - Latest Discord.js adaptation.
-- Refactored command options with significant improvements.
-- Updated the code to use camel case throughout the template.
-- Renamed all handlers to managers.
-- Replaced the slashCommands handler (now manager) with the `Rest.put()` method. Context menus are now managed by the slashCommands manager.
-- Introduces a new method for registering global and guild slash commands and context menus. The `guilds: []` property has been removed. Please refer to the guide for the updated registration method.
-- Removed the `expireAfter` and `limitUses` command options.
-- Reintroduced the `cooldown` command option, divided into `guildCooldown`, `globalCooldown`, and `channelCooldown`. Each option accepts the delay time in milliseconds.
+- Refactored entire template to ESM module.
+- Config file has been moved to `Src`.
 
 ## Documentation
 
@@ -83,8 +78,8 @@ To get started with the Discord Bot Template, follow these steps:
 
 1. Clone the repository by downloading it as a ZIP file or running the command `git clone https://github.com/rilecraft/discordbot-template`.
 2. Navigate to the template's directory and run the command `npm install` (make sure npm is installed).
-3. Once all the required modules are installed, open the `Src/Credentials/Config.js` file and fill in the necessary information.
-4. Run the command `node bot.js` or `node .` to start the bot.
+3. Once all the required modules are installed, open the `Src/Config.js` file and fill in the necessary information.
+4. Run the command `node Bot.js` or `node .` to start the bot.
 
 ## Contribution
 
