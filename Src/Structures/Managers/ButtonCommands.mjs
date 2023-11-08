@@ -8,7 +8,7 @@ export default async(client, rootPath) => {
     buttonCommandFiles.forEach(async(buttonCommandFile) => {
         if (statSync(buttonCommandFile).isDirectory()) return;
         let buttonCommand = await import(pathToFileURL(join(rootPath, buttonCommandFile)));
-        if (buttonCommand.default) buttonCommand = buttonCommand.default;
+        if (buttonCommand.default) buttonCommand = buttonCommand.default; // Support for CommonJS
         if (buttonCommand.ignore || !buttonCommand.name || !buttonCommand.run) return;
 
         client.buttonCommands.set(buttonCommand.name, buttonCommand);

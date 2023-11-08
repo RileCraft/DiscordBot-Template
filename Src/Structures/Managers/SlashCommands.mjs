@@ -14,7 +14,7 @@ export default async(client, rootPath) => {
         for (const globalFile of globalSlashCommandsFiles) {
             if (statSync(globalFile).isDirectory()) return;
             let globalCommand = await import(pathToFileURL(join(rootPath, globalFile)));
-            if (globalCommand.default) globalCommand = globalCommand.default;
+            if (globalCommand.default) globalCommand = globalCommand.default; // Support for CommonJS
             if (!globalCommand.name || globalCommand.ignore || !globalCommand.run) return;
             await client.slashCommands.set(globalCommand.name, globalCommand);
 
@@ -43,7 +43,7 @@ export default async(client, rootPath) => {
 
             for (const commandFile of guildCommandFiles) {
                 let guildCommand = await import(pathToFileURL(join(rootPath, commandFile)));
-                if (guildCommand.default) guildCommand = guildCommand.default;
+                if (guildCommand.default) guildCommand = guildCommand.default; // Support for CommonJS
                 if (!guildCommand.name || guildCommand.ignore || !guildCommand.run) return;
                 await client.slashCommands.set(guildCommand.name, guildCommand);
                 

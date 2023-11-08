@@ -1,9 +1,11 @@
-const { EmbedBuilder } = require("discord.js");
-const { ownerIds } = require("../../Credentials/Config");
-module.exports = async(client, message, command, isInteraction) => {
+import { EmbedBuilder } from "discord.js";
+import config from "../../Config.mjs"
+
+export default async(client, message, command, isInteraction) => {
     if (!command.ownerOnly || typeof command?.ownerOnly != "boolean") return true;
+    if (!command.allowInDms && !message.guild) return true;
     const user = isInteraction ? message.user : message.author;
-    if (ownerIds.includes(user.id)) return true;
+    if (config.ownerIds.includes(user.id)) return true;
     else {
         if (command.returnErrors == false || command.returnOwnerOnlyError == false) return false;
         const errorEmbed = new EmbedBuilder()
@@ -17,7 +19,10 @@ module.exports = async(client, message, command, isInteraction) => {
         .setDescription("The command you tried to run is __restricted__ for the developers of this bot and thus the command failed to execute.");
 
         message.reply({
-            embeds: [errorEmbed]
+            embeds: [errorEmbed],
+            allowedMentions: {
+                repliedUser: false
+            }
         });
         return false;
     };

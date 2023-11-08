@@ -8,9 +8,15 @@ import SelectMenusHandler from "./Src/Structures/Managers/SelectMenus.mjs";
 import SlashCommandsHandler from "./Src/Structures/Managers/SlashCommands.mjs";
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
+import { QuickDB } from "quick.db";
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+export const guildCooldownDB = new QuickDB({ filePath: `${__dirname}/guildCooldownDB.sqlite` });
+export const globalCooldownDB = new QuickDB({ filePath: `${__dirname}/globalCooldownDB.sqlite` });
+export const channelCooldownDB = new QuickDB({ filePath: `${__dirname}/channelCooldownDB.sqlite` });
+export const rootPath = __dirname;
 
 (async() => {
-    const __dirname = dirname(fileURLToPath(import.meta.url));
     const client = new Client({
         intents: [
             GatewayIntentBits.Guilds,

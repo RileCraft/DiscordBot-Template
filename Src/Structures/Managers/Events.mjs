@@ -9,7 +9,7 @@ export default async(client, rootPath) => {
         if (statSync(eventFile).isDirectory()) return;
         let clientEvent = await import(pathToFileURL(join(rootPath, eventFile)));
 
-        if (clientEvent.default) clientEvent = clientEvent.default;
+        if (clientEvent.default) clientEvent = clientEvent.default; // Support for CommonJS
         if (clientEvent.ignore || !clientEvent.run) return;
         if (clientEvent.customEvent) return clientEvent.run(client, rootPath);
         if (!clientEvent.name) return;

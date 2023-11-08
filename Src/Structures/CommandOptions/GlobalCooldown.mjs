@@ -1,7 +1,9 @@
-const { EmbedBuilder } = require("discord.js");
-const { globalCooldownDB } = require("../../../bot");
-module.exports = async(client, message, command, isInteraction, interactionType) => {
+import { EmbedBuilder } from "discord.js";
+import { globalCooldownDB } from "../../../Bot.mjs";
+
+export default async(client, message, command, isInteraction, interactionType) => {
     if (!command.globalCooldown || isNaN(command.globalCooldown)) return true;
+    if (!command.allowInDms && !message.guild) return true;
     const user = isInteraction ? message.user : message.author;
     const currentTime = Date.now();
     const oldTime = await globalCooldownDB.get(`${interactionType}.${command.name}.${user.id}`);
@@ -14,14 +16,17 @@ module.exports = async(client, message, command, isInteraction, interactionType)
         .setColor("DarkRed")
         .setTimestamp()
         .setAuthor({
-            name: user.tag,
+            name: user.globalName,
             iconURL: user.displayAvatarURL({ dynamic: true })
         })
         .setThumbnail(client.user.displayAvatarURL({ dynamic: true }))
         .setDescription(`You are currently at cooldown. Please try again in <t:${Math.floor(Math.floor(oldTime + command.globalCooldown) / 1000)}:R>.`);
 
         message.reply({
-            embeds: [errorEmbed]
+            embeds: [errorEmbed],
+            allowedMentions: {
+                repliedUser: false
+            }
         });
         return false;
     };
