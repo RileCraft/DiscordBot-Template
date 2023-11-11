@@ -1,15 +1,13 @@
 import { ActivityType } from "discord.js";
 import chalk from "chalk";
 import { fileURLToPath } from 'url';
-import { join } from "path";
-import { dirname } from 'path';
+import { rootPath } from '../../Bot.mjs";
 import { statSync } from "fs";
 import { glob } from "glob";
 
 export const name = "ready";
 export const runOnce = true;
 export const run = async (client) => {
-    const rootPath = join(dirname(fileURLToPath(import.meta.url)), "../..");
     client.user.setActivity("Humans.", {
         type: ActivityType.Watching
     });
