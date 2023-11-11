@@ -1,13 +1,11 @@
 import { statSync } from "fs";
 import { glob } from "glob";
-import { join } from "path";
-import { pathToFileURL } from "url";
 
 export default async(client, rootPath) => {
     const messageCommandsFiles = await glob(`${rootPath}/Src/MessageCommands/**/*`);
     messageCommandsFiles.forEach(async(messageCommandFile) => {
         if (statSync(messageCommandFile).isDirectory()) return;
-        let messageCommand = await import(pathToFileURL(join(rootPath, messageCommandFile)));
+        let messageCommand = await import(messageCommandFile);
         if (messageCommand.default) messageCommand = messageCommand.default; // Support for CommonJS
         if (messageCommand.ignore || !messageCommand.name || !messageCommand.run) return;
 
