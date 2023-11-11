@@ -1,5 +1,3 @@
-export default  {
-    prefix: ["Bot Prefix"],
-    botToken: "Bot Token",
-    ownerIds: ["Bot Owner ID"]
-};;
+export const prefix = ["Bot Prefix"];
+export const botToken = "Bot Token";
+export const ownerIds = ["Bot Owner ID"];
