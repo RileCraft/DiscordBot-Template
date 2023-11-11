@@ -1,7 +1,5 @@
 import { statSync } from "fs";
 import { glob } from "glob";
-import { join } from "path";
-import { pathToFileURL } from "url";
 import { REST, Routes } from "discord.js";
 
 export default async(client, rootPath) => {
@@ -13,7 +11,7 @@ export default async(client, rootPath) => {
         let AGCOA = []; // All global commands as an array of objects.
         for (const globalFile of globalSlashCommandsFiles) {
             if (statSync(globalFile).isDirectory()) return;
-            let globalCommand = await import(pathToFileURL(join(rootPath, globalFile)));
+            let globalCommand = await import(globalFile);
             if (globalCommand.default) globalCommand = globalCommand.default; // Support for CommonJS
             if (!globalCommand.name || globalCommand.ignore || !globalCommand.run) return;
             await client.slashCommands.set(globalCommand.name, globalCommand);
@@ -42,7 +40,8 @@ export default async(client, rootPath) => {
             const guildCommandFiles = await glob(`${rootPath}/Src/Interactions/SlashCommands/Guilds/${guildId}/**/*`);
 
             for (const commandFile of guildCommandFiles) {
-                let guildCommand = await import(pathToFileURL(join(rootPath, commandFile)));
+                if (statSync(commandFile).isDirectory()) return;
+                let guildCommand = await import(commandFile);
                 if (guildCommand.default) guildCommand = guildCommand.default; // Support for CommonJS
                 if (!guildCommand.name || guildCommand.ignore || !guildCommand.run) return;
                 await client.slashCommands.set(guildCommand.name, guildCommand);
