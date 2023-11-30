@@ -1,6 +1,6 @@
 <p align="center">
   <img src="https://media.discordapp.net/attachments/774290264764055582/1093484780525469757/A_banner_for_a_discord_bots_template_made_using_discord.js.png" height="200" width="400"><br>
-  <img src="https://img.shields.io/badge/version-8.1.0-05122A?style=for-the-badge">
+  <img src="https://img.shields.io/badge/version-9.0.0-05122A?style=for-the-badge">
   <a href="https://discord.gg/VStdRr8nP2"><img src="https://img.shields.io/badge/discord-invite-5865f2?style=for-the-badge&logo=discord&logoColor=white"></a>
   <img src="https://img.shields.io/github/issues/RileCraft/DiscordBot-Template.svg?style=for-the-badge">
   <img src="https://img.shields.io/github/forks/RileCraft/DiscordBot-Template.svg?style=for-the-badge">
@@ -13,14 +13,13 @@ The Discord Bot Template provides a solid foundation for creating feature-rich D
 
 ## Changelog
 
+- **Breaking Changes.**
 - Latest Discord.js adaptation.
 - Refactored entire template to ESM module.
 - Config file has been moved to `Src`.
-- Legacy commonjs code is still supported by the template.
 - Removed the `node-recursive-directory` and shifted to `glob`.
 - Better Handling of all the commands and interactions.
-- ESM files require `.mjs` extension and CommonJS files require `.cjs` extension.
-- renamed main file to `Bot.mjs` and the main file does no longer export `client`.
+- renamed main file of `Bot.js` does no longer export `client`.
 - Extended all command options support to interactions.
 
 ## Documentation
@@ -85,7 +84,7 @@ To get started with the Discord Bot Template, follow these steps:
 1. Clone the repository by downloading it as a ZIP file or running the command `git clone https://github.com/rilecraft/discordbot-template`.
 2. Navigate to the template's directory and run the command `npm install` (make sure npm is installed).
 3. Once all the required modules are installed, open the `Src/Config.js` file and fill in the necessary information.
-4. Run the command `node Bot.mjs` or `node .` to start the bot.
+4. Run the command `node Bot.sjs` or `node .` to start the bot.
 
 ## Contribution
 
