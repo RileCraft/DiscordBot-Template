@@ -1,5 +1,5 @@
 import { EmbedBuilder } from "discord.js";
-import { globalCooldownDB } from "../../../Bot.mjs";
+import { globalCooldownDB } from "../../../Bot";
 
 export default async(client, message, command, isInteraction, interactionType) => {
     if (!command.globalCooldown || isNaN(command.globalCooldown)) return true;
