@@ -1,4 +1,4 @@
-import { prefix } from "../Config.mjs";
+import { prefix } from "../Config";
 import commandOptionsChecker from "../Structures/CommandOptions/Processor.mjs";
 
 export const name = "messageCreate";

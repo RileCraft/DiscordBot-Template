@@ -5,8 +5,7 @@ export default async(client, rootPath) => {
     const messageCommandsFiles = await glob(`${rootPath}/Src/MessageCommands/**/*`);
     messageCommandsFiles.forEach(async(messageCommandFile) => {
         if (statSync(messageCommandFile).isDirectory()) return;
-        let messageCommand = await import(messageCommandFile);
-        if (messageCommand.default) messageCommand = messageCommand.default; // Support for CommonJS
+        const messageCommand = await import(messageCommandFile);
         if (messageCommand.ignore || !messageCommand.name || !messageCommand.run) return;
 
         client.messageCommands.set(messageCommand.name.toLowerCase(), messageCommand);

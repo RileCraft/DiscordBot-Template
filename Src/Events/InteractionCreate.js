@@ -1,4 +1,4 @@
-import commandOptionsChecker from "../Structures/CommandOptions/Processor.mjs";
+import commandOptionsChecker from "../Structures/CommandOptions/Processor";
 
 export const name = 'interactionCreate';
 export async function run(interaction, client, rootPath) {

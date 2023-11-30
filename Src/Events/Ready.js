@@ -1,7 +1,6 @@
 import { ActivityType } from "discord.js";
 import chalk from "chalk";
-import { fileURLToPath } from 'url';
-import { rootPath } from '../../Bot.mjs";
+import { rootPath } from "../../bot";
 import { statSync } from "fs";
 import { glob } from "glob";
 

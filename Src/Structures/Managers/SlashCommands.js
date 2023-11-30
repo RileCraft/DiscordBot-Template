@@ -11,8 +11,7 @@ export default async(client, rootPath) => {
         let AGCOA = []; // All global commands as an array of objects.
         for (const globalFile of globalSlashCommandsFiles) {
             if (statSync(globalFile).isDirectory()) return;
-            let globalCommand = await import(globalFile);
-            if (globalCommand.default) globalCommand = globalCommand.default; // Support for CommonJS
+            const globalCommand = await import(globalFile);
             if (!globalCommand.name || globalCommand.ignore || !globalCommand.run) return;
             await client.slashCommands.set(globalCommand.name, globalCommand);
 
@@ -41,8 +40,7 @@ export default async(client, rootPath) => {
 
             for (const commandFile of guildCommandFiles) {
                 if (statSync(commandFile).isDirectory()) return;
-                let guildCommand = await import(commandFile);
-                if (guildCommand.default) guildCommand = guildCommand.default; // Support for CommonJS
+                const guildCommand = await import(commandFile);
                 if (!guildCommand.name || guildCommand.ignore || !guildCommand.run) return;
                 await client.slashCommands.set(guildCommand.name, guildCommand);
                 
