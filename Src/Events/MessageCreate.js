@@ -1,5 +1,5 @@
-import { prefix } from "../Config";
-import commandOptionsChecker from "../Structures/CommandOptions/Processor.mjs";
+import { prefix } from "../Config.js";
+import commandOptionsChecker from "../Structures/CommandOptions/Processor.js";
 
 export const name = "messageCreate";
 export async function run(message, client, rootPath) {

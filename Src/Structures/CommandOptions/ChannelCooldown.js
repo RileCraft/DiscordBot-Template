@@ -1,5 +1,5 @@
 import { EmbedBuilder } from "discord.js";
-import { channelCooldownDB } from "../../../Bot";
+import { channelCooldownDB } from "../../../Bot.js";
 
 export default async(client, message, command, isInteraction, interactionType) => {
     if (!command.channelCooldown || isNaN(command.channelCooldown)) return true;

@@ -1,6 +1,6 @@
 import { EmbedBuilder } from "discord.js";
 
-export default async (client, message, command, isInteraction) => {
+export default async (client, message, command) => {
     if (!command.onlyGuilds || !Array.isArray(command.onlyGuilds || !message.guild)) return true;
     if (command.onlyGuilds.some(guildId => message.guild.id == guildId)) return true;
     else {

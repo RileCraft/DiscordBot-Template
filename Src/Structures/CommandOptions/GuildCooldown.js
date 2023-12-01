@@ -1,5 +1,5 @@
 import { EmbedBuilder } from "discord.js";
-import { guildCooldownDB } from "../../../Bot";
+import { guildCooldownDB } from "../../../Bot.js";
 
 export default async(client, message, command, interactionType) => {
     if (!command.guildCooldown || isNaN(command.guildCooldown) || !message.guild.id) return true;

@@ -1,4 +1,4 @@
-import commandOptionsChecker from "../Structures/CommandOptions/Processor";
+import commandOptionsChecker from "../Structures/CommandOptions/Processor.js";
 
 export const name = 'interactionCreate';
 export async function run(interaction, client, rootPath) {

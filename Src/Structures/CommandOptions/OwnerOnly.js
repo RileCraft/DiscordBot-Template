@@ -1,5 +1,5 @@
 import { EmbedBuilder } from "discord.js";
-import { ownerIds } from "../../Config"
+import { ownerIds } from "../../Config.js"
 
 export default async(client, message, command, isInteraction) => {
     if (!command.ownerOnly || typeof command?.ownerOnly != "boolean") return true;
