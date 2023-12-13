@@ -21,6 +21,9 @@ The Discord Bot Template provides a solid foundation for creating feature-rich D
 - Better Handling of all the commands and interactions.
 - renamed main file of `Bot.js` does no longer export `client`.
 - Extended all command options support to interactions.
+- Merged all the cooldown databases into one.
+- Moved from `collections` to `Map`.
+- Moved from `Config.js` to `.env`.
 
 ## Documentation
 
@@ -84,7 +87,7 @@ To get started with the Discord Bot Template, follow these steps:
 1. Clone the repository by downloading it as a ZIP file or running the command `git clone https://github.com/rilecraft/discordbot-template`.
 2. Navigate to the template's directory and run the command `npm install` (make sure npm is installed).
 3. Once all the required modules are installed, open the `Src/Config.js` file and fill in the necessary information.
-4. Run the command `node Bot.sjs` or `node .` to start the bot.
+4. Run the command `node Bot.js` or `node .` to start the bot.
 
 ## Contribution
 

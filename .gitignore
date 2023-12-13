@@ -1,5 +1,3 @@
 .github/
 node_modules/
-channelCooldownDB.sqlite
-globalCooldownDB.sqlite
-guildCooldownDB.sqlite
+cooldownDB.sqlite

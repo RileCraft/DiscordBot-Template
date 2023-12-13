@@ -1,5 +1,5 @@
-import { Client, GatewayIntentBits, Partials, Collection } from "discord.js";
-import { botToken } from "./Src/Config.js";
+import { Client, GatewayIntentBits, Partials } from "discord.js";
+import "dotenv/config";
 import MessageCommandsHandler from "./Src/Structures/Managers/MessageCommands.js";
 import ClientEventHandler from "./Src/Structures/Managers/Events.js";
 import ButtonCommandsHandler from "./Src/Structures/Managers/ButtonCommands.js";
@@ -11,9 +11,6 @@ import { dirname } from 'path';
 import { QuickDB } from "quick.db";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-export const guildCooldownDB = new QuickDB({ filePath: `${__dirname}/guildCooldownDB.sqlite` });
-export const globalCooldownDB = new QuickDB({ filePath: `${__dirname}/globalCooldownDB.sqlite` });
-export const channelCooldownDB = new QuickDB({ filePath: `${__dirname}/channelCooldownDB.sqlite` });
 export const rootPath = __dirname;
 
 (async() => {
@@ -34,19 +31,21 @@ export const rootPath = __dirname;
         partials: [Partials.Channel]
     });
 
-    client.messageCommands = new Collection();
-    client.messageCommands_Aliases = new Collection();
-    client.events = new Collection();
-    client.buttonCommands = new Collection();
-    client.selectMenus = new Collection();
-    client.modalForms = new Collection();
-    client.slashCommands = new Collection();
+    client.cooldownDB = new QuickDB({ filePath: `${__dirname}/cooldownDB.sqlite` });
+
+    client.messageCommands = new Map();
+    client.messageCommands_Aliases = new Map();
+    client.events = new Map();
+    client.buttonCommands = new Map();
+    client.selectMenus = new Map();
+    client.modalForms = new Map();
+    client.slashCommands = new Map();
 
     await MessageCommandsHandler(client, __dirname);
     await ClientEventHandler(client, __dirname);
     await ButtonCommandsHandler(client, __dirname);
     await SelectMenusHandler(client, __dirname);
     await ModalFormsHandler(client, __dirname);
-    await client.login(botToken);
+    await client.login(process.env.BOT_TOKEN);
     await SlashCommandsHandler(client, __dirname);
 })();

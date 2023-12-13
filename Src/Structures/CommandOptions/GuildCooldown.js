@@ -1,13 +1,12 @@
 import { EmbedBuilder } from "discord.js";
-import { guildCooldownDB } from "../../../Bot.js";
 
 export default async(client, message, command, interactionType) => {
     if (!command.guildCooldown || isNaN(command.guildCooldown) || !message.guild.id) return true;
     const member = message.member;
     const currentTime = Date.now();
-    const oldTime = await guildCooldownDB.get(`${message.guild.id}.${interactionType}.${command.name}.${member.user.id}`);
+    const oldTime = await client.cooldownDB.get(`guildCooldown.${message.guild.id}.${interactionType}.${command.name}.${member.user.id}`);
     if (Math.floor(currentTime - (oldTime ?? 0)) >= command.guildCooldown || isNaN(oldTime)) {
-        await guildCooldownDB.set(`${message.guild.id}.${interactionType}.${command.name}.${member.user.id}`, currentTime);
+        await client.cooldownDB.set(`guildCooldown.${message.guild.id}.${interactionType}.${command.name}.${member.user.id}`, currentTime);
         return true;
     } else {
         if (command.returnErrors == false || command.returnGuildCooldownError == false) return false;

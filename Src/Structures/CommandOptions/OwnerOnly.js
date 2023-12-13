@@ -1,11 +1,10 @@
 import { EmbedBuilder } from "discord.js";
-import { ownerIds } from "../../Config.js"
 
 export default async(client, message, command, isInteraction) => {
     if (!command.ownerOnly || typeof command?.ownerOnly != "boolean") return true;
     if (!command.allowInDms && !message.guild) return true;
     const user = isInteraction ? message.user : message.author;
-    if (ownerIds.includes(user.id)) return true;
+    if (process.env.OWNER_IDS.includes(user.id)) return true;
     else {
         if (command.returnErrors == false || command.returnOwnerOnlyError == false) return false;
         const errorEmbed = new EmbedBuilder()
