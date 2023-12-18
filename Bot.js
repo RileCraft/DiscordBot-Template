@@ -1,5 +1,5 @@
 import { Client, GatewayIntentBits, Partials } from "discord.js";
-import "dotenv/config";
+import { BOT_TOKEN } from "./Src/Config.js";
 import MessageCommandsHandler from "./Src/Structures/Managers/MessageCommands.js";
 import ClientEventHandler from "./Src/Structures/Managers/Events.js";
 import ButtonCommandsHandler from "./Src/Structures/Managers/ButtonCommands.js";
@@ -46,6 +46,6 @@ export const rootPath = __dirname;
     await ButtonCommandsHandler(client, __dirname);
     await SelectMenusHandler(client, __dirname);
     await ModalFormsHandler(client, __dirname);
-    await client.login(process.env.BOT_TOKEN);
+    await client.login(BOT_TOKEN);
     await SlashCommandsHandler(client, __dirname);
 })();

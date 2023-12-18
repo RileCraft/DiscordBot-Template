@@ -6,7 +6,7 @@ export default async (client, rootPath) => {
     const allGuilds = await glob(`${rootPath}/Src/Interactions/SlashCommands/Guilds/*`);
     const rest = new REST({ version: '10' }).setToken(client.token);
 
-    if (globalSlashCommandsFiles ?.length > 0) {
+    if (globalSlashCommandsFiles?.length > 0) {
         let AGCOA = []; // All global commands as an array of objects.
         for await (const globalFile of globalSlashCommandsFiles) {
             const globalCommand = await import(globalFile);
