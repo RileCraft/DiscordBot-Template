@@ -1,13 +1,11 @@
 # MessageCommands (With Aliases)
 ## Format
 ```js
-import { MessageCommand } from "../types.js";
-
-export const MsgCommand: MessageCommand = {
+export const MsgCommand = {
     name: "commandName",
     // Other Command Options
     aliases: ["commandName2", "commandName3"], // Optional to be provided.
-    run: async(client, message, args): Promise<void> => {
+    run: async(client, message, args) => {
         // Code Here
     }
 };
@@ -15,17 +13,14 @@ export const MsgCommand: MessageCommand = {
 
 ## Example Code
 ```js
-import { MessageCommand } from "../types.js";
-
-export const MsgCommand: MessageCommand = {
+export const MsgCommand = {
     name: "ping",
     // Other Command Options
     aliases: ["pong"],
-    run: (client, message, args): void => {
+    run: (client, message, args) => {
         message.channel.send({
             content: `My ping is ${client.ws.ping}ms.`
         });
     }
 };
-
 ```

@@ -2,12 +2,10 @@
 ## Format
 ```js
 // This format is for the button file that you will create in `src/interactions/buttons`.
-import { ButtonCommand } from "../../types.js";
-
-export const Button: ButtonCommand = {
+export const Button = {
     name: "button's CustomId",
     // Other Command Options
-    run: async(client, interaction): Promise<void> => {
+    run: async(interaction, client) => {
         // code
     }
 };
@@ -33,12 +31,10 @@ message.channel.send({
 ### Button Code
 ```js
 // Code for the `src/interactions/buttons/evalButton.js
-import { ButtonCommand } from "../../types.js";
-
-export const Button: ButtonCommand = {
+export const Button = {
     name: "evalbuttton",
     // Other Command Options
-    run: (interaction, client): void => {
+    run: (interaction) => {
         interaction.reply({
             content: "This button is working!"
         });

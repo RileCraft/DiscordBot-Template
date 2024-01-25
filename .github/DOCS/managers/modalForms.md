@@ -2,12 +2,10 @@
 ## Format
 ```js
 // This format is for the modalForms file that you will create in `src/interactions/modalForms`.
-import { ModalForm } from "../../types.js";
-
-export const Modal: ModalForm = {
+export const Modal = {
     name: "modalName",
     // Other Command Options
-    run: (interaction, client): void => {
+    run: (interaction, client) => {
         // Code Here
     }
 };
@@ -16,6 +14,7 @@ export const Modal: ModalForm = {
 ### Modal Creation Code
 ```js
 import { ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle } from "discord.js";
+
 const modal = new ModalBuilder()
   .setCustomId('ExampleModal')
   .setTitle('My Modal');
@@ -30,8 +29,8 @@ const hobbiesInput = new TextInputBuilder()
   .setLabel("What's some of your favorite hobbies?")
   .setStyle(TextInputStyle.Paragraph);
 
-const firstActionRow = new ActionRowBuilder<TextInputBuilder>().addComponents(favoriteColorInput);
-const secondActionRow = new ActionRowBuilder<TextInputBuilder>().addComponents(hobbiesInput);
+const firstActionRow = new ActionRowBuilder().addComponents(favoriteColorInput);
+const secondActionRow = new ActionRowBuilder().addComponents(hobbiesInput);
 
 modal.addComponents(firstActionRow, secondActionRow);
 await interaction.showModal(modal);
@@ -39,12 +38,10 @@ await interaction.showModal(modal);
 ### Modal Code
 ```js
 // Code for the `src/interactions/modalForms/exampleModal.js
-import { ModalForm } from "../../types.js";
-
-export const Modal: ModalForm = {
+export const Modal = {
     name: "ExampleModal",
     // Other Command Options
-    run: (interaction): void => {
+    run: (interaction) => {
         interaction.reply({
             content: "This modal is correctly functioning."
         });

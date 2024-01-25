@@ -2,22 +2,18 @@
 ## Client Events
 ### Format
 ```js
-import { ClientEvent } from "../types.js";
-
-export const Event: ClientEvent = {
+export const Event = {
     name: "clientEventName",
-    run: async(<event args>): Promise<void> => {
+    run: async(<event args>) => {
         // Code
     }
 };
 ```
 ### Example Code
 ```js
-import { ClientEvent } from "../types.js";
-
-export const Event: ClientEvent = {
+export const Event = {
     name: "channelCreate", // Omitted whenever a channel is created in a guild.
-    run: (channel): void => {
+    run: (channel) => {
         console.log(`A new channel was created in the ${channel.guild.name} of the name ${channel.name}.`);
     }
 };
@@ -26,22 +22,18 @@ export const Event: ClientEvent = {
 ## Non-Client Events
 ### Format
 ```js
-import { ClientEvent } from "../types.js";
-
-export const Event: ClientEvent = {
+export const Event = {
     customEvent: true,
-    run: async(client): Promise<void> => {
+    run: async(client) => {
         // Code
     }
 };
 ```
 ### Example Code
 ```js
-import { ClientEvent } from "../types.js";
-
-export const Event: ClientEvent = {
+export const Event = {
     customEvent: true,
-    run: (client): void => {
+    run: (client) => {
         client.Distube.on("addSong", (queue, song) => {
             // Your Code
         });
