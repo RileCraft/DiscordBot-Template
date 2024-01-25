@@ -1,27 +1,23 @@
 {
   "name": "discordbot-template",
-  "version": "8.0.2",
-  "description": "Just your average discord bot template",
+  "version": "9.0.0",
+  "description": "Just your average discord bot handler.",
   "main": "bot.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "dependencies": {
-    "better-sqlite3": "^8.2.0",
-    "chalk": "^4.1.2",
-    "discord.js": "^14.9.0",
-    "node-recursive-directory": "^1.2.0",
-    "quick.db": "^9.1.3"
-  },
-  "author": "RileCraft",
-  "license": "MIT",
-  "devDependencies": {},
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rilecraft/discordbot-template.git"
   },
+  "author": "RileCraft",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/rilecraft/discordbot-template/issues"
   },
-  "homepage": "https://github.com/rilecraft/discordbot-template#readme"
+  "homepage": "https://github.com/rilecraft/discordbot-template#readme",
+  "dependencies": {
+    "discord.js": "^14.14.1",
+    "ms": "^2.1.3",
+    "tasai": "^1.0.0",
+    "undici-types": "^5.26.5"
+  }
 }

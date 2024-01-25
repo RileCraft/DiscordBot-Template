@@ -1,11 +1,19 @@
-(async () => {
-    const { Client, GatewayIntentBits, Partials, Collection } = require("discord.js");
-    const { QuickDB } = require("quick.db");
-    const credentialManager = require("./Src/Credentials/Config");
-    const dirPath = __dirname;
-    const { messageCommandsManager, eventsManager, buttonManager, selectMenuManager, modalFormsManager, slashCommandsManager } = require("./Src/Structures/Managers/Export");
+import { Client, GatewayIntentBits, Partials } from "discord.js";
+import { BOT_TOKEN } from "./src/config.js";
+import { fileURLToPath } from "node:url";
+import { dirname } from "node:path";
+import { ButtonManager } from "./src/structures/managers/buttonCommands.js";
+import { EventManager } from "./src/structures/managers/events.js";
+import { MessageCMDManager } from "./src/structures/managers/messageCommands.js";
+import { ModalManager } from "./src/structures/managers/modalForms.js";
+import { SelectMenuManager } from "./src/structures/managers/selectMenus.js";
+import { SlashManager } from "./src/structures/managers/slashCommands.js";
 
-    const botClient = new Client({
+const __dirname = dirname(fileURLToPath(import.meta.url));
+export const rootPath = __dirname;
+
+(async () => {
+    const client = new Client({
         intents: [
             GatewayIntentBits.Guilds,
             GatewayIntentBits.GuildMessages,
@@ -22,31 +30,20 @@
         partials: [Partials.Channel]
     });
 
-    exports.rootPath = dirPath;
-    exports.client = botClient;
-    exports.guildCooldownDB = new QuickDB({
-        filePath: `${dirPath}/guildCooldownDB.sqlite`
-    });
-    exports.globalCooldownDB = new QuickDB({
-        filePath: `${dirPath}/globalCooldownDB.sqlite`
-    });
-    exports.channelCooldownDB = new QuickDB({
-        filePath: `${dirPath}/channelCooldownDB.sqlite`
-    });
+    client.messageCommands = new Map();
+    client.messageCommands_Aliases = new Map();
+    client.events = new Map();
+    client.buttonCommands = new Map();
+    client.selectMenus = new Map();
+    client.modalForms = new Map();
+    client.contextMenus = new Map();
+    client.slashCommands = new Map();
 
-    botClient.messageCommands = new Collection();
-    botClient.messageCommandsAliases = new Collection();
-    botClient.events = new Collection();
-    botClient.buttonCommands = new Collection();
-    botClient.selectMenus = new Collection();
-    botClient.modalForms = new Collection();
-    botClient.slashCommands = new Collection();
-
-    await messageCommandsManager(botClient, dirPath);
-    await eventsManager(botClient, dirPath);
-    await buttonManager(botClient, dirPath);
-    await selectMenuManager(botClient, dirPath);
-    await modalFormsManager(botClient, dirPath);
-    await botClient.login(credentialManager.botToken);
-    await slashCommandsManager(botClient, dirPath);
+    await MessageCMDManager(client, __dirname);
+    await EventManager(client, __dirname);
+    await ButtonManager(client, __dirname);
+    await SelectMenuManager(client, __dirname);
+    await ModalManager(client, __dirname);
+    await client.login(BOT_TOKEN);
+    await SlashManager(client, __dirname); // Includes context menu handling as they belong to same command type.
 })();
