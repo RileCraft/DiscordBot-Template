@@ -1,7 +1,8 @@
-import { readdirSync, statSync } from "fs";
+import { existsSync, readdirSync, statSync } from "fs";
 import path from "path";
 
 export const fileReader = (dir) => {
+    if (!existsSync(dir)) return [];
     const files = [];
     const directoryData = readdirSync(dir);
 

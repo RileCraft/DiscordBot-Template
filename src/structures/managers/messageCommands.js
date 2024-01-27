@@ -2,6 +2,7 @@ import { fileReader } from "../../utils/fileReader.js";
 
 export const MessageCMDManager = async(client, rootPath) => {
     const messageCommandsFiles = fileReader(`${rootPath}/src/messageCommands`);
+    if (!messageCommandsFiles.length) return;
 
     for (const messageCommandFile of messageCommandsFiles) {
         const messageCommand = (await import(messageCommandFile))?.MsgCommand;

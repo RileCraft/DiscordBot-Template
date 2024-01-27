@@ -2,6 +2,7 @@ import { fileReader } from "../../utils/fileReader.js";
 
 export const ButtonManager = async(client, rootPath) => {
     const buttonCommandFiles = fileReader(`${rootPath}/src/interactions/buttons`);
+    if (!buttonCommandFiles.length) return;
 
     for (const buttonCommandFile of buttonCommandFiles) {
         const buttonCommand = (await import(buttonCommandFile))?.Button;
