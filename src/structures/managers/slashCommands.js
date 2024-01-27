@@ -9,12 +9,12 @@ export const SlashManager = async(client, rootPath) => {
     const guildCommandsObject = {};
     const globalCommandsArray = [];
 
-    if (allSlashCommandsFiles.length > 0)
-        allSlashCommandsFiles.forEach(async(slashCommandFile) => {
+    if (allSlashCommandsFiles.length > 0) {
+        for (const slashCommandFile of allSlashCommandsFiles) {
             const slashCommand = (await import(slashCommandFile))?.Slash;
 
-            if (!slashCommand) return;
-            if (slashCommand?.ignore || !slashCommand?.name || !slashCommand.description) return;
+            if (!slashCommand) continue;
+            if (slashCommand?.ignore || !slashCommand?.name || !slashCommand.description) continue;
 
             client.slashCommands?.set(slashCommand.name, slashCommand);
 
@@ -37,14 +37,15 @@ export const SlashManager = async(client, rootPath) => {
                 type: ApplicationCommandType.ChatInput,
                 options: slashCommand.options ?? []
             });
-        });
+        };
+    };
 
-    if (allContextMenusFiles.length > 0)
-        allContextMenusFiles.forEach(async(contextMenuFile) => {
+    if (allContextMenusFiles.length > 0) {
+        for (const contextMenuFile of allContextMenusFiles) {
             const contextMenu = (await import(contextMenuFile))?.Context;
 
-            if (!contextMenu) return;
-            if (contextMenu?.ignore || !contextMenu?.name || !contextMenu?.type) return;
+            if (!contextMenu) continue;
+            if (contextMenu?.ignore || !contextMenu?.name || !contextMenu?.type) continue;
 
             client.contextMenus?.set(contextMenu.name, contextMenu);
 
@@ -61,7 +62,8 @@ export const SlashManager = async(client, rootPath) => {
                 name: contextMenu.name,
                 type: contextMenu.type
             });
-        });
+        };
+    };
 
     try {
         await rest.put(Routes.applicationCommands(client.application.id), {
