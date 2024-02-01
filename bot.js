@@ -1,7 +1,6 @@
 import { Client, GatewayIntentBits, Partials } from "discord.js";
 import { BOT_TOKEN } from "./src/config.js";
-import { fileURLToPath } from "node:url";
-import { dirname } from "node:path";
+import { resolve } from "node:path";
 import { ButtonManager } from "./src/structures/managers/buttonCommands.js";
 import { EventManager } from "./src/structures/managers/events.js";
 import { MessageCMDManager } from "./src/structures/managers/messageCommands.js";
@@ -9,7 +8,7 @@ import { ModalManager } from "./src/structures/managers/modalForms.js";
 import { SelectMenuManager } from "./src/structures/managers/selectMenus.js";
 import { SlashManager } from "./src/structures/managers/slashCommands.js";
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
+const __dirname = resolve("./");
 export const rootPath = __dirname;
 
 (async () => {

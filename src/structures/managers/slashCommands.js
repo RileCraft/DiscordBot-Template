@@ -1,5 +1,6 @@
 import { ApplicationCommandType, REST, Routes } from "discord.js";
 import { fileReader } from "../../utils/fileReader.js";
+import { pathToFileURL } from "node:url";
 
 export const SlashManager = async(client, rootPath) => {
     const allSlashCommandsFiles = fileReader(`${rootPath}/src/interactions/slashCommands`);
@@ -11,10 +12,10 @@ export const SlashManager = async(client, rootPath) => {
 
     if (allSlashCommandsFiles.length > 0) {
         for (const slashCommandFile of allSlashCommandsFiles) {
-            const slashCommand = (await import(slashCommandFile))?.Slash;
+            const slashCommand = (await import(pathToFileURL(slashCommandFile).href))?.Slash;
 
             if (!slashCommand) continue;
-            if (slashCommand?.ignore || !slashCommand?.name || !slashCommand.description) continue;
+            if (slashCommand.ignore || !slashCommand.name || !slashCommand.description) continue;
 
             client.slashCommands?.set(slashCommand.name, slashCommand);
 
@@ -30,7 +31,7 @@ export const SlashManager = async(client, rootPath) => {
                     });
                 };
             }
-            else return globalCommandsArray.push({
+            else globalCommandsArray.push({
                 name: slashCommand.name,
                 nsfw: slashCommand.nsfw ?? false,
                 description: slashCommand.description,
@@ -42,10 +43,10 @@ export const SlashManager = async(client, rootPath) => {
 
     if (allContextMenusFiles.length > 0) {
         for (const contextMenuFile of allContextMenusFiles) {
-            const contextMenu = (await import(contextMenuFile))?.Context;
+            const contextMenu = (await import(pathToFileURL(contextMenuFile).href))?.Context;
 
             if (!contextMenu) continue;
-            if (contextMenu?.ignore || !contextMenu?.name || !contextMenu?.type) continue;
+            if (contextMenu.ignore || !contextMenu.name || !contextMenu.type) continue;
 
             client.contextMenus?.set(contextMenu.name, contextMenu);
 
@@ -58,7 +59,7 @@ export const SlashManager = async(client, rootPath) => {
                     });
                 };
             }
-            else return globalCommandsArray.push({
+            else globalCommandsArray.push({
                 name: contextMenu.name,
                 type: contextMenu.type
             });
@@ -75,8 +76,7 @@ export const SlashManager = async(client, rootPath) => {
                 body: guildObject[1]
             });
         };
-    }
-    catch (error) {
+    } catch (error) {
         console.log(error);
     };
 };

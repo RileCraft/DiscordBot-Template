@@ -1,5 +1,6 @@
 import { ActivityType } from "discord.js";
 import { rootPath } from "../../bot.js";
+import { pathToFileURL } from "node:url";
 import { fileReader } from "../utils/fileReader.js";
 import { t } from "tasai";
 
@@ -13,14 +14,14 @@ export const Event = {
 
         let allSlashCommands = fileReader(`${rootPath}/src/interactions/slashCommands`);
         allSlashCommands = await allSlashCommands.reduce(async (array, slash) => {
-            const command = (await import(slash))?.Slash;
+            const command = (await import(pathToFileURL(slash).href))?.Slash;
             if (command?.ignore || !command?.name) return array;
             else return (await array).concat(slash);
         }, []);
 
         let allContextMenus = fileReader(`${rootPath}/src/interactions/contextMenus`);
         allContextMenus = await allContextMenus.reduce(async (array, context) => {
-            const command = (await import(context))?.Context;
+            const command = (await import(pathToFileURL(context).href))?.Context;
             if (command?.ignore || !command?.name || !command?.type) return array;
             else return (await array).concat(context);
         }, []);
