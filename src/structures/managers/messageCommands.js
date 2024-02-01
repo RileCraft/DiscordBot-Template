@@ -1,11 +1,12 @@
 import { fileReader } from "../../utils/fileReader.js";
+import { pathToFileURL } from "node:url";
 
 export const MessageCMDManager = async(client, rootPath) => {
     const messageCommandsFiles = fileReader(`${rootPath}/src/messageCommands`);
     if (!messageCommandsFiles.length) return;
 
     for (const messageCommandFile of messageCommandsFiles) {
-        const messageCommand = (await import(messageCommandFile))?.MsgCommand;
+        const messageCommand = (await import(pathToFileURL(messageCommandFile).href))?.MsgCommand;
 
         if (!messageCommand) continue;
 

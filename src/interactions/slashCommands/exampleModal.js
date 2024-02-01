@@ -3,7 +3,6 @@ import { ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle } from
 export const Slash = {
     name: "testmodal",
     description: "Test Modal",
-    guilds: ["1186230608851120188"],
     run: async (interaction) => {
         const modal = new ModalBuilder()
           .setCustomId('ExampleModal')
