@@ -1,6 +1,6 @@
 <p align="center">
   <img src="https://media.discordapp.net/attachments/774290264764055582/1093484780525469757/A_banner_for_a_discord_bots_template_made_using_discord.js.png" height="200" width="400"><br>
-  <img src="https://img.shields.io/badge/version-9.0.3-05122A?style=for-the-badge">
+  <img src="https://img.shields.io/badge/version-9.0.4-05122A?style=for-the-badge">
   <a href="https://discord.gg/VStdRr8nP2"><img src="https://img.shields.io/badge/discord-invite-5865f2?style=for-the-badge&logo=discord&logoColor=white"></a>
   <img src="https://img.shields.io/github/issues/RileCraft/DiscordBot-Template.svg?style=for-the-badge">
   <img src="https://img.shields.io/github/forks/RileCraft/DiscordBot-Template.svg?style=for-the-badge">
@@ -12,7 +12,7 @@
 The Discord Bot Template provides a solid foundation for creating feature-rich Discord bots using Discord.js. It includes various managers for handling message commands, buttons, select menus, slash commands, context menus, and modal forms. The template offers customization options, colorful logging, and a simple code structure.
 
 ## Changelog
-### IMPORTANT UPDATE 9.0.3
+### IMPORTANT UPDATE 9.0.4
 
 - **Fixed Windows Support and SlashCommands & ContextMenus not Registering.**
 - Latest Discord.js adaptation.
