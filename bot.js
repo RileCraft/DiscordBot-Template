@@ -7,6 +7,7 @@ import { MessageCMDManager } from "./src/structures/managers/messageCommands.js"
 import { ModalManager } from "./src/structures/managers/modalForms.js";
 import { SelectMenuManager } from "./src/structures/managers/selectMenus.js";
 import { SlashManager } from "./src/structures/managers/slashCommands.js";
+import JSONdb from "simple-json-db";
 
 const __dirname = dirname(import.meta.url);
 export const rootPath = __dirname;
@@ -28,6 +29,8 @@ export const rootPath = __dirname;
         ],
         partials: [Partials.Channel]
     });
+
+    client.cooldownDB = new JSONdb("./cooldownDB.json");
 
     client.messageCommands = new Map();
     client.messageCommands_Aliases = new Map();
