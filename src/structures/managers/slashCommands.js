@@ -1,6 +1,5 @@
 import { ApplicationCommandType, REST, Routes } from "discord.js";
 import { fileReader } from "../../utils/fileReader.js";
-import { pathToFileURL } from "node:url";
 
 export const SlashManager = async(client, rootPath) => {
     const allSlashCommandsFiles = fileReader(`${rootPath}/src/interactions/slashCommands`);
@@ -12,7 +11,7 @@ export const SlashManager = async(client, rootPath) => {
 
     if (allSlashCommandsFiles.length > 0) {
         for (const slashCommandFile of allSlashCommandsFiles) {
-            const slashCommand = (await import(pathToFileURL(slashCommandFile).href))?.Slash;
+            const slashCommand = (await import(`file:///${slashCommandFile}`))?.Slash;
 
             if (!slashCommand) continue;
             if (slashCommand.ignore || !slashCommand.name || !slashCommand.description) continue;
@@ -43,7 +42,7 @@ export const SlashManager = async(client, rootPath) => {
 
     if (allContextMenusFiles.length > 0) {
         for (const contextMenuFile of allContextMenusFiles) {
-            const contextMenu = (await import(pathToFileURL(contextMenuFile).href))?.Context;
+            const contextMenu = (await import(`file:///${contextMenuFile}`))?.Context;
 
             if (!contextMenu) continue;
             if (contextMenu.ignore || !contextMenu.name || !contextMenu.type) continue;

@@ -1,6 +1,6 @@
 {
   "name": "discordbot-template",
-  "version": "9.0.4",
+  "version": "9.0.5",
   "description": "Just your average discord bot handler.",
   "main": "bot.js",
   "type": "module",
