@@ -13,7 +13,7 @@ export const fileReader = (dir) => {
         const stats = statSync(filePath);
 
         if (stats.isFile() && extname(filePath) === ".js") files.push(filePath);
-        else if (stats.isDirectory()) files.push(...fileReader(filePath));
+        else if (stats.isDirectory()) files.push(...fileReader(`file:///${filePath}`));
     };
 
     return files;
